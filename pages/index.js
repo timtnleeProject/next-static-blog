@@ -1,7 +1,11 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Link from "next/link";
+import styles from "../styles/Home.module.scss";
+import fs from "fs";
+import path from "path";
 
-export default function Home() {
+export default function Home(props) {
+  const { posts = [] } = props;
   return (
     <div className={styles.container}>
       <Head>
@@ -10,13 +14,26 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
+        <h1 className={styles.title}>胖豬寶🐷</h1>
+        <div>文章 ‧ 生活分享</div>
+        <ul>
+          {posts.map(({ name }) => (
+            <li key={name}>
+              <Link
+                href={{
+                  pathname: "/post/[name]",
+                  query: {
+                    name,
+                  },
+                }}
+              >
+                {name}
+              </Link>
+            </li>
+          ))}
+        </ul>
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+          Get started by editing <code className={styles.code}>pages/index.js</code>
         </p>
 
         <div className={styles.grid}>
@@ -42,10 +59,7 @@ export default function Home() {
             href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
             className={styles.card}
           >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
+            <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
           </a>
         </div>
       </main>
@@ -56,10 +70,24 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
+          Powered by <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
       </footer>
     </div>
-  )
+  );
+}
+
+export async function getStaticProps(context) {
+  const postsDirectory = path.join(process.cwd(), "posts");
+  const filenames = fs.readdirSync(postsDirectory);
+  filenames.forEach((name) => {
+    const file = fs.statSync(path.join(process.cwd(), "posts", name));
+  });
+  return {
+    props: {
+      posts: filenames.map((name) => ({
+        name: name.replace(/\.md/, ""),
+      })),
+    },
+  };
 }
