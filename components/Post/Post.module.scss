@@ -1,0 +1,9 @@
+@import "~styles/vars.scss";
+.item {
+  display: inline-block;
+  width: 100%;
+  padding: 20px;
+  &:hover {
+    background-color: $main;
+  }
+}

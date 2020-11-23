@@ -1,37 +1,24 @@
 import Head from "next/head";
-import Link from "next/link";
 import styles from "../styles/Home.module.scss";
-import fs from "fs";
-import path from "path";
+import { getPosts } from "data";
+import Post from "components/Post";
 
 export default function Home(props) {
   const { posts = [] } = props;
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>HOME</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>胖豬寶🐷</h1>
-        <div>文章 ‧ 生活分享</div>
-        <ul>
-          {posts.map(({ name }) => (
-            <li key={name}>
-              <Link
-                href={{
-                  pathname: "/post/[name]",
-                  query: {
-                    name,
-                  },
-                }}
-              >
-                {name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <h1 className={styles.title}>TITLE</h1>
+        <div>Some text</div>
+        <div>Post:</div>
+        {posts.map((post) => (
+          <Post.Item key={post.name} post={post}></Post.Item>
+        ))}
         <p className={styles.description}>
           Get started by editing <code className={styles.code}>pages/index.js</code>
         </p>
@@ -78,16 +65,9 @@ export default function Home(props) {
 }
 
 export async function getStaticProps(context) {
-  const postsDirectory = path.join(process.cwd(), "posts");
-  const filenames = fs.readdirSync(postsDirectory);
-  filenames.forEach((name) => {
-    const file = fs.statSync(path.join(process.cwd(), "posts", name));
-  });
   return {
     props: {
-      posts: filenames.map((name) => ({
-        name: name.replace(/\.md/, ""),
-      })),
+      posts: getPosts(),
     },
   };
 }
