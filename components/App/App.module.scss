@@ -6,6 +6,8 @@
 }
 .content {
   padding: 3 * $p;
+  width: 100%;
+  overflow-x: auto;
 }
 .title {
   margin: 2 * $p 0 0 0;

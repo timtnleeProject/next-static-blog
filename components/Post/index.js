@@ -8,7 +8,6 @@ export function List() {
 }
 
 export function Item({ post }) {
-  console.log(post);
   const { name, metadata, stat } = post;
   return (
     <Link

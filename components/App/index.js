@@ -1,9 +1,15 @@
+import Link from "next/link";
 import styles from "./App.module.scss";
 
 export function Nav() {
   return (
     <nav className={styles.nav}>
       <ul>
+        <li>
+          <Link href="/">
+            <a>Home</a>
+          </Link>
+        </li>
         <li>1111</li>
         <li>6666</li>
       </ul>

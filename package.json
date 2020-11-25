@@ -10,14 +10,17 @@
   "dependencies": {
     "moment": "^2.29.1",
     "next": "10.0.0",
+    "next-compose-plugins": "^2.2.1",
+    "next-transpile-modules": "^4.1.0",
     "prop-types": "^15.7.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-markdown": "^5.0.3",
+    "react-syntax-highlighter": "^15.3.1",
     "sass": "^1.29.0"
   },
   "devDependencies": {
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-plugin-react": "^7.21.5"
   }
 }
