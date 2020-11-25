@@ -1,5 +1,4 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.scss";
 import { getPosts } from "data";
 import Post from "components/Post";
 

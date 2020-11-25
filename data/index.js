@@ -13,7 +13,7 @@ const posts = (function () {
       try {
         const metadata = fs.readFileSync(
           path.join(postsDirectory, `${name}.json`),
-          "utf-8"
+          "utf-8",
         );
         const stat = fs.statSync(path.join(postsDirectory, filename));
         const raw = fs.readFileSync(path.join(postsDirectory, filename), "utf-8");

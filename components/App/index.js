@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./App.module.scss";
+import PropTypes from "prop-types";
 
 export function Nav() {
   return (
@@ -35,4 +36,8 @@ export default {
   Nav,
   Header,
   Content,
+};
+
+Content.propTypes = {
+  children: PropTypes.element,
 };
