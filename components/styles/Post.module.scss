@@ -1,0 +1,23 @@
+.list {
+  .item {
+    max-width: $bp-lg;
+    margin: 0 auto;
+  }
+}
+.item {
+  display: flex;
+}
+.meta {
+  flex: 1 1 0;
+}
+.imageBolck {
+  flex: 0 0 200px;
+  height: 200px;
+  border: 1px solid black;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+.title {
+  color: $color-main;
+}

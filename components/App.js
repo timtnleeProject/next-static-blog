@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "./App.module.scss";
+import styles from "./styles/App.module.scss";
 import PropTypes from "prop-types";
 
 export function Nav() {

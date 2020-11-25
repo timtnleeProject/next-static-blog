@@ -1,11 +1,16 @@
 import { getPost, getPosts } from "data";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { dark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const renderers = {
+  // eslint-disable-next-line react/display-name
   code: ({ language, value }) => {
-    return <SyntaxHighlighter style={dark} language={language} children={value} />;
+    return (
+      <SyntaxHighlighter style={tomorrow} language={language}>
+        {value}
+      </SyntaxHighlighter>
+    );
   },
 };
 
