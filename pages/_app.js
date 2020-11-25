@@ -1,10 +1,21 @@
+import App from "components/App";
+import Head from "next/head";
 import "../styles/globals.scss";
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <header></header>
-      <Component {...pageProps} />
+      <Head>
+        <meta
+          name="description"
+          content="A page's description, usually one or two sentences."
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <App.Header></App.Header>
+      <App.Content>
+        <Component {...pageProps} />
+      </App.Content>
     </>
   );
 }

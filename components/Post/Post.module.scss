@@ -1,9 +1,10 @@
-@import "~styles/vars.scss";
 .item {
   display: inline-block;
   width: 100%;
-  padding: 20px;
-  &:hover {
-    background-color: $main;
-  }
+  padding: $p * 3;
+  border-radius: $p;
+  border: 1px solid $color-main;
+}
+.item__title {
+  color: $color-main;
 }

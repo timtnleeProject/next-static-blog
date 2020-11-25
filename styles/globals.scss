@@ -4,6 +4,10 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
     Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 14px;
+  @media screen and (max-width: 596px) {
+    font-size: 12px;
+  }
 }
 
 a {
@@ -16,8 +20,16 @@ a {
   box-sizing: border-box;
 }
 
-header {
-  width: 100%;
-  height: 50px;
-  background-color: lightsalmon;
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-size: #{(7 - $i) * 0.5}rem;
+  }
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+li {
+  text-decoration: none;
 }

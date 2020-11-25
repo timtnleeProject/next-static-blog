@@ -1,3 +1,6 @@
 {
-  "extends": ["eslint:recommended", "plugin:react/recommended"]
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "rules": {
+    "sort-imports": 2
+  }
 }

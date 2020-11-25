@@ -1,0 +1,28 @@
+.header {
+  width: 100%;
+  background-color: $color-main;
+  padding: 3 * $p;
+  text-align: center;
+}
+.content {
+  padding: 3 * $p;
+}
+.title {
+  margin: 2 * $p 0 0 0;
+  color: $color-emphasis;
+}
+.subtitle {
+  color: white;
+  font-size: 1rem;
+  font-weight: normal;
+  margin: $p * 2;
+}
+.nav {
+  ul {
+    display: flex;
+    justify-content: center;
+  }
+  li + li {
+    margin-left: $p;
+  }
+}

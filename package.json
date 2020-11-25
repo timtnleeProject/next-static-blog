@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "moment": "^2.29.1",
     "next": "10.0.0",
     "prop-types": "^15.7.2",
     "react": "17.0.1",
