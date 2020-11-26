@@ -17,7 +17,11 @@ const renderers = {
 export default function Post(props) {
   const { post } = props;
 
-  return <ReactMarkdown renderers={renderers}>{post.raw}</ReactMarkdown>;
+  return (
+    <ReactMarkdown linkTarget="_blank" renderers={renderers}>
+      {post.raw}
+    </ReactMarkdown>
+  );
 }
 
 export async function getStaticProps(context) {

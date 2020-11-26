@@ -36,3 +36,9 @@ li {
 .g-mr-auto {
   margin: 0 auto;
 }
+.g-icon {
+  cursor: pointer;
+  &:hover {
+    opacity: 0.6;
+  }
+}

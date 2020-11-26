@@ -1,12 +1,21 @@
+$trans: 0.3s;
 .header {
+  position: relative;
   width: 100%;
   background-color: $color-main;
-  padding: 3 * $p;
   text-align: center;
+  transition: transform $trans;
+  padding: 52px 0;
+  .bars {
+    display: none;
+  }
 }
 .content {
   padding: 3 * $p;
   overflow-x: auto;
+}
+.brand {
+  font-size: 2rem;
 }
 .title {
   margin: 2 * $p 0 0 0;
@@ -17,13 +26,124 @@
   font-size: 1rem;
   font-weight: normal;
   margin: $p * 2;
+  @media screen and (max-width: $bp-md) {
+    display: none;
+  }
 }
 .nav {
+  width: 100%;
+  background-color: beige;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  transition: transform $trans;
+  box-shadow: $shadow-px $color-grey;
+  .brand {
+    flex: 0 0 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: flex $trans, opacity $trans;
+  }
+  .close {
+    display: none;
+  }
   ul {
+    flex-grow: 1;
+    margin: 0;
     display: flex;
     justify-content: center;
   }
   li + li {
-    margin-left: $p;
+    margin-left: $p * 3;
+  }
+}
+@media screen and (min-width: $bp-md) {
+  .fixed + .nav,
+  .hide + .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    ul {
+      transition: flex $trans;
+    }
+  }
+  .fixed + .nav {
+    .brand {
+      flex: 1 0 0;
+      opacity: 1;
+    }
+    ul {
+      flex-grow: 0;
+    }
+  }
+  .hide + .nav {
+    transform: translateY(-100%);
+    .brand {
+      flex: 1 0 0;
+      opacity: 1;
+    }
+    ul {
+      flex-grow: 0;
+    }
+  }
+}
+
+@media screen and (max-width: $bp-md) {
+  .header {
+    position: sticky;
+    top: 0;
+    padding: 12px 0;
+    .bars {
+      display: block;
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 24px;
+    }
+    &.fixed {
+      transform: translateY(0%);
+    }
+    &.hide {
+      transform: translateY(-100%);
+    }
+  }
+  .nav {
+    position: fixed;
+    display: block;
+    left: -100%;
+    top: 0;
+    height: 100vh;
+    z-index: 9;
+    transform: translateX(0%);
+    padding: 3 * $p;
+    box-shadow: none;
+    .brand {
+      display: none;
+    }
+    ul {
+      display: block;
+      margin: 16px 0 0 0;
+    }
+    li + li {
+      margin: 5 * $p 0;
+    }
+    li {
+      font-size: 18px;
+      text-align: center;
+    }
+    a {
+      display: inline-block;
+      width: 100%;
+    }
+  }
+  .nav.show {
+    transform: translateX(100%);
+  }
+  .nav .close {
+    display: block;
+    font-size: 24px;
+    text-align: right;
   }
 }

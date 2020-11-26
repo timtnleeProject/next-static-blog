@@ -6,6 +6,7 @@
 }
 .item {
   display: flex;
+  align-items: center;
 }
 .meta {
   flex: 1 1 0;
@@ -13,10 +14,14 @@
 .imageBolck {
   flex: 0 0 200px;
   height: 200px;
-  border: 1px solid black;
+  border: 1px solid $color-grey;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
+  @media screen and (max-width: $bp-md) {
+    flex: 0 0 100px;
+    height: 100px;
+  }
 }
 .title {
   color: $color-main;
