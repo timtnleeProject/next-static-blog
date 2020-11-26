@@ -19,11 +19,29 @@ a {
 * {
   box-sizing: border-box;
 }
-
-@for $i from 1 through 6 {
-  h#{$i} {
-    font-size: #{(7 - $i) * 0.5}rem;
-  }
+h1 {
+  font-size: 2.8rem;
+  margin: 28px 0;
+}
+h2 {
+  font-size: 2.4rem;
+  margin: 24px 0;
+}
+h3 {
+  font-size: 2rem;
+  margin: 12px 0;
+}
+h4 {
+  font-size: 1.4rem;
+  margin: 8px 0;
+}
+h5 {
+  font-size: 1.2rem;
+  margin: 4px 0;
+}
+h6 {
+  font-size: 1rem;
+  margin: 4px 0;
 }
 
 ul {
