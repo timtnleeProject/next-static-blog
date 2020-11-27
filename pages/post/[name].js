@@ -9,11 +9,9 @@ const renderers = {
   // eslint-disable-next-line react/display-name
   code: ({ language, value }) => {
     return (
-      <p>
-        <SyntaxHighlighter style={tomorrow} language={language}>
-          {value}
-        </SyntaxHighlighter>
-      </p>
+      <SyntaxHighlighter style={tomorrow} language={language}>
+        {value}
+      </SyntaxHighlighter>
     );
   },
 };

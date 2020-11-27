@@ -1,11 +1,12 @@
 $trans: 0.3s;
+$bg: linear-gradient(to right, rgb(255, 176, 145), $color-main 90%);
 .header {
   position: relative;
   width: 100%;
-  background-color: $color-main;
+  background-image: $bg;
   text-align: center;
   transition: transform $trans;
-  padding: 52px 0;
+  padding: 52px 0 1px 0;
   .bars {
     display: none;
   }
@@ -15,35 +16,35 @@ $trans: 0.3s;
   overflow-x: auto;
 }
 .brand {
-  font-size: 2rem;
-}
-.title {
-  margin: 2 * $p 0 0 0;
-  color: $color-emphasis;
+  font-size: 2.1rem;
+  font-weight: 500;
+  .l {
+    margin-right: 8px;
+    color: beige;
+  }
+  .r {
+    color: $color-emphasis;
+  }
 }
 .subtitle {
   color: white;
   font-size: 1rem;
   font-weight: normal;
-  margin: $p * 2;
+  margin: $p * 3 0 0 0;
   @media screen and (max-width: $bp-md) {
     display: none;
   }
 }
 .nav {
   width: 100%;
-  background-color: beige;
+  background-image: $bg;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px;
-  transition: transform $trans;
+  padding: 24px;
   box-shadow: $shadow-px $color-grey;
   .brand {
-    flex: 0 0 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: flex $trans, opacity $trans;
+    display: none;
   }
   .close {
     display: none;
@@ -59,30 +60,27 @@ $trans: 0.3s;
   }
 }
 @media screen and (min-width: $bp-md) {
+  .pcTransition + .nav {
+    transition: transform $trans;
+  }
   .fixed + .nav,
   .hide + .nav {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
-    ul {
-      transition: flex $trans;
-    }
-  }
-  .fixed + .nav {
     .brand {
+      display: block;
       flex: 1 0 0;
       opacity: 1;
     }
+  }
+  .fixed + .nav {
     ul {
       flex-grow: 0;
     }
   }
   .hide + .nav {
     transform: translateY(-100%);
-    .brand {
-      flex: 1 0 0;
-      opacity: 1;
-    }
     ul {
       flex-grow: 0;
     }
@@ -94,6 +92,7 @@ $trans: 0.3s;
     position: sticky;
     top: 0;
     padding: 12px 0;
+    box-shadow: $shadow-px $color-grey;
     .bars {
       display: block;
       position: absolute;
@@ -117,6 +116,7 @@ $trans: 0.3s;
     height: 100vh;
     z-index: 9;
     transform: translateX(0%);
+    transition: transform $trans;
     padding: 3 * $p;
     box-shadow: none;
     .brand {

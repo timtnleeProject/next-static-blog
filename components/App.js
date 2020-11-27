@@ -22,10 +22,10 @@ function Hamburger(props) {
   );
 }
 
-export function Nav({ show, setShow }) {
+export function Nav({ show, setShow, innerRef }) {
   const close = useCallback(() => setShow(false), [setShow]);
   return (
-    <nav className={classnames(styles.nav, show && styles.show)}>
+    <nav ref={innerRef} className={classnames(styles.nav, show && styles.show)}>
       <Close onClick={close} />
       <Brand />
       <ul onClick={close}>
@@ -44,33 +44,53 @@ export function Nav({ show, setShow }) {
 function Brand() {
   return (
     <Link href="/" passHref>
-      <a className={styles.brand}>Home</a>
+      <a className={styles.brand}>
+        <span className={styles.l}>Name</span>
+        <span className={styles.r}>Blog</span>
+      </a>
     </Link>
   );
 }
 
 const headerStatus = {
-  normal: "normal",
+  pcTransition: "pcTransition",
   fixed: "fixed",
   hide: "hide",
 };
 
 export function Header() {
-  const [status, setStatus] = useState(headerStatus.normal);
   const [show, setShow] = useState(false);
   const headerRef = useRef();
+  const navRef = useRef();
 
   useEffect(() => {
     let y = 0;
     const handleScroll = () => {
       const headerHeight = headerRef.current.getBoundingClientRect().height;
+      const navHeight = navRef.current.getBoundingClientRect().height;
       const _y = document.body.getBoundingClientRect().y;
-      if (_y * -1 < headerHeight) {
-        setStatus(headerStatus.normal);
-      } else if (y > _y) {
-        setStatus(headerStatus.hide);
+      const direction = y > _y ? "down" : "up";
+      if (direction === "up") {
+        // handle pc transition
+        headerRef.current.classList.toggle(
+          styles[headerStatus.pcTransition],
+          _y * -1 > headerHeight + navHeight,
+        );
+      }
+      if (direction === "down") {
+        // down
+        if (_y * -1 > headerHeight + navHeight) {
+          headerRef.current.classList.add(styles[headerStatus.hide]);
+          headerRef.current.classList.remove(styles[headerStatus.fixed]);
+        }
       } else {
-        setStatus(headerStatus.fixed);
+        // up
+        if (_y * -1 < headerHeight) {
+          headerRef.current.classList.remove(styles[headerStatus.fixed]);
+        } else {
+          headerRef.current.classList.remove(styles[headerStatus.hide]);
+          headerRef.current.classList.add(styles[headerStatus.fixed]);
+        }
       }
       y = _y;
     };
@@ -82,12 +102,12 @@ export function Header() {
 
   return (
     <>
-      <header className={classnames(styles.header, styles[status])} ref={headerRef}>
+      <header className={styles.header} ref={headerRef}>
         <Hamburger onClick={() => setShow(true)} />
         <Brand />
         <h2 className={styles.subtitle}>Sub title</h2>
       </header>
-      <Nav show={show} setShow={setShow}></Nav>
+      <Nav show={show} setShow={setShow} innerRef={navRef}></Nav>
     </>
   );
 }
