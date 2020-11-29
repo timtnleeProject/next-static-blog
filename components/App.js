@@ -68,28 +68,37 @@ export function Header() {
     const handleScroll = () => {
       const headerHeight = headerRef.current.getBoundingClientRect().height;
       const navHeight = navRef.current.getBoundingClientRect().height;
-      const _y = document.body.getBoundingClientRect().y;
-      const direction = y > _y ? "down" : "up";
-      if (direction === "up") {
-        // handle pc transition
-        headerRef.current.classList.toggle(
-          styles[headerStatus.pcTransition],
-          _y * -1 > headerHeight + navHeight,
-        );
+      const isMobile = headerHeight < navHeight;
+      const offset = isMobile ? 0 : navHeight;
+      const boundary = headerHeight + offset;
+      const _y = document.body.getBoundingClientRect().y * -1;
+      const direction = y < _y ? "down" : "up";
+      if (
+        _y > boundary &&
+        headerRef.current.classList.contains(styles[headerStatus.hide])
+      ) {
+        headerRef.current.classList.add(styles[headerStatus.pcTransition]);
+      } else if (
+        _y <= boundary &&
+        !headerRef.current.classList.contains(styles[headerStatus.fixed])
+      ) {
+        headerRef.current.classList.remove(styles[headerStatus.pcTransition]);
       }
       if (direction === "down") {
         // down
-        if (_y * -1 > headerHeight + navHeight) {
+        if (_y > boundary) {
           headerRef.current.classList.add(styles[headerStatus.hide]);
           headerRef.current.classList.remove(styles[headerStatus.fixed]);
         }
       } else {
         // up
-        if (_y * -1 < headerHeight) {
+        if (_y <= headerHeight) {
           headerRef.current.classList.remove(styles[headerStatus.fixed]);
         } else {
           headerRef.current.classList.remove(styles[headerStatus.hide]);
-          headerRef.current.classList.add(styles[headerStatus.fixed]);
+          if (_y > boundary) {
+            headerRef.current.classList.add(styles[headerStatus.fixed]);
+          }
         }
       }
       y = _y;
