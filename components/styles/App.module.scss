@@ -6,6 +6,7 @@ $navHeight: 100px;
   position: relative;
   width: 100%;
   height: $headerHeight;
+  background-color: $color-grey;
   background-image: url("/up.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
@@ -71,6 +72,7 @@ $navHeight: 100px;
 @media screen and (min-width: $bp-md) {
   .nav {
     height: $navHeight;
+    background-color: $color-grey;
     background-image: url("/down.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
