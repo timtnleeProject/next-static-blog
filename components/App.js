@@ -46,8 +46,8 @@ function Brand() {
   return (
     <Link href="/" passHref>
       <a className={styles.brand}>
-        <span className={styles.l}>Name</span>
-        <span className={styles.r}>Blog</span>
+        <span className={styles.l}>NAME</span>
+        <span className={styles.r}>BLOG</span>
       </a>
     </Link>
   );
@@ -94,7 +94,10 @@ export function Header() {
       } else {
         // up
         if (_y <= headerHeight) {
-          headerRef.current.classList.remove(styles[headerStatus.fixed]);
+          headerRef.current.classList.remove(
+            styles[headerStatus.fixed],
+            styles[headerStatus.hide],
+          );
         } else {
           headerRef.current.classList.remove(styles[headerStatus.hide]);
           if (_y > boundary) {

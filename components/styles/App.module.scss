@@ -11,12 +11,12 @@ $navHeight: 100px;
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: 0 100%;
-  text-align: center;
   transition: transform $trans;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 2; // to be above nav
   .bars {
     display: none;
   }
@@ -26,13 +26,15 @@ $navHeight: 100px;
   overflow-x: auto;
 }
 .brand {
-  font-size: 2.1rem;
-  font-weight: 500;
+  font-size: 2.6rem;
+  font-weight: 400;
   .l {
+    display: inline-block;
     margin-right: 8px;
     color: beige;
   }
   .r {
+    display: inline-block;
     color: $color-emphasis;
   }
 }
@@ -46,24 +48,16 @@ $navHeight: 100px;
   }
 }
 .nav {
+  position: relative;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 24px;
   box-shadow: $shadow-px $color-grey;
   color: #fff;
-  .brand {
-    display: none;
-  }
   .close {
     display: none;
   }
   ul {
-    flex-grow: 1;
     margin: 0;
-    display: flex;
-    justify-content: center;
   }
   li + li {
     margin-left: $p * 3;
@@ -77,6 +71,21 @@ $navHeight: 100px;
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: 0 0;
+    .brand {
+      position: absolute;
+      left: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: opacity $trans;
+    }
+    ul {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
   .pcTransition + .nav {
     transition: transform $trans;
@@ -87,20 +96,18 @@ $navHeight: 100px;
     top: 0;
     left: 0;
     .brand {
-      display: block;
-      flex: 1 0 0;
       opacity: 1;
     }
   }
   .fixed + .nav {
     ul {
-      flex-grow: 0;
+      justify-content: flex-end;
     }
   }
   .hide + .nav {
     transform: translateY(-100%);
     ul {
-      flex-grow: 0;
+      justify-content: flex-end;
     }
   }
 }
