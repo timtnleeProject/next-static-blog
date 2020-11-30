@@ -1,5 +1,6 @@
 $trans: 0.3s;
 $headerHeight: 300px;
+$md-headerHeight: 200px;
 $mb-headerHeight: 60px;
 $navHeight: 100px;
 .header {
@@ -17,13 +18,17 @@ $navHeight: 100px;
   justify-content: center;
   align-items: center;
   z-index: 2; // to be above nav
+  @media screen and (max-width: $bp-md) {
+    height: $md-headerHeight;
+  }
   .bars {
     display: none;
   }
 }
 .content {
-  padding: 3 * $p;
   overflow-x: auto;
+  max-width: $bp-lg;
+  margin: 0 auto;
 }
 .brand {
   font-size: 2.6rem;
@@ -43,7 +48,7 @@ $navHeight: 100px;
   font-size: 1rem;
   font-weight: normal;
   margin: $p * 3 0 0 0;
-  @media screen and (max-width: $bp-md) {
+  @media screen and (max-width: $bp-sm) {
     display: none;
   }
 }
@@ -53,6 +58,7 @@ $navHeight: 100px;
   padding: 24px;
   box-shadow: $shadow-px $color-grey;
   color: #fff;
+  z-index: 1;
   .close {
     display: none;
   }
@@ -63,7 +69,7 @@ $navHeight: 100px;
     margin-left: $p * 3;
   }
 }
-@media screen and (min-width: $bp-md) {
+@media screen and (min-width: $bp-sm) {
   .nav {
     height: $navHeight;
     background-color: $color-grey;
@@ -78,6 +84,7 @@ $navHeight: 100px;
       transform: translateY(-50%);
       opacity: 0;
       transition: opacity $trans;
+      pointer-events: none;
     }
     ul {
       width: 100%;
@@ -97,6 +104,7 @@ $navHeight: 100px;
     left: 0;
     .brand {
       opacity: 1;
+      pointer-events: initial;
     }
   }
   .fixed + .nav {
@@ -112,7 +120,7 @@ $navHeight: 100px;
   }
 }
 
-@media screen and (max-width: $bp-md) {
+@media screen and (max-width: $bp-sm) {
   .header {
     position: sticky;
     top: 0;
