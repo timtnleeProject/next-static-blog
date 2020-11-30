@@ -2,6 +2,7 @@ import { getPost, getPosts } from "data";
 import Head from "next/head";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { Metadata } from "components/Post";
 import styles from "styles/Post.module.scss";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 
@@ -24,6 +25,7 @@ export default function Post(props) {
       <Head>
         <title>{post.metadata?.title}</title>
       </Head>
+      <Metadata metadata={post.metadata} />
       <ReactMarkdown linkTarget="_blank" renderers={renderers}>
         {post.raw}
       </ReactMarkdown>

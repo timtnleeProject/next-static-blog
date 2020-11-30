@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./styles/Post.module.scss";
 import PropTypes from "prop-types";
 import { formatDate } from "utils/datetime";
@@ -11,7 +12,7 @@ export function List(props) {
 export function Item({ post }) {
   const { name, metadata, stat } = post;
   return (
-    <li>
+    <li className={styles.item}>
       <Link
         href={{
           pathname: "/post/[name]",
@@ -21,7 +22,7 @@ export function Item({ post }) {
         }}
       >
         <a>
-          <Card className={styles.item}>
+          <Card className={styles.block}>
             <div className={styles.meta}>
               <h3 className={styles.title}>{metadata.title}</h3>
               <div>last upt：{formatDate(stat.mtime)}</div>
@@ -31,12 +32,14 @@ export function Item({ post }) {
                 ))}
               </div>
             </div>
-            <div
-              className={styles.imageBolck}
-              style={{
-                backgroundImage: `url(${metadata.image})`,
-              }}
-            ></div>
+            {metadata.image && (
+              <div
+                className={styles.imageBolck}
+                style={{
+                  backgroundImage: `url(${metadata.image})`,
+                }}
+              ></div>
+            )}
           </Card>
         </a>
       </Link>
@@ -44,9 +47,21 @@ export function Item({ post }) {
   );
 }
 
+export function Metadata({ metadata }) {
+  return (
+    <div className={styles.metadata}>
+      {metadata.image && <Image src={metadata.image} unsized />}
+      <div className={styles.metatext}>
+        <h1>{metadata.title}</h1>
+      </div>
+    </div>
+  );
+}
+
 export default {
   List,
   Item,
+  Metadata,
 };
 
 Item.propTypes = {
