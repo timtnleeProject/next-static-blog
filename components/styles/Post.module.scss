@@ -30,6 +30,10 @@
 .metadata {
   margin: 48px 0;
   position: relative;
+  background-color: $color-grey;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
   .metatext {
     position: absolute;
     text-align: center;
@@ -46,11 +50,9 @@
       margin: 0;
     }
   }
-  img {
+  canvas {
     width: 100%;
     display: block;
-    filter: blur(2px);
-    border: 1px solid #fff;
   }
   @media screen and (max-width: $bp-sm) {
     margin: 12px 0;

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import styles from "./styles/Post.module.scss";
 import PropTypes from "prop-types";
 import { formatDate } from "utils/datetime";
@@ -49,8 +48,13 @@ export function Item({ post }) {
 
 export function Metadata({ metadata }) {
   return (
-    <div className={styles.metadata}>
-      {metadata.image && <Image src={metadata.image} unsized />}
+    <div
+      className={styles.metadata}
+      style={{
+        backgroundImage: `url(${metadata.image})`,
+      }}
+    >
+      <canvas width="2" height="1" />
       <div className={styles.metatext}>
         <h1>{metadata.title}</h1>
       </div>
