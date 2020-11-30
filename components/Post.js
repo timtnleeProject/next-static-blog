@@ -48,12 +48,13 @@ export function Item({ post }) {
 
 export function Metadata({ metadata }) {
   return (
-    <div
-      className={styles.metadata}
-      style={{
-        backgroundImage: `url(${metadata.image})`,
-      }}
-    >
+    <div className={styles.metadata}>
+      <div
+        className={styles.bg}
+        style={{
+          backgroundImage: `url(${metadata.image})`,
+        }}
+      ></div>
       <canvas width="2" height="1" />
       <div className={styles.metatext}>
         <h1>{metadata.title}</h1>
