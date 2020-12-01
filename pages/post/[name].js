@@ -26,9 +26,11 @@ export default function Post(props) {
         <title>{post.metadata?.title}</title>
       </Head>
       <Metadata metadata={post.metadata} />
-      <ReactMarkdown linkTarget="_blank" renderers={renderers}>
-        {post.raw}
-      </ReactMarkdown>
+      <article className={styles.article}>
+        <ReactMarkdown linkTarget="_blank" renderers={renderers}>
+          {post.raw}
+        </ReactMarkdown>
+      </article>
     </div>
   );
 }
