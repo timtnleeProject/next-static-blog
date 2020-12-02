@@ -87,3 +87,16 @@ li {
     opacity: 0.6;
   }
 }
+
+$variant: "main", "emphasis", "grey", "light", "link", "white", "dark";
+$colors: $color-main, $color-emphasis, $color-grey, $color-light, $color-link,
+  $color-white, $color-dark;
+@each $var in $variant {
+  $i: index($variant, $var);
+  .g-bg-#{$var} {
+    background-color: nth($list: $colors, $n: $i);
+  }
+  .g-color-#{$var} {
+    color: nth($list: $colors, $n: $i);
+  }
+}

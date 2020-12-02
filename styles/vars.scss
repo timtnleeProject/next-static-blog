@@ -1,9 +1,11 @@
 // color
 $color-main: lightsalmon;
 $color-emphasis: brown;
-$color-grey: #bbb;
+$color-grey: #ddd;
 $color-light: beige;
 $color-link: rgba(0, 118, 255, 0.9);
+$color-white: #fff;
+$color-dark: #000;
 // pixel
 $p: 4px;
 // break point
@@ -11,4 +13,4 @@ $bp-sm: 596px;
 $bp-md: 768px;
 $bp-lg: 960px;
 // shadow
-$shadow-px: 1px 1px 5px;
+$shadow-px: 2px 2px 5px;

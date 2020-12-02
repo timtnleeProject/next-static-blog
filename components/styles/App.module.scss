@@ -26,6 +26,7 @@ $navHeight: 100px;
   }
 }
 .content {
+  width: 100%;
   overflow-x: auto;
   max-width: $bp-lg;
   margin: 0 auto;
@@ -35,7 +36,6 @@ $navHeight: 100px;
   font-weight: 400;
   .l {
     display: inline-block;
-    margin-right: 8px;
     color: $color-light;
   }
   .r {
@@ -64,6 +64,13 @@ $navHeight: 100px;
   }
   ul {
     margin: 0;
+  }
+  li {
+    font-size: 18px;
+    text-shadow: $shadow-px $color-dark;
+  }
+  li.active span {
+    border-bottom: 2px solid $color-main;
   }
   li + li {
     margin-left: $p * 3;

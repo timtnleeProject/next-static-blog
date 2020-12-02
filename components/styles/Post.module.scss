@@ -1,15 +1,21 @@
 .list {
+  padding: 8px;
   .item + .item {
     margin-top: 12px;
+  }
+  @media screen and (max-width: $bp-sm) {
+    padding: 0;
   }
 }
 .block {
   display: flex;
   align-items: center;
-  min-height: 200px;
+  height: 100%;
 }
 .meta {
   flex: 1 1 0;
+  margin-right: 12px;
+  align-self: stretch;
 }
 .imageBolck {
   flex: 0 0 200px;
@@ -26,7 +32,18 @@
 .title {
   color: $color-main;
 }
-
+.date {
+  margin: 12px 0;
+  padding-left: 8px;
+}
+.tags {
+  padding-left: 8px;
+}
+.preview {
+  margin: 12px 0;
+  padding: 0 12px;
+  color: #333;
+}
 .metadata {
   margin: 48px 0;
   position: relative;
@@ -41,7 +58,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    filter: blur(2px);
+    filter: blur(1px);
   }
   .metatext {
     position: absolute;
