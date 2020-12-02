@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import styles from "./styles/App.module.scss";
 import PropTypes from "prop-types";
 import classnames from "classnames";
@@ -23,20 +24,37 @@ function Hamburger(props) {
   );
 }
 
+const links = [
+  {
+    name: "文章列表",
+    href: "/",
+  },
+  {
+    name: "關於我們",
+    href: "/about",
+  },
+];
+
 export function Nav({ show, setShow, innerRef }) {
   const close = useCallback(() => setShow(false), [setShow]);
+  const route = useRouter();
   return (
     <nav ref={innerRef} className={classnames(styles.nav, show && styles.show)}>
       <Close onClick={close} />
       <Brand />
       <ul onClick={close}>
-        <li>
-          <Link href="/">
-            <a>Nav001</a>
-          </Link>
-        </li>
-        <li>Nav002</li>
-        <li>Nav003</li>
+        {links.map((link) => {
+          const active = link.href === route.pathname;
+          return (
+            <li key={link.name} className={classnames(active && styles.active)}>
+              <Link href={link.href}>
+                <a>
+                  <span>{link.name}</span>
+                </a>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );
@@ -46,8 +64,8 @@ function Brand() {
   return (
     <Link href="/" passHref>
       <a className={styles.brand}>
-        <span className={styles.l}>NAME</span>
-        <span className={styles.r}>BLOG</span>
+        <span className={styles.l}>取個</span>
+        <span className={styles.r}>名字</span>
       </a>
     </Link>
   );
@@ -122,7 +140,7 @@ export function Header() {
       <header className={styles.header} ref={headerRef}>
         <Hamburger onClick={() => setShow(true)} />
         <Brand />
-        <h2 className={styles.subtitle}>Sub title</h2>
+        <h2 className={styles.subtitle}>這是一個網站</h2>
       </header>
       <Nav show={show} setShow={setShow} innerRef={navRef}></Nav>
     </>
