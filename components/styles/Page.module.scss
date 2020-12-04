@@ -1,0 +1,9 @@
+.content {
+  width: 100vw;
+  &.md {
+    max-width: $bp-lg;
+  }
+  &.lg {
+    max-width: 1024px;
+  }
+}

@@ -64,8 +64,8 @@ function Brand() {
   return (
     <Link href="/" passHref>
       <a className={styles.brand}>
-        <span className={styles.l}>取個</span>
-        <span className={styles.r}>名字</span>
+        <span className={styles.l}>還在</span>
+        <span className={styles.r}>製作中</span>
       </a>
     </Link>
   );
@@ -147,14 +147,24 @@ export function Header() {
   );
 }
 
+export function Body(props) {
+  return <div className={styles.body}>{props.children}</div>;
+}
+
 export function Content(props) {
   return <main className={styles.content}>{props.children}</main>;
+}
+
+export function Aside(props) {
+  return <aside className={styles.aside}>{props.children}</aside>;
 }
 
 export default {
   Nav,
   Header,
+  Body,
   Content,
+  Aside,
 };
 
 Content.propTypes = {

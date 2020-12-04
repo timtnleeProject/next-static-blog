@@ -13,9 +13,17 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <App.Header></App.Header>
-      <App.Content>
-        <Component {...pageProps} />
-      </App.Content>
+      <App.Body>
+        <App.Content>
+          <Component {...pageProps} />
+        </App.Content>
+        <App.Aside>
+          <h3>分類</h3>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+        </App.Aside>
+      </App.Body>
     </>
   );
 }

@@ -5,6 +5,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { Metadata } from "components/Post";
 import styles from "styles/Post.module.scss";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
+import Page from "components/Page";
 
 const renderers = {
   // eslint-disable-next-line react/display-name
@@ -21,7 +22,7 @@ export default function Post(props) {
   const { post } = props;
 
   return (
-    <div className={styles.post}>
+    <Page.Content>
       <Head>
         <title>{post.metadata?.title}</title>
       </Head>
@@ -31,7 +32,7 @@ export default function Post(props) {
           {post.raw}
         </ReactMarkdown>
       </article>
-    </div>
+    </Page.Content>
   );
 }
 

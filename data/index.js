@@ -39,7 +39,10 @@ const posts = (function () {
             `\x1b[41m[Warning] ${name} missing .json metadata file \x1b[0m`,
           );
         }
-      });
+      })
+      .sort((a, b) =>
+        b.stat.mtime > a.stat.mtime ? 1 : b.stat.mtime === a.stat.mtime ? 0 : -1,
+      );
     return posts.concat(postsInGroup);
   }, []);
 })();

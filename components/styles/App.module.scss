@@ -25,11 +25,36 @@ $navHeight: 100px;
     display: none;
   }
 }
+.body {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  padding: 12px 0;
+}
 .content {
-  width: 100%;
+  flex: 0 1 auto;
+  background-color: #fff;
+  border: 1px solid black;
+  display: flex;
   overflow-x: auto;
-  max-width: $bp-lg;
-  margin: 0 auto;
+}
+.aside {
+  margin-left: 12px;
+  flex: 0 0 250px;
+  background-color: #fff;
+  border: 1px solid black;
+}
+@media screen and(max-width: $bp-lg) {
+  .body {
+    flex-wrap: wrap;
+  }
+  .content {
+    flex: 1 0 100%;
+  }
+  .aside {
+    margin-left: 0;
+    flex: 1 0 100%;
+  }
 }
 .brand {
   font-size: 2.6rem;
