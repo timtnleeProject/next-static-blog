@@ -18,12 +18,12 @@ export default function GroupPost({ groupName, posts, tags }) {
       } else {
         newTags.push(tag);
       }
-      router.push(
+      router.replace(
         {
           pathname: "/post/[group]",
           query: {
             group: groupName,
-            tags: newTags,
+            tags: newTags.join(","),
           },
         },
         undefined,
@@ -34,12 +34,21 @@ export default function GroupPost({ groupName, posts, tags }) {
   );
   return (
     <Page.Content>
-      <h2>{GROUP[groupName]}</h2>
-      {tags.map((tag) => (
-        <Tag key={tag} color="white" onClick={() => toggleTag(tag)}>
-          {tag}
-        </Tag>
-      ))}
+      <h2>「{GROUP[groupName]}」 相關文章</h2>
+      <div>
+        所有標籤：
+        {tags.map((tag) => (
+          <Tag
+            key={tag}
+            variant={activeTags.some((t) => t === tag) ? "emphasis" : "main"}
+            color="white"
+            onClick={() => toggleTag(tag)}
+          >
+            <a>{tag}</a>
+          </Tag>
+        ))}
+      </div>
+
       <Post.List>
         {posts.map((post) => (
           <Post.Item key={post.name} post={post} />
