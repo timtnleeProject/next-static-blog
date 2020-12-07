@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Head from "next/head";
+import { NAVIGATION } from "setting";
 
 function Close(props) {
   return (
@@ -26,12 +27,8 @@ function Hamburger(props) {
 
 const links = [
   {
-    name: "文章列表",
-    href: "/",
-  },
-  {
-    name: "關於我們",
-    href: "/about",
+    name: NAVIGATION.HOME.name,
+    href: NAVIGATION.HOME.path,
   },
 ];
 
@@ -48,7 +45,7 @@ export function Nav({ show, setShow, innerRef }) {
           return (
             <li key={link.name} className={classnames(active && styles.active)}>
               <Link href={link.href}>
-                <a>
+                <a className="g-link-plain">
                   <span>{link.name}</span>
                 </a>
               </Link>

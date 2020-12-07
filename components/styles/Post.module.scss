@@ -22,13 +22,10 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    @media screen and (max-width: $bp-sm) {
+    @media screen and (max-width: $bp) {
       flex: 0 0 100px;
       height: 100px;
     }
-  }
-  .title {
-    color: $color-main;
   }
   .date {
     margin: 12px 0;
@@ -41,6 +38,11 @@
     margin: 12px 0;
     padding: 0 12px;
     color: #333;
+  }
+  .go {
+    text-align: right;
+    color: $color-link;
+    font-size: 1.2rem;
   }
 }
 
@@ -72,8 +74,12 @@
     justify-content: center;
     h1 {
       margin: 12px;
+      padding: 0 12px;
       color: $color-light;
       text-shadow: 0px 0px 3px #000;
+    }
+    .groupTag {
+      margin: 12px 0;
     }
   }
   canvas {

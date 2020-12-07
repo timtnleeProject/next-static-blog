@@ -5,12 +5,12 @@ import PropTypes from "prop-types";
 const Tag = (props) => {
   const { children, className, variant = "main", color = "dark", ...rest } = props;
   return (
-    <span
+    <div
       className={classnames(`g-bg-${variant}`, `g-color-${color}`, styles.tag, className)}
       {...rest}
     >
       {children}
-    </span>
+    </div>
   );
 };
 

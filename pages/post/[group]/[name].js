@@ -6,6 +6,7 @@ import { Metadata } from "components/Post";
 import styles from "styles/Post.module.scss";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Page from "components/Page";
+import { BreadCrumb } from "components/BreadCrumb";
 
 const renderers = {
   // eslint-disable-next-line react/display-name
@@ -26,7 +27,8 @@ export default function Post(props) {
       <Head>
         <title>{post.metadata?.title}</title>
       </Head>
-      <Metadata metadata={post.metadata} />
+      <BreadCrumb />
+      <Metadata metadata={post.metadata} group={post.group} />
       <article className={styles.article}>
         <ReactMarkdown linkTarget="_blank" renderers={renderers}>
           {post.raw}
@@ -39,14 +41,16 @@ export default function Post(props) {
 export async function getStaticProps(context) {
   return {
     props: {
-      post: getPost(context.params.name),
+      post: getPost(context.params.group, context.params.name),
     },
   };
 }
 
 export async function getStaticPaths() {
   return {
-    paths: getPosts().map(({ name }) => ({ params: { name } })),
+    paths: getPosts().map(({ name, group }) => {
+      return { params: { name, group: group.name } };
+    }),
     fallback: false, // See the "fallback" section below
   };
 }

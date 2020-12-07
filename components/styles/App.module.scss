@@ -34,7 +34,6 @@ $navHeight: 100px;
 .content {
   flex: 0 1 auto;
   background-color: #fff;
-  border: 1px solid black;
   display: flex;
   overflow-x: auto;
 }
@@ -42,7 +41,6 @@ $navHeight: 100px;
   margin-left: 12px;
   flex: 0 0 250px;
   background-color: #fff;
-  border: 1px solid black;
 }
 @media screen and(max-width: $bp-lg) {
   .body {
@@ -73,7 +71,7 @@ $navHeight: 100px;
   font-size: 1rem;
   font-weight: normal;
   margin: $p * 3 0 0 0;
-  @media screen and (max-width: $bp-sm) {
+  @media screen and (max-width: $bp) {
     display: none;
   }
 }
@@ -101,7 +99,7 @@ $navHeight: 100px;
     margin-left: $p * 3;
   }
 }
-@media screen and (min-width: $bp-sm) {
+@media screen and (min-width: $bp) {
   .nav {
     height: $navHeight;
     background-color: $color-grey;
@@ -152,7 +150,7 @@ $navHeight: 100px;
   }
 }
 
-@media screen and (max-width: $bp-sm) {
+@media screen and (max-width: $bp) {
   .header {
     position: sticky;
     top: 0;
