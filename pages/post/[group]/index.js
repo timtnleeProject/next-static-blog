@@ -1,7 +1,7 @@
 import Page from "components/Page";
 import Post from "components/Post";
 import Tag from "components/Tag";
-import styles from "styles/group.module.scss";
+import styles from "styles/Group.module.scss";
 import { getGroups, getPostsByGroup, getTagsByGroup } from "data";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useMemo } from "react";
