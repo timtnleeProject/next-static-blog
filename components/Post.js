@@ -47,8 +47,18 @@ export const PostTag = ({ tag, group, ...rest }) => (
   </Tag>
 );
 
+export const Date = memo(function Date({ post }) {
+  const { stat } = post;
+  return (
+    <div className={styles.date}>
+      <span>發表：{formatDate(stat.birthtime)}</span>
+      <span>最後更新：{formatDate(stat.mtime)}</span>
+    </div>
+  );
+});
+
 export const Item = memo(function Item({ post }) {
-  const { name, metadata, stat, group } = post;
+  const { name, metadata, group } = post;
   return (
     <Card as="li" className={styles.item}>
       <div className={styles.block}>
@@ -63,11 +73,11 @@ export const Item = memo(function Item({ post }) {
             }}
           >
             <a>
-              <h3 className={styles.title}>{metadata.title}》</h3>
+              <h3 className={styles.title}>{metadata.title} 》</h3>
             </a>
           </Link>
-          <div className={styles.date}>最後更新：{formatDate(stat.mtime)}</div>
-          <div className={styles.date}>
+          <Date post={post} />
+          <div className={styles.group}>
             類別：
             <GroupTag group={group} />
           </div>

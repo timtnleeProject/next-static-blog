@@ -1,6 +1,7 @@
 // for server side/pre-render task
 import fs from "fs";
 import path from "path";
+import { sortBy } from "utils/data";
 import { GROUP } from "../setting";
 
 const postsDirectory = path.join(process.cwd(), "posts");
@@ -31,6 +32,7 @@ const posts = (function () {
             name,
             stat: {
               mtime: stat.mtime.toJSON(),
+              birthtime: stat.birthtime.toJSON(),
             },
             raw,
             group,
@@ -48,9 +50,7 @@ const posts = (function () {
           );
         }
       })
-      .sort((a, b) =>
-        b.stat.mtime > a.stat.mtime ? 1 : b.stat.mtime === a.stat.mtime ? 0 : -1,
-      );
+      .sort(sortBy((post) => post.stat.birthtime, true));
     return posts.concat(postsInGroup);
   }, []);
 })();

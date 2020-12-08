@@ -17,17 +17,17 @@
   }
   .imageBolck {
     flex: 0 0 200px;
-    height: 200px;
+    height: 150px;
     border: 1px solid $color-grey;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
     @media screen and (max-width: $bp) {
-      flex: 0 0 100px;
-      height: 100px;
+      flex: 0 0 120px;
+      height: 90px;
     }
   }
-  .date {
+  .group {
     margin: 12px 0;
     padding-left: 8px;
   }
@@ -43,6 +43,16 @@
     text-align: right;
     color: $color-link;
     font-size: 1.2rem;
+  }
+}
+
+.date {
+  margin: 12px 0;
+  padding-left: 8px;
+  font-style: italic;
+  color: grey;
+  span + span {
+    margin-left: 8px;
   }
 }
 

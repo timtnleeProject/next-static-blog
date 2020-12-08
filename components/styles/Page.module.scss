@@ -6,4 +6,7 @@
   &.lg {
     max-width: 1024px;
   }
+  @media screen and (max-width: $bp) {
+    padding: 0 8px;
+  }
 }

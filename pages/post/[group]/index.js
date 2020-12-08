@@ -6,6 +6,7 @@ import { getGroups, getPostsByGroup, getTagsByGroup } from "data";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useMemo } from "react";
 import { GROUP } from "setting";
+import Head from "next/head";
 
 export default function GroupPost({ groupName, posts, tags }) {
   const router = useRouter();
@@ -61,11 +62,16 @@ export default function GroupPost({ groupName, posts, tags }) {
       );
   }, [filteredPosts, groupName, router]);
 
+  // UI
+  const title = useMemo(() => `「${GROUP[groupName]}」 相關文章`, [groupName]);
   return (
     <Page.Content>
-      <h2>「{GROUP[groupName]}」 相關文章</h2>
+      <Head>
+        <title>{title}</title>
+      </Head>
+      <h2>{title}</h2>
       <div className={styles.tags}>
-        所有標籤：
+        標籤篩選：
         {tags.map((tag) => (
           <Tag
             key={tag}

@@ -10,6 +10,7 @@ export default function Home(props) {
       <Head>
         <title>HOME</title>
       </Head>
+      <h2>最近發表</h2>
       <Post.List>
         {posts.map((post) => (
           <Post.Item key={post.name} post={post} />
