@@ -22,7 +22,9 @@ const posts = (function () {
       .map((filename) => {
         const name = filename.replace(/\.md/, "");
         try {
-          const metadata = fs.readFileSync(path.join(dir, `${name}.json`), "utf-8");
+          const metadata = JSON.parse(
+            fs.readFileSync(path.join(dir, `${name}.json`), "utf-8"),
+          );
           const stat = fs.statSync(path.join(dir, filename));
           const raw = fs.readFileSync(path.join(dir, filename), "utf-8");
           return {
@@ -32,7 +34,13 @@ const posts = (function () {
             },
             raw,
             group,
-            metadata: JSON.parse(metadata),
+            metadata,
+            tagMap: metadata.tags.reduce((map, tag) => {
+              return {
+                ...map,
+                [tag]: true,
+              };
+            }, {}),
           };
         } catch (error) {
           throw new Error(

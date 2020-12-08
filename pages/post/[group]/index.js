@@ -1,14 +1,18 @@
 import Page from "components/Page";
 import Post from "components/Post";
 import Tag from "components/Tag";
+import styles from "styles/group.module.scss";
 import { getGroups, getPostsByGroup, getTagsByGroup } from "data";
 import { useRouter } from "next/router";
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { GROUP } from "setting";
 
 export default function GroupPost({ groupName, posts, tags }) {
   const router = useRouter();
-  const activeTags = useMemo(() => router.query?.tags?.split?.(",") || [], [router]);
+  const activeTags = useMemo(
+    () => router.query?.tags?.split?.(",").filter((t) => t) || [],
+    [router],
+  );
   const toggleTag = useCallback(
     (tag) => {
       const newTags = activeTags.slice();
@@ -18,13 +22,16 @@ export default function GroupPost({ groupName, posts, tags }) {
       } else {
         newTags.push(tag);
       }
+      const query = {
+        group: groupName,
+      };
+      if (newTags.length) {
+        query.tags = newTags.join(",");
+      }
       router.replace(
         {
           pathname: "/post/[group]",
-          query: {
-            group: groupName,
-            tags: newTags.join(","),
-          },
+          query,
         },
         undefined,
         { shallow: true },
@@ -32,25 +39,47 @@ export default function GroupPost({ groupName, posts, tags }) {
     },
     [activeTags, groupName, router],
   );
+
+  const filteredPosts = useMemo(() => {
+    if (activeTags.length)
+      return posts.filter((post) => activeTags.some((tag) => post.tagMap[tag]));
+    return posts;
+  }, [posts, activeTags]);
+
+  // If wrong tags applyed, reset.
+  useEffect(() => {
+    if (filteredPosts.length === 0)
+      router.replace(
+        {
+          pathname: "/post/[group]",
+          query: {
+            group: groupName,
+          },
+        },
+        undefined,
+        { shallow: true },
+      );
+  }, [filteredPosts, groupName, router]);
+
   return (
     <Page.Content>
       <h2>「{GROUP[groupName]}」 相關文章</h2>
-      <div>
+      <div className={styles.tags}>
         所有標籤：
         {tags.map((tag) => (
           <Tag
             key={tag}
-            variant={activeTags.some((t) => t === tag) ? "emphasis" : "main"}
-            color="white"
+            variant={activeTags.some((t) => t === tag) ? "main" : "light"}
+            color="dark"
             onClick={() => toggleTag(tag)}
           >
-            <a>{tag}</a>
+            <a>#{tag}</a>
           </Tag>
         ))}
       </div>
 
       <Post.List>
-        {posts.map((post) => (
+        {filteredPosts.map((post) => (
           <Post.Item key={post.name} post={post} />
         ))}
       </Post.List>

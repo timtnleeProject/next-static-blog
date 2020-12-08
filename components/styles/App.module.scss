@@ -1,12 +1,8 @@
 $trans: 0.3s;
-$headerHeight: 200px;
-$md-headerHeight: 180px;
-$mb-headerHeight: 60px;
-$navHeight: 100px;
 .header {
   position: relative;
   width: 100%;
-  height: $headerHeight;
+  height: $app-headerHeight;
   background-color: $color-grey;
   background-image: url("/up.jpg");
   background-repeat: no-repeat;
@@ -18,9 +14,6 @@ $navHeight: 100px;
   justify-content: center;
   align-items: center;
   z-index: 2; // to be above nav
-  @media screen and (max-width: $bp-md) {
-    height: $md-headerHeight;
-  }
   .bars {
     display: none;
   }
@@ -101,7 +94,7 @@ $navHeight: 100px;
 }
 @media screen and (min-width: $bp) {
   .nav {
-    height: $navHeight;
+    height: $app-navHeight;
     background-color: $color-grey;
     background-image: url("/down.jpg");
     background-repeat: no-repeat;
@@ -156,7 +149,7 @@ $navHeight: 100px;
     top: 0;
     padding: 12px 0;
     box-shadow: $shadow-px $color-grey;
-    height: $mb-headerHeight;
+    height: $app-mb-headerHeight;
     .bars {
       display: block;
       position: absolute;

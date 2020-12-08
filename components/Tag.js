@@ -3,10 +3,15 @@ import styles from "./styles/Tag.module.scss";
 import PropTypes from "prop-types";
 
 const Tag = (props) => {
-  const { children, className, variant = "main", color = "dark", ...rest } = props;
+  const { children, className, variant, color = "main", ...rest } = props;
   return (
     <div
-      className={classnames(`g-bg-${variant}`, `g-color-${color}`, styles.tag, className)}
+      className={classnames(
+        variant && `g-bg-${variant}`,
+        `g-color-${color}`,
+        styles.tag,
+        className,
+      )}
       {...rest}
     >
       {children}

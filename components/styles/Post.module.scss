@@ -59,7 +59,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    filter: blur(1px);
+    filter: blur(1px) opacity(0.9);
   }
   .metatext {
     position: absolute;
@@ -72,11 +72,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    h1 {
+    h2 {
       margin: 12px;
       padding: 0 12px;
-      color: $color-light;
-      text-shadow: 0px 0px 3px #000;
+      text-shadow: 0px 0px 3px $color-light;
     }
     .groupTag {
       margin: 12px 0;

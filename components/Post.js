@@ -16,6 +16,37 @@ export const List = memo(function List(props) {
   );
 });
 
+export const GroupTag = ({ group, ...rest }) => (
+  <Tag variant="emphasis" color="white" {...rest}>
+    <Link
+      href={{
+        pathname: "/post/[group]",
+        query: {
+          group: group.name,
+        },
+      }}
+    >
+      <a>{group.display}</a>
+    </Link>
+  </Tag>
+);
+
+export const PostTag = ({ tag, group, ...rest }) => (
+  <Tag variant="light" color="dark" key={tag} {...rest}>
+    <Link
+      href={{
+        pathname: "/post/[group]",
+        query: {
+          group: group.name,
+          tags: tag,
+        },
+      }}
+    >
+      <a>#{tag}</a>
+    </Link>
+  </Tag>
+);
+
 export const Item = memo(function Item({ post }) {
   const { name, metadata, stat, group } = post;
   return (
@@ -32,40 +63,18 @@ export const Item = memo(function Item({ post }) {
             }}
           >
             <a>
-              <h3 className={styles.title}>{metadata.title}</h3>
+              <h3 className={styles.title}>{metadata.title}》</h3>
             </a>
           </Link>
           <div className={styles.date}>最後更新：{formatDate(stat.mtime)}</div>
           <div className={styles.date}>
             類別：
-            <Tag variant="emphasis" color="white">
-              <Link
-                href={{
-                  pathname: "/post/[group]",
-                  query: {
-                    group: group.name,
-                  },
-                }}
-              >
-                <a>{group.display}</a>
-              </Link>
-            </Tag>
+            <GroupTag group={group} />
           </div>
           <div className={styles.tags}>
+            標籤：
             {metadata.tags?.map((tag) => (
-              <Tag key={tag} variant="main" color="white">
-                <Link
-                  href={{
-                    pathname: "/post/[group]",
-                    query: {
-                      group: group.name,
-                      tags: tag,
-                    },
-                  }}
-                >
-                  <a>{tag}</a>
-                </Link>
-              </Tag>
+              <PostTag key={tag} tag={tag} group={group}></PostTag>
             ))}
           </div>
         </div>
@@ -110,26 +119,13 @@ export const Metadata = memo(function Metadata({ metadata, group }) {
         ></div>
         <canvas width="2" height="1" />
         <div className={styles.metatext}>
-          <h1>{metadata.title}</h1>
+          <h2>{metadata.title}</h2>
           <div className={styles.groupTag}>
-            <Tag variant="emphasis" color="white">
-              <Link
-                href={{
-                  pathname: "/post/[group]",
-                  query: {
-                    group: group.name,
-                  },
-                }}
-              >
-                {group.display}
-              </Link>
-            </Tag>
+            <GroupTag group={group} />
           </div>
           <div>
             {metadata.tags?.map((tag) => (
-              <Tag key={tag} variant="main" color="white">
-                {tag}
-              </Tag>
+              <PostTag key={tag} tag={tag} group={group} />
             ))}
           </div>
         </div>
