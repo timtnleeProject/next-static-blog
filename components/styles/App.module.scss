@@ -26,14 +26,15 @@ $trans: 0.3s;
 }
 .content {
   flex: 0 1 auto;
-  background-color: #fff;
   display: flex;
   overflow-x: auto;
 }
 .aside {
   margin-left: 12px;
   flex: 0 0 250px;
-  background-color: #fff;
+  @media screen and (max-width: $bp) {
+    padding: 8px;
+  }
 }
 @media screen and(max-width: $bp-lg) {
   .body {

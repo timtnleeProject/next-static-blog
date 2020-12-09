@@ -8,6 +8,7 @@ import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import { NAVIGATION } from "setting";
+import Card from "./Card";
 
 function Close(props) {
   return (
@@ -149,7 +150,11 @@ export function Body(props) {
 }
 
 export function Content(props) {
-  return <main className={styles.content}>{props.children}</main>;
+  return (
+    <Card as="main" className={styles.content}>
+      {props.children}
+    </Card>
+  );
 }
 
 export function Aside(props) {

@@ -1,4 +1,5 @@
 import App from "components/App";
+import PostGroup from "components/Aside/PostGroup";
 import Head from "next/head";
 import "../styles/globals.scss";
 
@@ -18,10 +19,7 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </App.Content>
         <App.Aside>
-          <h3>分類</h3>
-          <div>123</div>
-          <div>123</div>
-          <div>123</div>
+          <PostGroup />
         </App.Aside>
       </App.Body>
     </>

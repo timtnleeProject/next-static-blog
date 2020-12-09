@@ -140,7 +140,7 @@ export const Metadata = memo(function Metadata({ metadata, group }) {
           </div>
         </div>
       </div>
-      <div>{metadata.preview}</div>
+      <div className={styles.preview}>{metadata.preview}</div>
     </>
   );
 });

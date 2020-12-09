@@ -34,16 +34,17 @@
   .tags {
     padding-left: 8px;
   }
-  .preview {
-    margin: 12px 0;
-    padding: 0 12px;
-    color: #333;
-  }
   .go {
     text-align: right;
     color: $color-link;
     font-size: 1.2rem;
   }
+}
+
+.preview {
+  margin: 12px 0;
+  padding: 0 12px;
+  color: #333;
 }
 
 .date {

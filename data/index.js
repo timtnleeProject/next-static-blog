@@ -6,21 +6,22 @@ import { GROUP } from "../setting";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
-const groups = (function () {
-  const filenames = fs.readdirSync(postsDirectory);
-  return filenames.map((dirname) => ({
-    display: GROUP[dirname] || "Not defined",
-    name: dirname,
-  }));
-})();
-
-const posts = (function () {
-  return groups.reduce((posts, group) => {
-    const dir = path.join(postsDirectory, group.name);
-    const filenames = fs.readdirSync(dir);
-    const postsInGroup = filenames
-      .filter((name) => name.match(/\.md/))
-      .map((filename) => {
+const { groups, posts } = (function () {
+  const groups = (function () {
+    const filenames = fs.readdirSync(postsDirectory);
+    return filenames.map((dirname) => ({
+      display: GROUP[dirname] || "Not defined",
+      name: dirname,
+      count: 0,
+    }));
+  })();
+  const posts = groups
+    .reduce((posts, group, gidx) => {
+      const dir = path.join(postsDirectory, group.name);
+      const filenames = fs.readdirSync(dir);
+      const postFiles = filenames.filter((name) => name.match(/\.md/));
+      groups[gidx].count = postFiles.length; // group count
+      const postsInGroup = postFiles.map((filename) => {
         const name = filename.replace(/\.md/, "");
         try {
           const metadata = JSON.parse(
@@ -28,6 +29,7 @@ const posts = (function () {
           );
           const stat = fs.statSync(path.join(dir, filename));
           const raw = fs.readFileSync(path.join(dir, filename), "utf-8");
+
           return {
             name,
             stat: {
@@ -49,10 +51,15 @@ const posts = (function () {
             `\x1b[41m[Warning] ${name} missing .json metadata file \x1b[0m`,
           );
         }
-      })
-      .sort(sortBy((post) => post.stat.birthtime, true));
-    return posts.concat(postsInGroup);
-  }, []);
+      });
+
+      return posts.concat(postsInGroup);
+    }, [])
+    .sort(sortBy((post) => post.stat.birthtime, true));
+  return {
+    groups,
+    posts,
+  };
 })();
 
 const groupsPostsMap = (function () {
