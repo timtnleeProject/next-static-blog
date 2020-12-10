@@ -8,11 +8,7 @@ $gap: 12px;
     text-decoration: underline;
     color: $color-link;
   }
-  p {
-    padding-left: $gap;
-  }
   pre {
-    margin-left: $gap !important;
     border-radius: $p;
   }
   ul {
@@ -26,5 +22,17 @@ $gap: 12px;
   code {
     background-color: lightgrey;
     padding: 0 4px;
+  }
+}
+
+// padding
+@media screen and (min-width: $bp) {
+  .article {
+    p {
+      padding-left: $gap;
+    }
+    pre {
+      margin-left: $gap !important;
+    }
   }
 }

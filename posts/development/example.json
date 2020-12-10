@@ -1,5 +1,7 @@
 {
   "title": "快速在 Linode 上試跑一個 nodeJS Web 應用",
   "tags": ["nginx", "架站相關"],
-  "image": "/up.jpg"
+  "image": "/up.jpg",
+  "birthtime": "2020/12/01",
+  "mtime": "2020/12/01"
 }

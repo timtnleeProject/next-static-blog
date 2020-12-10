@@ -48,11 +48,11 @@ export const PostTag = ({ tag, group, ...rest }) => (
 );
 
 export const Date = memo(function Date({ post }) {
-  const { stat } = post;
+  const { metadata } = post;
   return (
     <div className={styles.date}>
-      <span>發表：{formatDate(stat.birthtime)}</span>
-      <span>最後更新：{formatDate(stat.mtime)}</span>
+      <span>發表：{formatDate(metadata.birthtime, ["YYYY/MM/DD"])}</span>
+      <span>最後更新：{formatDate(metadata.mtime, ["YYYY/MM/DD"])}</span>
     </div>
   );
 });

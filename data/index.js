@@ -27,15 +27,10 @@ const { groups, posts } = (function () {
           const metadata = JSON.parse(
             fs.readFileSync(path.join(dir, `${name}.json`), "utf-8"),
           );
-          const stat = fs.statSync(path.join(dir, filename));
           const raw = fs.readFileSync(path.join(dir, filename), "utf-8");
 
           return {
             name,
-            stat: {
-              mtime: stat.mtime.toJSON(),
-              birthtime: stat.birthtime.toJSON(),
-            },
             raw,
             group,
             metadata,
@@ -55,7 +50,7 @@ const { groups, posts } = (function () {
 
       return posts.concat(postsInGroup);
     }, [])
-    .sort(sortBy((post) => post.stat.birthtime, true));
+    .sort(sortBy((post) => post.metadata.birthtime, true));
   return {
     groups,
     posts,
