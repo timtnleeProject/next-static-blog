@@ -6,7 +6,6 @@ import classnames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useCallback, useEffect, useRef, useState } from "react";
-import Head from "next/head";
 import { NAVIGATION } from "setting";
 import Card from "./Card";
 
@@ -131,10 +130,6 @@ export function Header() {
 
   return (
     <>
-      <Head>
-        <link rel="preload" as="image" href="/up.jpg" />
-        <link rel="preload" as="image" href="/down.jpg" />
-      </Head>
       <header className={styles.header} ref={headerRef}>
         <Hamburger onClick={() => setShow(true)} />
         <Brand />
