@@ -7,6 +7,7 @@ import styles from "styles/Post.module.scss";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Page from "components/Page";
 import { BreadCrumb } from "components/BreadCrumb";
+import breaks from "remark-breaks";
 
 const renderers = {
   // eslint-disable-next-line react/display-name
@@ -30,7 +31,7 @@ export default function Post(props) {
       <BreadCrumb />
       <Metadata post={post} />
       <article className={styles.article}>
-        <ReactMarkdown linkTarget="_blank" renderers={renderers}>
+        <ReactMarkdown linkTarget="_blank" renderers={renderers} plugins={[breaks]}>
           {post.raw}
         </ReactMarkdown>
       </article>
