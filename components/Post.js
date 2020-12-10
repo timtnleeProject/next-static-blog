@@ -6,6 +6,7 @@ import { formatDate } from "utils/datetime";
 import Card from "./Card";
 import Tag from "./Tag";
 import { memo } from "react";
+import { Author } from "./Author";
 
 export const List = memo(function List(props) {
   const { className, inline } = props;
@@ -87,6 +88,7 @@ export const Item = memo(function Item({ post }) {
               <PostTag key={tag} tag={tag} group={group}></PostTag>
             ))}
           </div>
+          <Author className={styles.author} author={metadata.author} />
         </div>
         {metadata.image && (
           <div
@@ -117,7 +119,8 @@ export const Item = memo(function Item({ post }) {
   );
 });
 
-export const Metadata = memo(function Metadata({ metadata, group }) {
+export const Metadata = memo(function Metadata({ post }) {
+  const { metadata, group } = post;
   return (
     <>
       <div className={styles.metadata}>
@@ -140,7 +143,9 @@ export const Metadata = memo(function Metadata({ metadata, group }) {
           </div>
         </div>
       </div>
-      <div className={styles.preview}>{metadata.preview}</div>
+      <Author className={styles.author} author={metadata.author} />
+      <Date post={post} />
+      <div className={styles.hr} />
     </>
   );
 });

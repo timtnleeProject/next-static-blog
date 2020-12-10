@@ -4,6 +4,11 @@ export const GROUP = {
   diary: "心情日記",
 };
 
+export const AUTHOR = {
+  anna: "Anna",
+  tim: "Tim",
+};
+
 export const NAVIGATION = {
   HOME: {
     path: "/",

@@ -23,9 +23,20 @@ $gap: 12px;
     background-color: lightgrey;
     padding: 0 4px;
   }
+  blockquote {
+    margin: 0;
+    padding: 4px 12px 4px 20px;
+    color: $color-main;
+    background-color: $color-light;
+    font-style: italic;
+    border-left: 3px solid $color-main;
+    p {
+      padding: 0;
+    }
+  }
 }
 
-// padding
+// padding above PC breakpoint
 @media screen and (min-width: $bp) {
   .article {
     p {
@@ -33,6 +44,9 @@ $gap: 12px;
     }
     pre {
       margin-left: $gap !important;
+    }
+    blockquote {
+      margin: 0 0 0 $gap;
     }
   }
 }
