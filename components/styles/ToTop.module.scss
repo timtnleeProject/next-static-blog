@@ -1,0 +1,69 @@
+.totop {
+  border: none;
+  background: none;
+  position: fixed;
+  bottom: 60px;
+  right: 60px;
+  width: 70px;
+  cursor: pointer;
+  z-index: 9;
+  svg {
+    width: 100%;
+  }
+  .path {
+    stroke-width: 20;
+    fill: transparent;
+    stroke-linecap: round;
+    stroke: $color-emphasis;
+  }
+  .pathbg {
+    stroke-width: 20;
+    fill: transparent;
+    stroke-linecap: round;
+    stroke: $color-main;
+  }
+  &:hover .path {
+    animation: move 1s infinite linear;
+  }
+  .text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateY(10px);
+    color: $color-emphasis;
+  }
+}
+
+@media screen and (max-width: $bp) {
+  .totop {
+    width: 55px;
+    bottom: 30px;
+    right: 30px;
+    .text {
+      font-size: 12px;
+      transform: translate(-50%, -50%) translateY(5px);
+    }
+  }
+}
+
+@keyframes move {
+  0% {
+    d: path("M200 0, L400 350, L400 350, L0 350, L0 350");
+  }
+  20% {
+    d: path("M400 350, L400 350, L0 350, L0 350, L200 0");
+  }
+  21% {
+    d: path("M400 350, L0 350, L0 350, L200 0, L200 0");
+  }
+  40% {
+    d: path("M0 350, L0 350, L200 0, L200 0, L400 350");
+  }
+  41% {
+    d: path("M0 350, L200 0, L200 0, L400 350, L400 350");
+  }
+  60%,
+  100% {
+    d: path("M200 0, L200 0, L200 0, L400 350, L0 350");
+  }
+}

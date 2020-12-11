@@ -8,6 +8,7 @@ import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Page from "components/Page";
 import { BreadCrumb } from "components/BreadCrumb";
 import breaks from "remark-breaks";
+import { ToTop } from "components/ToTop";
 
 const renderers = {
   // eslint-disable-next-line react/display-name
@@ -35,6 +36,7 @@ export default function Post(props) {
           {post.raw}
         </ReactMarkdown>
       </article>
+      <ToTop />
     </Page.Content>
   );
 }

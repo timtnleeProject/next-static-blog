@@ -11,6 +11,12 @@ body {
   }
 }
 
+button {
+  &:focus {
+    outline: none;
+  }
+}
+
 a {
   color: inherit;
   text-decoration: none;
