@@ -1,5 +1,4 @@
 import { getPost, getPosts } from "data";
-import Head from "next/head";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { Metadata } from "components/Post";
@@ -9,6 +8,7 @@ import Page from "components/Page";
 import { BreadCrumb } from "components/BreadCrumb";
 import breaks from "remark-breaks";
 import { ToTop } from "components/ToTop";
+import PageMetadata from "components/PageMetadata";
 
 const renderers = {
   // eslint-disable-next-line react/display-name
@@ -26,9 +26,7 @@ export default function Post(props) {
 
   return (
     <Page.Content>
-      <Head>
-        <title>{post.metadata?.title}</title>
-      </Head>
+      <PageMetadata title={post.metadata.title} description={post.metadata.preview} />
       <BreadCrumb />
       <Metadata post={post} />
       <article className={styles.article}>

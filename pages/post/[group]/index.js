@@ -4,9 +4,9 @@ import Tag from "components/Tag";
 import styles from "styles/Group.module.scss";
 import { getGroups, getPostsByGroup, getTagsByGroup } from "data";
 import { useRouter } from "next/router";
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { GROUP } from "setting";
-import Head from "next/head";
+import PageMetadata from "components/PageMetadata";
 
 export default function GroupPost({ groupName, posts, tags }) {
   const router = useRouter();
@@ -66,9 +66,7 @@ export default function GroupPost({ groupName, posts, tags }) {
   const title = useMemo(() => `「${GROUP[groupName]}」 相關文章`, [groupName]);
   return (
     <Page.Content>
-      <Head>
-        <title>{title}</title>
-      </Head>
+      <PageMetadata title={title} description="" />
       <h1>{title}</h1>
       <div className={styles.tags}>
         標籤篩選：
