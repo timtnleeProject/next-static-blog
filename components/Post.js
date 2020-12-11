@@ -5,17 +5,16 @@ import PropTypes from "prop-types";
 import { formatDate } from "utils/datetime";
 import Card from "./Card";
 import Tag from "./Tag";
-import { memo } from "react";
-import { Author } from "./Author";
+import Author from "./Author";
 
-export const List = memo(function List(props) {
+export const List = function List(props) {
   const { className, inline } = props;
   return (
     <ul className={classnames(styles.list, inline && styles.inline, className)}>
       {props.children}
     </ul>
   );
-});
+};
 
 export const GroupTag = ({ group, ...rest }) => (
   <Tag variant="emphasis" color="white" {...rest}>
@@ -48,7 +47,7 @@ export const PostTag = ({ tag, group, ...rest }) => (
   </Tag>
 );
 
-export const Date = memo(function Date({ post }) {
+export const Date = function Date({ post }) {
   const { metadata } = post;
   return (
     <div className={styles.date}>
@@ -56,9 +55,9 @@ export const Date = memo(function Date({ post }) {
       <span>最後更新：{formatDate(metadata.mtime, ["YYYY/MM/DD"])}</span>
     </div>
   );
-});
+};
 
-export const Item = memo(function Item({ post }) {
+export const Item = function Item({ post }) {
   const { name, metadata, group } = post;
   return (
     <Card as="li" className={styles.item}>
@@ -117,9 +116,9 @@ export const Item = memo(function Item({ post }) {
       </div>
     </Card>
   );
-});
+};
 
-export const Metadata = memo(function Metadata({ post }) {
+export const Metadata = function Metadata({ post }) {
   const { metadata, group } = post;
   return (
     <>
@@ -148,7 +147,7 @@ export const Metadata = memo(function Metadata({ post }) {
       <div className={styles.hr} />
     </>
   );
-});
+};
 
 export default {
   List,
