@@ -6,7 +6,6 @@ import classnames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { NAVIGATION } from "setting";
 import Card from "./Card";
 
 function Close(props) {
@@ -27,8 +26,12 @@ function Hamburger(props) {
 
 const links = [
   {
-    name: NAVIGATION.HOME.name,
-    href: NAVIGATION.HOME.path,
+    name: "文章列表",
+    href: "/",
+  },
+  {
+    name: "關於",
+    href: "/about",
   },
 ];
 

@@ -5,13 +5,12 @@ export const GROUP = {
 };
 
 export const AUTHOR = {
-  anna: "Anna",
-  tim: "Tim",
-};
-
-export const NAVIGATION = {
-  HOME: {
-    path: "/",
-    name: "文章列表",
+  anna: {
+    name: "Anna",
+    image: "/up.jpg",
+  },
+  tim: {
+    name: "Tim",
+    image: "/down.jpg",
   },
 };

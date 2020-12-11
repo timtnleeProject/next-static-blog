@@ -52,7 +52,7 @@ $trans: 0.3s;
   }
 }
 .brand {
-  font-size: 2.6rem;
+  font-size: 2.2em;
   font-weight: 400;
   .l {
     display: inline-block;
@@ -65,7 +65,7 @@ $trans: 0.3s;
 }
 .subtitle {
   color: white;
-  font-size: 1rem;
+  font-size: 1em;
   font-weight: normal;
   margin: $p * 3 0 0 0;
   @media screen and (max-width: $bp) {

@@ -69,7 +69,7 @@ export default function GroupPost({ groupName, posts, tags }) {
       <Head>
         <title>{title}</title>
       </Head>
-      <h2>{title}</h2>
+      <h1>{title}</h1>
       <div className={styles.tags}>
         標籤篩選：
         {tags.map((tag) => (

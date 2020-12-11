@@ -74,7 +74,7 @@ export const Item = memo(function Item({ post }) {
             }}
           >
             <a>
-              <h3 className={styles.title}>{metadata.title} 》</h3>
+              <h2 className={styles.title}>{metadata.title} 》</h2>
             </a>
           </Link>
           <Date post={post} />
@@ -132,7 +132,7 @@ export const Metadata = memo(function Metadata({ post }) {
         ></div>
         <canvas width="2" height="1" />
         <div className={styles.metatext}>
-          <h2>{metadata.title}</h2>
+          <h1>{metadata.title}</h1>
           <div className={styles.groupTag}>
             <GroupTag group={group} />
           </div>

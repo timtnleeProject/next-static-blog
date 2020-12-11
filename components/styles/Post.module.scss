@@ -47,7 +47,7 @@
   .go {
     text-align: right;
     color: $color-link;
-    font-size: 1.2rem;
+    font-size: 1.2em;
   }
 }
 .author {
@@ -92,7 +92,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    h2 {
+    h1 {
       margin: 12px;
       padding: 0 12px;
       text-shadow: 0px 0px 3px $color-light;
