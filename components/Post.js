@@ -126,7 +126,7 @@ export const Metadata = function Metadata({ post }) {
         <div
           className={styles.bg}
           style={{
-            backgroundImage: `url(${metadata.image})`,
+            ...(metadata.image && { backgroundImage: `url(${metadata.image})` }),
           }}
         ></div>
         <canvas width="2" height="1" />

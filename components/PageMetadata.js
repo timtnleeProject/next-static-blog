@@ -7,7 +7,10 @@ function PageMetadata({ title, image, description, home = false }) {
   return (
     <Head>
       <title>{fullTitle}</title>
+      <meta property="og:title" content={fullTitle} />
       <meta name="description" content={description} />
+      <meta property="og:description" content={description} />
+      {image && <meta property="og:image" content={image} />}
     </Head>
   );
 }
