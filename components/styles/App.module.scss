@@ -60,7 +60,7 @@ $trans: 0.3s;
   }
   .r {
     display: inline-block;
-    color: $color-emphasis;
+    color: $color-main;
   }
 }
 .subtitle {
@@ -161,6 +161,8 @@ $trans: 0.3s;
       top: 50%;
       transform: translateY(-50%);
       font-size: 24px;
+      color: $color-light;
+      opacity: 0.9;
     }
     &.fixed {
       transform: translateY(0%);

@@ -1,10 +1,12 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types";
 import Head from "next/head";
-function PageMetadata({ title, image, description }) {
+import { SITE } from "setting";
+function PageMetadata({ title, image, description, home = false }) {
+  const fullTitle = home ? title : `${title} - ${SITE.title}`;
   return (
     <Head>
-      <title>{title}</title>
+      <title>{fullTitle}</title>
       <meta name="description" content={description} />
     </Head>
   );

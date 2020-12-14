@@ -11,6 +11,7 @@ export default function Home(props) {
       <PageMetadata
         title={`${SITE.title} - ${SITE.subtitle}`}
         description="生活記錄、文章撰寫"
+        home={true}
       />
       <h1>最近發表</h1>
       <Post.List>
