@@ -14,3 +14,8 @@ export const AUTHOR = {
     image: "/down.jpg",
   },
 };
+
+export const SITE = {
+  title: "苦甜巧克力",
+  subtitle: "記錄生活的甘苦",
+};

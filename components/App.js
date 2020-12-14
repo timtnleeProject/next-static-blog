@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Card from "./Card";
+import { SITE } from "setting";
 
 function Close(props) {
   return (
@@ -61,11 +62,12 @@ export function Nav({ show, setShow, innerRef }) {
 }
 
 function Brand() {
+  const { title } = SITE;
   return (
     <Link href="/" passHref>
       <a className={styles.brand}>
-        <span className={styles.l}>還在</span>
-        <span className={styles.r}>製作中</span>
+        <span className={styles.l}>🍫{title.slice(0, 2)}</span>
+        <span className={styles.r}>{title.slice(2)}</span>
       </a>
     </Link>
   );
@@ -136,7 +138,7 @@ export function Header() {
       <header className={styles.header} ref={headerRef}>
         <Hamburger onClick={() => setShow(true)} />
         <Brand />
-        <h2 className={styles.subtitle}>這是一個網站</h2>
+        <h2 className={styles.subtitle}>{SITE.subtitle}</h2>
       </header>
       <Nav show={show} setShow={setShow} innerRef={navRef}></Nav>
     </>

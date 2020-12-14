@@ -2,17 +2,17 @@ import { getPosts } from "data";
 import Post from "components/Post";
 import Page from "components/Page";
 import PageMetadata from "components/PageMetadata";
+import { SITE } from "setting";
 
 export default function Home(props) {
-  const title = "HOME";
   const { posts = [] } = props;
   return (
     <Page.Content>
       <PageMetadata
-        title={title}
-        description="A page's description, usually one or two sentences."
+        title={`${SITE.title} - ${SITE.subtitle}`}
+        description="生活記錄、文章撰寫"
       />
-      <h2>最近發表</h2>
+      <h1>最近發表</h1>
       <Post.List>
         {posts.map((post) => (
           <Post.Item key={post.name} post={post} />
