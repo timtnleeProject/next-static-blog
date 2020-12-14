@@ -110,7 +110,6 @@ $trans: 0.3s;
       top: 50%;
       transform: translateY(-50%);
       opacity: 0;
-      transition: opacity $trans;
       pointer-events: none;
     }
     ul {
