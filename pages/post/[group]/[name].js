@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { getPost, getPosts } from "data";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -24,6 +25,37 @@ const renderers = {
 export default function Post(props) {
   const { post } = props;
 
+  useEffect(() => {
+    const { group, name, metadata } = post;
+    const url = `https://${window.location.host}/post/${group.name}/${name}`;
+    const identifier = metadata.title;
+    if (window.DISQUS) {
+      window.DISQUS.reset({
+        reload: true,
+        config: function () {
+          this.page.identifier = url;
+          this.page.url = identifier;
+        },
+      });
+      return;
+    }
+    const script = document.createElement("SCRIPT");
+    script.innerHTML = `/**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    var disqus_config = function () {
+    this.page.url = String(${url});  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = String(${identifier}); // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://blog-gjsysjy5bw.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();`;
+    document.body.appendChild(script);
+  }, [post]);
+
   return (
     <Page.Content>
       <PageMetadata title={post.metadata.title} description={post.metadata.preview} />
@@ -34,6 +66,7 @@ export default function Post(props) {
           {post.raw}
         </ReactMarkdown>
       </article>
+      <div id="disqus_thread"></div>
       <ToTop />
     </Page.Content>
   );
