@@ -11,5 +11,5 @@ module.exports = withPlugins(
     sassOptions: {
       prependData: vars,
     },
-  }
+  },
 );
