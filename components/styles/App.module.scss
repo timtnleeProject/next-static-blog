@@ -22,7 +22,7 @@ $trans: 0.3s;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
-  padding: 12px 0;
+  padding: 12px 0 24px 0;
   @media screen and (max-width: $bp) {
     padding: 0 0 8px 0;
   }
