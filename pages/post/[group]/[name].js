@@ -1,8 +1,8 @@
-import { useEffect } from "react";
 import { getPost, getPosts } from "data";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { Metadata } from "components/Post";
+import { DiscussionEmbed } from "disqus-react";
 import styles from "styles/Post.module.scss";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Page from "components/Page";
@@ -10,6 +10,7 @@ import { BreadCrumb } from "components/BreadCrumb";
 import breaks from "remark-breaks";
 import { ToTop } from "components/ToTop";
 import PageMetadata from "components/PageMetadata";
+import { DISQUS } from "setting";
 
 const renderers = {
   // eslint-disable-next-line react/display-name
@@ -25,30 +26,11 @@ const renderers = {
 export default function Post(props) {
   const { post } = props;
 
-  useEffect(() => {
-    const { group, name, metadata } = post;
-    const url = `https://${window.location.host}/post/${group.name}/${name}`;
-    const identifier = metadata.title;
-    const script = document.createElement("SCRIPT");
-    script.setAttribute("id", "disqus-script");
-    script.innerHTML = `/**
-    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-    var disqus_config = function () {
-    this.page.url = "${url}";  // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = "${identifier}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    (function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = 'https://blog-gjsysjy5bw.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();`;
-    document.body.appendChild(script);
-    return () => {
-      document.body.querySelector("#disqus-script").remove();
-    };
-  }, [post]);
+  const { group, name, metadata } = post;
+  const url = `https://${DISQUS.host}/post/${group.name}/${name}`;
+  const identifier = metadata.title;
+  const title = metadata.title;
+  const language = "zh-TW"; // e.g. for Traditional Chinese (Taiwan)
 
   return (
     <Page.Content>
@@ -60,7 +42,15 @@ export default function Post(props) {
           {post.raw}
         </ReactMarkdown>
       </article>
-      <div id="disqus_thread"></div>
+      <DiscussionEmbed
+        shortname={DISQUS.shortname}
+        config={{
+          url,
+          identifier,
+          title,
+          language,
+        }}
+      ></DiscussionEmbed>
       <ToTop />
     </Page.Content>
   );

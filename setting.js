@@ -19,3 +19,8 @@ export const SITE = {
   title: "苦甜巧克力",
   subtitle: "記錄生活的甘苦",
 };
+
+export const DISQUS = {
+  shortname: "blog-gjsysjy5bw",
+  host: "blog.timtnlee.me",
+};
