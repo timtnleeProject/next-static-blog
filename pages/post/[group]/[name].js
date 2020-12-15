@@ -30,8 +30,7 @@ export default function Post(props) {
   const url = `https://${DISQUS.host}/post/${group.name}/${name}`;
   const identifier = `${group}/${name}`;
   const title = metadata.title;
-  const language = "zh-TW"; // e.g. for Traditional Chinese (Taiwan)
-
+  const language = "en";
   return (
     <Page.Content>
       <PageMetadata
