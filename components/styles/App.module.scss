@@ -96,7 +96,7 @@ $trans: 0.3s;
     margin-left: $p * 3;
   }
 }
-@media screen and (min-width: $bp) {
+@media screen and (min-width: $bp + 1px) {
   .nav {
     height: $app-navHeight;
     background-color: $color-grey;
