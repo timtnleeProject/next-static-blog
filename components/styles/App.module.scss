@@ -11,7 +11,7 @@ $trans: 0.3s;
   transition: transform $trans;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   z-index: 2; // to be above nav
   .bars {
@@ -52,11 +52,15 @@ $trans: 0.3s;
   }
 }
 .brand {
-  font-size: 2.2em;
-  font-weight: 400;
+  font-size: 1em;
+  line-height: 1;
+  .lg {
+    font-size: 2.2em;
+  }
   .l {
     display: inline-block;
     color: $color-light;
+    text-align: right;
   }
   .r {
     display: inline-block;
@@ -67,7 +71,7 @@ $trans: 0.3s;
   color: white;
   font-size: 1em;
   font-weight: normal;
-  margin: $p * 3 0 0 0;
+  margin: $p * 10 0 0 0;
   @media screen and (max-width: $bp) {
     display: none;
   }
@@ -77,7 +81,8 @@ $trans: 0.3s;
   width: 100%;
   padding: 24px;
   box-shadow: $shadow-px $color-grey-2;
-  color: #fff;
+  color: $color-light;
+  font-weight: bold;
   z-index: 1;
   .close {
     display: none;
@@ -87,7 +92,6 @@ $trans: 0.3s;
   }
   li {
     font-size: 18px;
-    text-shadow: $shadow-px $color-dark;
   }
   li.active span {
     border-bottom: 2px solid $color-main;

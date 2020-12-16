@@ -61,22 +61,22 @@ export const Item = function Item({ post }) {
   const { name, metadata, group } = post;
   return (
     <Card as="li" className={styles.item}>
+      <Link
+        href={{
+          pathname: "/post/[group]/[name]",
+          query: {
+            name,
+            group: group.name,
+          },
+        }}
+      >
+        <a>
+          <h2 className={styles.title}>{metadata.title} 》</h2>
+        </a>
+      </Link>
+      <Date post={post} />
       <div className={styles.block}>
         <div className={styles.meta}>
-          <Link
-            href={{
-              pathname: "/post/[group]/[name]",
-              query: {
-                name,
-                group: group.name,
-              },
-            }}
-          >
-            <a>
-              <h2 className={styles.title}>{metadata.title} 》</h2>
-            </a>
-          </Link>
-          <Date post={post} />
           <div className={styles.group}>
             類別：
             <GroupTag group={group} />
@@ -99,7 +99,7 @@ export const Item = function Item({ post }) {
         )}
       </div>
       <div className={styles.preview}>
-        {metadata.preview}
+        <summary>{metadata.preview}</summary>
         <div className={styles.go}>
           <Link
             href={{
@@ -129,13 +129,13 @@ export const Metadata = function Metadata({ post }) {
             ...(metadata.image && { backgroundImage: `url(${metadata.image})` }),
           }}
         ></div>
-        <canvas width="2" height="1" />
+        <canvas width="16" height="9" />
         <div className={styles.metatext}>
           <h1>{metadata.title}</h1>
           <div className={styles.groupTag}>
             <GroupTag group={group} />
           </div>
-          <div>
+          <div className={styles.tag}>
             {metadata.tags?.map((tag) => (
               <PostTag key={tag} tag={tag} group={group} />
             ))}

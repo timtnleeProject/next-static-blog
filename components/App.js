@@ -27,7 +27,7 @@ function Hamburger(props) {
 
 const links = [
   {
-    name: "文章列表",
+    name: "首頁",
     href: "/",
   },
   {
@@ -62,12 +62,22 @@ export function Nav({ show, setShow, innerRef }) {
 }
 
 function Brand() {
-  const { title } = SITE;
+  const { title, splitIdx } = SITE;
   return (
     <Link href="/" passHref>
       <a className={styles.brand}>
-        <span className={styles.l}>{title.slice(0, 2)}</span>
-        <span className={styles.r}>{title.slice(2)}</span>
+        <div className={styles.l}>
+          <div className={classnames(styles.lg, "g-color-light")}>
+            {title.slice(0, splitIdx)}
+          </div>
+          <div className="g-color-main">Bitter</div>
+        </div>
+        <div className={styles.r}>
+          <div className={classnames(styles.lg, "g-color-main")}>
+            {title.slice(splitIdx)}
+          </div>
+          <div className="g-color-light">Chocolate</div>
+        </div>
       </a>
     </Link>
   );
