@@ -66,7 +66,7 @@ function Brand() {
   return (
     <Link href="/" passHref>
       <a className={styles.brand}>
-        <span className={styles.l}>🍫{title.slice(0, 2)}</span>
+        <span className={styles.l}>{title.slice(0, 2)}</span>
         <span className={styles.r}>{title.slice(2)}</span>
       </a>
     </Link>
