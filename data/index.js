@@ -68,14 +68,20 @@ const groupsPostsMap = (function () {
 const groupTagsMap = (function () {
   return groups.reduce((map, group) => {
     const tags = new Set();
+    const count = {};
     posts
       .filter((p) => p.group.name === group.name)
       .forEach((p) => {
         p.metadata.tags.forEach((tag) => {
           tags.add(tag);
+          if (!count[tag]) count[tag] = 0;
+          count[tag] += 1;
         });
       });
-    map[group.name] = Array.from(tags);
+    map[group.name] = Array.from(tags).map((tag) => ({
+      name: tag,
+      count: count[tag],
+    }));
     return map;
   }, {});
 })();

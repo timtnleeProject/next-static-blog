@@ -113,4 +113,7 @@ $colors: $color-main, $color-emphasis, $color-grey, $color-light, $color-link,
   .g-color-#{$var} {
     color: nth($list: $colors, $n: $i);
   }
+  .g-border-#{$var} {
+    border: 1px solid nth($list: $colors, $n: $i);
+  }
 }

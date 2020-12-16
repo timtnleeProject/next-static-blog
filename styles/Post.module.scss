@@ -20,7 +20,8 @@ $gap: 12px;
     }
   }
   code {
-    background-color: lightgrey;
+    background-color: $color-grey;
+    color: #666;
     padding: 0 4px;
   }
   blockquote {
@@ -33,6 +34,9 @@ $gap: 12px;
     p {
       padding: 0;
     }
+  }
+  img {
+    width: 100%;
   }
 }
 

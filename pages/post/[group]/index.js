@@ -73,11 +73,14 @@ export default function GroupPost({ groupName, posts, tags }) {
         {tags.map((tag) => (
           <Tag
             key={tag}
-            variant={activeTags.some((t) => t === tag) ? "main" : "light"}
+            variant={activeTags.some((t) => t === tag.name) ? "main" : "light"}
             color="dark"
-            onClick={() => toggleTag(tag)}
+            border="dark"
+            onClick={() => toggleTag(tag.name)}
           >
-            <a>#{tag}</a>
+            <a>
+              #{tag.name} ({tag.count})
+            </a>
           </Tag>
         ))}
       </div>

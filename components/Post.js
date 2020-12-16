@@ -17,7 +17,7 @@ export const List = function List(props) {
 };
 
 export const GroupTag = ({ group, ...rest }) => (
-  <Tag variant="emphasis" color="white" {...rest}>
+  <Tag variant="emphasis" color="white" border="white" {...rest}>
     <Link
       href={{
         pathname: "/post/[group]",
@@ -32,7 +32,7 @@ export const GroupTag = ({ group, ...rest }) => (
 );
 
 export const PostTag = ({ tag, group, ...rest }) => (
-  <Tag variant="light" color="dark" key={tag} {...rest}>
+  <Tag variant="light" color="dark" border="dark" key={tag} {...rest}>
     <Link
       href={{
         pathname: "/post/[group]",
@@ -74,9 +74,9 @@ export const Item = function Item({ post }) {
           <h2 className={styles.title}>{metadata.title} 》</h2>
         </a>
       </Link>
-      <Date post={post} />
       <div className={styles.block}>
         <div className={styles.meta}>
+          <Date post={post} />
           <div className={styles.group}>
             類別：
             <GroupTag group={group} />
@@ -122,6 +122,7 @@ export const Metadata = function Metadata({ post }) {
   const { metadata, group } = post;
   return (
     <>
+      <h1 className={styles.mbtitle}>{metadata.title}</h1>
       <div className={styles.metadata}>
         <div
           className={styles.bg}
@@ -131,7 +132,7 @@ export const Metadata = function Metadata({ post }) {
         ></div>
         <canvas width="16" height="9" />
         <div className={styles.metatext}>
-          <h1>{metadata.title}</h1>
+          <h1 className={styles.pctitle}>{metadata.title}</h1>
           <div className={styles.groupTag}>
             <GroupTag group={group} />
           </div>

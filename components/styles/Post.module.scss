@@ -26,6 +26,7 @@ $img-ratio: 9/16;
     flex: 0 0 $img-w-pc;
     height: $img-w-pc * $img-ratio;
     background-color: $color-grey;
+    border: 1px solid $color-grey;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -102,7 +103,7 @@ $img-ratio: 9/16;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    filter: blur(1px) opacity(0.9);
+    filter: blur(1px) opacity(0.7);
   }
   .metatext {
     position: absolute;
@@ -118,7 +119,6 @@ $img-ratio: 9/16;
     h1 {
       margin: 12px;
       padding: 0 12px;
-      text-shadow: 0px 0px 3px $color-light;
     }
     .tag {
       font-size: 12px;
@@ -130,6 +130,22 @@ $img-ratio: 9/16;
   }
   canvas {
     width: 100%;
+    display: block;
+  }
+}
+
+// Metadata title
+.pctitle {
+  text-shadow: 0px 0px 3px $color-light;
+}
+.mbtitle {
+  display: none;
+}
+@media screen and (max-width: $bp-sm) {
+  .pctitle {
+    display: none;
+  }
+  .mbtitle {
     display: block;
   }
 }
