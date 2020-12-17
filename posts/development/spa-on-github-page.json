@@ -1,8 +1,8 @@
 {
   "title": "使用 GitHub Pages 展示你的 Single Page Application",
   "tags": ["SPA", "Github Pages", "deployment"],
-  "birthtime": "2020/12/16",
-  "mtime": "2020/12/16",
+  "birthtime": "2020/12/17",
+  "mtime": "2020/12/17",
   "author": "tim",
   "image": "/images/development/spa-on-ghpage/ghpage.jpg",
   "preview": "相信大家一定都有用 Github Pages 發布網頁的經驗，那麼如果今天寫的是像 Vue, React 這種 SPA (Single Page Application) 要如何使用 Github Pages 發布，以及需要注意的地方？"
