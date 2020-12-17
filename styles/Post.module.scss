@@ -1,5 +1,6 @@
 $gap: 12px;
 .article {
+  padding-bottom: 12px;
   h2 {
     padding: 4px 0;
     border-bottom: 2px solid $color-main;
@@ -14,15 +15,15 @@ $gap: 12px;
   ul {
     list-style-type: disc;
     padding-inline-start: 40px;
-    li {
-      list-style-type: disc;
-      text-decoration: initial;
-    }
+  }
+  li {
+    list-style-type: inherit;
+    text-decoration: initial;
   }
   code {
-    background-color: $color-grey;
-    color: #666;
-    padding: 0 4px;
+    background-color: $color-grey-0;
+    color: #888;
+    padding: 0 6px;
   }
   blockquote {
     margin: 0;

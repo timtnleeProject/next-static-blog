@@ -7,6 +7,7 @@ import styles from "styles/Post.module.scss";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Page from "components/Page";
 import { BreadCrumb } from "components/BreadCrumb";
+import gfm from "remark-gfm";
 import breaks from "remark-breaks";
 import { ToTop } from "components/ToTop";
 import PageMetadata from "components/PageMetadata";
@@ -41,7 +42,7 @@ export default function Post(props) {
       <BreadCrumb />
       <Metadata post={post} />
       <article className={styles.article}>
-        <ReactMarkdown linkTarget="_blank" renderers={renderers} plugins={[breaks]}>
+        <ReactMarkdown linkTarget="_blank" renderers={renderers} plugins={[gfm, breaks]}>
           {post.raw}
         </ReactMarkdown>
       </article>

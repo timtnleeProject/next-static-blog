@@ -6,7 +6,7 @@ body {
     Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, Microsoft JhengHei;
   font-size: 16px;
   background-color: $color-grey-0;
-  @media screen and (max-width: 596px) {
+  @media screen and (max-width: $bp-sm) {
     font-size: 13px;
   }
 }

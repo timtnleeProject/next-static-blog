@@ -111,6 +111,7 @@ $img-ratio: 9/16;
     align-items: center;
     img {
       width: 100%;
+      filter: blur(2px);
     }
   }
   .metatext {
