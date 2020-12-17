@@ -20,7 +20,7 @@ $gap: 12px;
     list-style-type: inherit;
     text-decoration: initial;
   }
-  code {
+  *:not(pre) code {
     background-color: $color-grey-0;
     color: #888;
     padding: 0 6px;
