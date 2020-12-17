@@ -90,12 +90,9 @@ export const Item = function Item({ post }) {
           <Author className={styles.author} author={metadata.author} />
         </div>
         {metadata.image && (
-          <div
-            className={styles.imageBolck}
-            style={{
-              backgroundImage: `url(${metadata.image})`,
-            }}
-          ></div>
+          <div className={styles.imageBolck}>
+            <img src={metadata.image} alt={metadata.title}></img>
+          </div>
         )}
       </div>
       <div className={styles.preview}>
@@ -124,12 +121,9 @@ export const Metadata = function Metadata({ post }) {
     <>
       <h1 className={styles.mbtitle}>{metadata.title}</h1>
       <div className={styles.metadata}>
-        <div
-          className={styles.bg}
-          style={{
-            ...(metadata.image && { backgroundImage: `url(${metadata.image})` }),
-          }}
-        ></div>
+        <div className={styles.bg}>
+          {metadata.image && <img src={metadata.image} alt={metadata.title}></img>}
+        </div>
         <canvas width="16" height="9" />
         <div className={styles.metatext}>
           <h1 className={styles.pctitle}>{metadata.title}</h1>
