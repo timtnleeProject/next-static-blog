@@ -3,3 +3,8 @@
   box-shadow: 1px 1px 4px $color-grey-2;
   background-color: $color-white;
 }
+.card_title {
+  background: linear-gradient(to right, $color-light, $color-main);
+  margin: -2 * $p -3 * $p 2 * $p -3 * $p;
+  padding: 12px 0;
+}

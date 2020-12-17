@@ -11,3 +11,13 @@ export default function Card(props) {
     </Component>
   );
 }
+
+export function CardTitle(props) {
+  const { children, className, as = "h2", ...rest } = props;
+  const Component = (props) => React.createElement(as, props);
+  return (
+    <Component className={classnames(styles.card_title, className)} {...rest}>
+      {children}
+    </Component>
+  );
+}

@@ -1,4 +1,4 @@
-import Card from "components/Card";
+import Card, { CardTitle } from "components/Card";
 import Loader from "components/Loader";
 import styles from "./PostGroup.module.scss";
 import { useEffect, useState } from "react";
@@ -21,7 +21,7 @@ export default function PostGroup() {
   return (
     <Loader.Wrap>
       <Card className={styles.group}>
-        <h3>文章分類</h3>
+        <CardTitle as="h3">文章分類</CardTitle>
         {groups ? (
           <ul>
             {groups.map((group) => {
