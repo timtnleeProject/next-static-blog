@@ -96,13 +96,17 @@ export function Header() {
 
   useEffect(() => {
     let y = 0;
+    const store = {
+      headerHeight: headerRef.current.getBoundingClientRect().height,
+      navHeight: navRef.current.getBoundingClientRect().height,
+    };
+
     const handleScroll = () => {
-      const headerHeight = headerRef.current.getBoundingClientRect().height;
-      const navHeight = navRef.current.getBoundingClientRect().height;
+      const { headerHeight, navHeight } = store;
       const isMobile = headerHeight < navHeight;
       const offset = isMobile ? 0 : navHeight;
       const boundary = headerHeight + offset;
-      const _y = document.body.getBoundingClientRect().y * -1;
+      const _y = window.scrollY;
       const direction = y < _y ? "down" : "up";
       if (
         _y > boundary &&
@@ -137,8 +141,18 @@ export function Header() {
       }
       y = _y;
     };
+
+    const handleResize = () => {
+      store.headerHeight = headerRef.current.getBoundingClientRect().height;
+      store.navHeight = navRef.current.getBoundingClientRect().height;
+      handleScroll();
+    };
+
+    window.addEventListener("resize", handleResize);
     window.addEventListener("scroll", handleScroll);
     return () => {
+      window.removeEventListener("resize", handleResize);
+
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);

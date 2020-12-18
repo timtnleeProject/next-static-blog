@@ -6,7 +6,7 @@ const withPlugins = require("next-compose-plugins");
 const vars = fs.readFileSync(path.join(__dirname, "./styles/vars.scss"), "utf-8");
 
 module.exports = withPlugins(
-  [transpile(["react-syntax-highlighter/dist/esm/styles/prism"])],
+  [transpile(["react-syntax-highlighter/dist/esm/styles/prism", "link-preview-js"])],
   {
     sassOptions: {
       prependData: vars,

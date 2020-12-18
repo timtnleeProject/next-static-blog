@@ -1,0 +1,123 @@
+$unit: 120px;
+$unit-mb: 65px;
+$p: 8px;
+
+a.preview {
+  border: 1px solid $color-grey;
+  margin: 12px 0;
+  color: $color-dark;
+  width: 100%;
+  max-width: $bp-sm;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+.img {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-grey-0;
+  img {
+    width: 100%;
+  }
+}
+
+.title,
+.url,
+.description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  margin-left: $p;
+  margin-right: $p;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+  @media screen and (max-width: $bp) {
+    -webkit-line-clamp: 1;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.loading {
+  .title,
+  .description,
+  .img {
+    animation: blink 1s linear infinite alternate-reverse;
+  }
+  .title {
+    min-height: 1.2em;
+  }
+  .description {
+    min-height: 2em;
+  }
+}
+
+@keyframes blink {
+  from {
+    background-color: $color-grey-0;
+  }
+  to {
+    background-color: $color-grey;
+  }
+}
+
+.title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+.url {
+  font-size: 12px;
+  color: $color-grey-2;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+.description {
+  font-size: 1em;
+  color: #666;
+  margin-top: 0;
+  margin-bottom: $p;
+}
+
+@media screen and (min-width: $bp + 1px) {
+  .preview {
+    display: grid;
+    grid-template-columns: $unit minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+    .img {
+      width: $unit;
+      height: $unit;
+      align-self: center;
+      grid-column: 1 / span 1;
+      grid-row: 1 / span 3;
+    }
+  }
+}
+
+@media screen and (max-width: $bp) {
+  .preview {
+    display: flex;
+    flex-wrap: wrap;
+    padding: $p;
+    .title,
+    .url {
+      flex: 1 0 calc(100% - #{$p * 2});
+    }
+    .title {
+      margin-top: 0;
+    }
+    .img {
+      flex: 0 0 $unit-mb;
+      height: $unit-mb;
+    }
+    .description {
+      margin-left: $p;
+      margin-bottom: 0;
+      flex: 0 1 calc(100% - #{$unit-mb + $p});
+    }
+  }
+}

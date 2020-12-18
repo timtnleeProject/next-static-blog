@@ -14,7 +14,8 @@
 你可能會想：
 每次發布都要手動 build 加上把檔案搬到 `gh-pages` branch 並且 push 到 github，也太麻煩了吧！
 
-幸好有一個 npm package [gh-pages](https://www.npmjs.com/package/gh-pages#command-line-utility) 可以使用，幫助你進行相關操作。
+幸好有一個 npm package gh-pages 可以使用，幫助你進行相關操作。
+https://www.npmjs.com/package/gh-pages#command-line-utility
 
 依照文件說明，你可以使用 npm script，例如：
 
@@ -77,14 +78,13 @@ module.exports = {
 
 ### HtmlWebpackPlugin
 
-如果是自己用 webpack 打包，使用 **HtmlWebpackPlugin**，可以設定 `option.publicPath`：
-https://github.com/jantimon/html-webpack-plugin#options
+如果是自己用 webpack 打包，使用 **HtmlWebpackPlugin**，可以設定 `option.publicPath` ([文件](https://github.com/jantimon/html-webpack-plugin#options))：
 
 ## 前端 Router Basename
 
 和上面的問題發生原因一樣是路徑問題，前端 routing 的 path 無法正確處理。
 
-這裡用 `react-router-dom` 官網的說明來看就很清楚了
+這裡用 `react-router-dom` [官網的說明](https://reactrouter.com/web/api/BrowserRouter/basename-string)來看就很清楚了
 需要設定 basename
 
 > The base URL for all locations. If your app is served from a sub-directory on your server, you’ll want to set this to the sub-directory. A properly formatted basename should have a leading slash, but no trailing slash.
@@ -147,7 +147,10 @@ _註 1: Vue 的官網說明 環境變數_
 
 ### spa-github-pages
 
-詳細方法在這個 repo [rafgraph/spa-github-pages](https://github.com/rafgraph/spa-github-pages)
+詳細方法在這個 repository
+
+https://github.com/rafgraph/spa-github-pages
+
 簡單來說
 
 1. 當 Github Pages 找不到資源，會返回 `404.html`。
@@ -165,4 +168,6 @@ _註 1: Vue 的官網說明 環境變數_
 - 前端 Router 的 Basename
 - web server 要做 fallback
 
-不過最近發現了更厲害可以用來放前端專案的服務，那就是 [Vercal](https://vercel.com/home)，之後有空會再介紹。
+不過最近發現了更厲害可以用來放前端專案的服務，那就是 **Vercel**，之後有空會再介紹。
+
+https://vercel.com/home

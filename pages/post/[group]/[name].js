@@ -12,6 +12,7 @@ import breaks from "remark-breaks";
 import { ToTop } from "components/ToTop";
 import PageMetadata from "components/PageMetadata";
 import { DISQUS } from "setting";
+import LinkPreview from "components/LinkPreview";
 
 const renderers = {
   // eslint-disable-next-line react/display-name
@@ -20,6 +21,16 @@ const renderers = {
       <SyntaxHighlighter style={tomorrow} language={language}>
         {value}
       </SyntaxHighlighter>
+    );
+  },
+  link: function Link(el) {
+    const { href, node, children, target } = el;
+    return href === node.children[0]?.value ? (
+      <LinkPreview href={href} target={target} />
+    ) : (
+      <a target={target} href={href}>
+        {children}
+      </a>
     );
   },
 };
