@@ -2,13 +2,14 @@ $unit: 120px;
 $unit-mb: 65px;
 $p: 8px;
 
-a.preview {
-  border: 1px solid $color-grey;
+.preview {
   margin: 12px 0;
   color: $color-dark;
   width: 100%;
   max-width: $bp-sm;
   text-decoration: none;
+  border: 1px solid $color-grey;
+  box-shadow: 3px 3px 2px 1px $color-grey-0;
   &:hover {
     text-decoration: underline;
   }

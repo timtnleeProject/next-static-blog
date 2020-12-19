@@ -28,7 +28,7 @@ const renderers = {
     return href === node.children[0]?.value ? (
       <LinkPreview href={href} target={target} />
     ) : (
-      <a target={target} href={href}>
+      <a target={target} href={href} className={styles.link}>
         {children}
       </a>
     );
