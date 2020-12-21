@@ -68,11 +68,12 @@ export default function GroupPost({ groupName, posts, tags }) {
     <Page.Content>
       <PageMetadata title={title} description="" />
       <h1>{title}</h1>
-      <div className={styles.tags}>
+      <div className={styles.tagWrap}>
         標籤篩選：
         {tags.map((tag) => (
           <Tag
-            key={tag}
+            key={tag.name}
+            className={styles.tag}
             variant={activeTags.some((t) => t === tag.name) ? "main" : "light"}
             color="dark"
             border="dark"

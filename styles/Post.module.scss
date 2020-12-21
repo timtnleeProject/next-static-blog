@@ -1,6 +1,13 @@
 $gap: 12px;
 .article {
+  margin: 0 auto;
+  width: 100%;
+  max-width: $bp-md;
+  line-height: 1.7;
   padding-bottom: 12px;
+  @media screen and (max-width: $bp) {
+    line-height: 1.5;
+  }
   h2 {
     padding: 4px 0;
     border-bottom: 2px solid $color-main;
@@ -36,8 +43,23 @@ $gap: 12px;
       padding: 0;
     }
   }
+  .imgWrap {
+    width: 100%;
+    max-width: $bp-md;
+    display: block;
+    border: 1px solid $color-grey;
+  }
   img {
     width: 100%;
+  }
+  img + small {
+    color: $color-grey-2;
+    display: block;
+    padding: 8px;
+    font-style: italic;
+    &::before {
+      content: "▲ ";
+    }
   }
 }
 
@@ -46,6 +68,8 @@ $gap: 12px;
   .article {
     p {
       padding-left: $gap;
+      margin-block-start: 1.2em;
+      margin-block-end: 1.2em;
     }
     pre {
       margin-left: $gap !important;

@@ -137,9 +137,11 @@ export const Metadata = function Metadata({ post }) {
           </div>
         </div>
       </div>
-      <Author className={styles.author} author={metadata.author} />
-      <Date post={post} />
-      <div className={styles.hr} />
+      <div className={styles.info}>
+        <Author className={styles.author} author={metadata.author} />
+        <Date post={post} />
+        <div className={styles.hr} />
+      </div>
     </>
   );
 };

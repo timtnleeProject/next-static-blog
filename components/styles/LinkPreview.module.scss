@@ -3,6 +3,9 @@ $unit-mb: 65px;
 $p: 8px;
 
 .preview {
+  font-size: 0.9rem;
+  font-size: 1rem;
+  line-height: normal;
   margin: 12px 0;
   color: $color-dark;
   width: 100%;
@@ -35,10 +38,20 @@ $p: 8px;
   margin-right: $p;
   -webkit-line-clamp: 2; /* number of lines to show */
   -webkit-box-orient: vertical;
-  @media screen and (max-width: $bp) {
-    -webkit-line-clamp: 1;
+}
+@media screen and (max-width: $bp) {
+  .title,
+  .url,
+  .description {
     margin-left: 0;
     margin-right: 0;
+  }
+  .title,
+  .url {
+    -webkit-line-clamp: 1;
+  }
+  .description {
+    -webkit-line-clamp: 3;
   }
 }
 
@@ -49,10 +62,15 @@ $p: 8px;
     animation: blink 1s linear infinite alternate-reverse;
   }
   .title {
-    min-height: 1.2em;
+    min-height: 1em;
   }
   .description {
     min-height: 2em;
+  }
+  @media screen and (max-width: $bp) {
+    .description {
+      min-height: $unit-mb;
+    }
   }
 }
 
@@ -66,20 +84,17 @@ $p: 8px;
 }
 
 .title {
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: bold;
-  margin-top: 12px;
-  margin-bottom: 4px;
+  margin-top: 8px;
+  margin-bottom: 0;
 }
 .url {
-  font-size: 12px;
   color: $color-grey-2;
   margin-top: 4px;
   margin-bottom: 4px;
 }
 .description {
-  font-size: 1em;
-  color: #666;
   margin-top: 0;
   margin-bottom: $p;
 }
@@ -88,7 +103,7 @@ $p: 8px;
   .preview {
     display: grid;
     grid-template-columns: $unit minmax(0, 1fr);
-    grid-template-rows: auto auto auto;
+    grid-template-rows: repeat(auto);
     .img {
       width: $unit;
       height: $unit;
@@ -103,6 +118,7 @@ $p: 8px;
   .preview {
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-start;
     padding: $p;
     .title,
     .url {
@@ -110,6 +126,7 @@ $p: 8px;
     }
     .title {
       margin-top: 0;
+      margin-bottom: 0;
     }
     .img {
       flex: 0 0 $unit-mb;

@@ -33,6 +33,15 @@ const renderers = {
       </a>
     );
   },
+  image: function Image(el) {
+    const { src, alt } = el;
+    return (
+      <span className={styles.imgWrap}>
+        <img src={src} alt={alt} />
+        <small>{alt}</small>
+      </span>
+    );
+  },
 };
 
 export default function Post(props) {
