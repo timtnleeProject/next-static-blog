@@ -5,7 +5,7 @@
 我們要 deploy 的內容是 build 完的靜態檔案，而不是 source code。
 因此通常會將 source code 放在 `master`、 `main` 或其他 branch，然後將 GitHub Pages 設定在 `gh-pages` 分支。
 
-![Not found](/images/development/spa-on-ghpage/gh-setting.jpg)
+![Github Pages Setting](https://i.imgur.com/JZX0VE3.jpg)
 
 這樣我們只要將 build 好的檔案丟到 `gh-pages` 分支就可以囉。
 
