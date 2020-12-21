@@ -41,7 +41,7 @@ https://www.npmjs.com/package/gh-pages#command-line-utility
 
 ## 靜態檔案路徑
 
-如果沒有特別去設定，上述步驟完成後瀏覽 Github PAges 網頁，可能會發生 `js`, `css` 檔案找不到的問題。
+如果沒有特別去設定，上述步驟完成後瀏覽 Github Pages 網頁，可能會發生 `js`, `css` 檔案找不到的問題。
 因為通常 SPA 打包通常預設 host 在網站根目錄，假設打包出的檔案長這樣：
 
 ```tree
@@ -54,10 +54,10 @@ dist_folder/
 `index.html` 會去引用 `/index.js` 、 `/index.css`。
 
 但是在 GitHub Pages host 的網址會是 `https://<user>.github.io/<repo_name>/`
-`/index.js` 會索引到 `https://<user>.github.io/index.js` => 404 NOT FOUND。
+引用 `/index.js` 會索引到 `https://<user>.github.io/index.js` => 404 NOT FOUND。
 正確的網址要加上 sub path 才對： `https://<user>.github.io/<repo_name>/index.js`。
 
-所以我們需要設定打包檔案引用的路徑為 `/<repo_name>/`，或者使用完整的網址 `https://<user>.github.io/<repo_name>/` 也可以。
+所以我們需要設定打包檔案引用的路徑為 `/<repo_name>/`，或者使用完整的網址 `https://<user>.github.io/<repo_name>/`。
 
 每個框架/工具設定方式不同，這邊舉幾個例子：
 
@@ -68,7 +68,9 @@ dist_folder/
 ```javascript
 // vue.config.js
 module.exports = {
-  publicPath: process.env.NODE_ENV === "production" ? "/<repo_name>" : "/",
+  publicPath: process.env.NODE_ENV === "production"
+    ? "/<repo_name>"
+    : "/",
 };
 ```
 
@@ -130,7 +132,7 @@ _註 1: Vue 的官網說明 環境變數_
 
 ## Fallback to index.html
 
-(假設你的 SPA 有兩個 route `/`, `/about`，而且你的前端 routing 是使用 **history mode**)
+假設你的 SPA 有兩個 route `/`, `/about`，而且你的前端 routing 是使用 **history mode**。
 
 到了這一步，你打開網頁，已經可以正常運作了，點擊連結也可以藉由前端 routing 渲染訪問 `/about`。
 

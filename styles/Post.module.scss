@@ -3,10 +3,16 @@ $gap: 12px;
   margin: 0 auto;
   width: 100%;
   max-width: $bp-md;
-  line-height: 1.7;
+  line-height: 1.5;
   padding-bottom: 12px;
+  font-size: 20px;
+  letter-spacing: -0.003em;
   @media screen and (max-width: $bp) {
-    line-height: 1.5;
+    font-size: 17px;
+  }
+  p {
+    margin-block-start: 2em;
+    margin-block-end: 2em;
   }
   h2 {
     padding: 4px 0;
@@ -31,6 +37,12 @@ $gap: 12px;
     background-color: $color-grey-0;
     color: #888;
     padding: 0 6px;
+  }
+  pre {
+    font-size: 16px !important;
+    @media screen and (max-width: $bp) {
+      font-size: 15px !important;
+    }
   }
   blockquote {
     margin: 0;
@@ -68,8 +80,6 @@ $gap: 12px;
   .article {
     p {
       padding-left: $gap;
-      margin-block-start: 1.2em;
-      margin-block-end: 1.2em;
     }
     pre {
       margin-left: $gap !important;
