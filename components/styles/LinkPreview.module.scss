@@ -1,10 +1,8 @@
 $unit: 120px;
 $unit-mb: 65px;
-$p: 8px;
+$p: 12px;
 
 .preview {
-  font-size: 0.9rem;
-  font-size: 1rem;
   line-height: normal;
   margin: 12px 0;
   color: $color-dark;
@@ -84,9 +82,8 @@ $p: 8px;
 }
 
 .title {
-  font-size: 1em;
   font-weight: bold;
-  margin-top: 8px;
+  margin-top: 12px;
   margin-bottom: 0;
 }
 .url {
