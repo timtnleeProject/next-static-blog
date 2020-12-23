@@ -25,14 +25,6 @@ export default function Image(props) {
   useEffect(() => {
     if (loaded) {
       const imgEl = img.current;
-      const enter = (e) => {
-        zoomEl.current.style.display = "block";
-        zoomImg.current.style.width =
-          img.current.getBoundingClientRect().width * 2 + "px";
-      };
-      const leave = (e) => {
-        zoomEl.current.style.display = "none";
-      };
       const move = (e) => {
         e.preventDefault();
         const event = e.touches?.[0] || e;
@@ -44,6 +36,15 @@ export default function Image(props) {
         zoomImg.current.style.transform = `translate(-${(x / imgPos.width) * 100}%, -${
           (y / imgPos.height) * 100
         }%)`;
+      };
+      const enter = (e) => {
+        zoomEl.current.style.display = "block";
+        zoomImg.current.style.width =
+          img.current.getBoundingClientRect().width * 2 + "px";
+        move(e);
+      };
+      const leave = (e) => {
+        zoomEl.current.style.display = "none";
       };
       imgEl.addEventListener("touchstart", enter);
       imgEl.addEventListener("mouseenter", enter);
