@@ -1,0 +1,43 @@
+.imgWrap {
+  width: 100%;
+  max-width: $bp-md;
+  display: block;
+  border: 1px solid $color-grey;
+  .img {
+    display: block;
+    width: 100%;
+    position: relative;
+    overflow: visible;
+  }
+  img {
+    width: 100%;
+  }
+  .info {
+    color: $color-grey-2;
+    padding: 8px;
+    font-style: italic;
+    display: block;
+  }
+  small::before {
+    content: "▲ ";
+  }
+}
+
+.zoomArea {
+  position: absolute;
+  display: none;
+  width: 40%;
+  border: 1px solid black;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  overflow: hidden;
+  background-color: white;
+  canvas {
+    width: 100%;
+  }
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+}

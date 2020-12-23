@@ -5,5 +5,5 @@
   "mtime": "2020/12/23",
   "author": "tim",
   "image": "https://imgur.com/MNDuZpB.jpg",
-  "preview": "紀錄一下自己在工作上使用 React Profiler 幫忙找到 component 有不必要 re-render 的問題。"
+  "preview": "紀錄一下自己在工作上使用 React Profiler 幫忙找到 component re-render 的問題。"
 }

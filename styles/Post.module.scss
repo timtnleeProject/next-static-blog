@@ -57,24 +57,6 @@ $gap: 12px;
       padding: 0;
     }
   }
-  .imgWrap {
-    width: 100%;
-    max-width: $bp-md;
-    display: block;
-    border: 1px solid $color-grey;
-  }
-  img {
-    width: 100%;
-  }
-  img + small {
-    color: $color-grey-2;
-    display: block;
-    padding: 8px;
-    font-style: italic;
-    &::before {
-      content: "▲ ";
-    }
-  }
 }
 
 // padding above PC breakpoint

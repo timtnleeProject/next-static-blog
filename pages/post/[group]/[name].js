@@ -13,6 +13,7 @@ import { ToTop } from "components/ToTop";
 import PageMetadata from "components/PageMetadata";
 import { DISQUS } from "setting";
 import LinkPreview from "components/LinkPreview";
+import Image from "components/Image";
 
 const renderers = {
   // eslint-disable-next-line react/display-name
@@ -33,14 +34,8 @@ const renderers = {
       </a>
     );
   },
-  image: function Image(el) {
-    const { src, alt } = el;
-    return (
-      <span className={styles.imgWrap}>
-        <img src={src} alt={alt} />
-        <small>{alt}</small>
-      </span>
-    );
+  image: function PostImage({ src, alt }) {
+    return <Image src={src} alt={alt} />;
   },
 };
 
