@@ -21,32 +21,34 @@ const { groups, posts } = (function () {
       const filenames = fs.readdirSync(dir);
       const postFiles = filenames.filter((name) => name.match(/\.md/));
       groups[gidx].count = postFiles.length; // group count
-      const postsInGroup = postFiles.map((filename) => {
-        const name = filename.replace(/\.md/, "");
-        try {
-          const metadata = JSON.parse(
-            fs.readFileSync(path.join(dir, `${name}.json`), "utf-8"),
-          );
-          const raw = fs.readFileSync(path.join(dir, filename), "utf-8");
+      const postsInGroup = postFiles
+        .map((filename) => {
+          const name = filename.replace(/\.md/, "");
+          try {
+            const metadata = JSON.parse(
+              fs.readFileSync(path.join(dir, `${name}.json`), "utf-8"),
+            );
+            const raw = fs.readFileSync(path.join(dir, filename), "utf-8");
 
-          return {
-            name,
-            raw,
-            group,
-            metadata,
-            tagMap: metadata.tags.reduce((map, tag) => {
-              return {
-                ...map,
-                [tag]: true,
-              };
-            }, {}),
-          };
-        } catch (error) {
-          throw new Error(
-            `\x1b[41m[Warning] ${name} missing .json metadata file \x1b[0m`,
-          );
-        }
-      });
+            return {
+              name,
+              raw,
+              group,
+              metadata,
+              tagMap: metadata.tags.reduce((map, tag) => {
+                return {
+                  ...map,
+                  [tag]: true,
+                };
+              }, {}),
+            };
+          } catch (error) {
+            throw new Error(
+              `\x1b[41m[Warning] ${name} missing .json metadata file \x1b[0m`,
+            );
+          }
+        })
+        .filter((p) => !p.metadata.hide);
 
       return posts.concat(postsInGroup);
     }, [])

@@ -11,9 +11,11 @@ import gfm from "remark-gfm";
 import breaks from "remark-breaks";
 import { ToTop } from "components/ToTop";
 import PageMetadata from "components/PageMetadata";
-import { DISQUS } from "setting";
+import { DISQUS, SITE } from "setting";
 import LinkPreview from "components/LinkPreview";
 import Image from "components/Image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 
 const renderers = {
   // eslint-disable-next-line react/display-name
@@ -61,6 +63,13 @@ export default function Post(props) {
           {post.raw}
         </ReactMarkdown>
       </article>
+      <div className={styles.declare}>
+        <div>喜歡此文章歡迎分享文章連結</div>
+        <div>
+          <FontAwesomeIcon icon={faExclamationCircle} />
+          此文章出自<b>{SITE.title}</b>，非經取得作者授權，不得任意轉載或公開傳輸
+        </div>
+      </div>
       <DiscussionEmbed
         shortname={DISQUS.shortname}
         config={{

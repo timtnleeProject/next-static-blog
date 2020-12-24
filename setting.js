@@ -1,6 +1,6 @@
 export const GROUP = {
   development: "程式開發",
-  travel: "旅遊",
+  aquarium: "水族",
   diary: "心情日記",
 };
 
