@@ -117,7 +117,8 @@ $img-ratio: 9/16;
     align-items: center;
     img {
       width: 100%;
-      filter: blur(2px);
+      //filter: blur(1px);
+      border: 1px solid $color-grey;
     }
   }
   .metatext {
@@ -127,7 +128,7 @@ $img-ratio: 9/16;
     text-align: center;
     width: 100%;
     height: 100%;
-    background-color: rgba($color: #fff, $alpha: 0.3);
+    background-color: rgba($color: #fff, $alpha: 0.4);
     display: flex;
     flex-direction: column;
     justify-content: center;

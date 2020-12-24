@@ -10,7 +10,7 @@ $p: 12px;
   max-width: $bp-sm;
   text-decoration: none;
   border: 1px solid $color-grey;
-  box-shadow: 3px 3px 2px 1px $color-grey-0;
+  box-shadow: $box-shadow $color-grey;
   &:hover {
     text-decoration: underline;
   }
