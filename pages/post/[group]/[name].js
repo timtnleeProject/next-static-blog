@@ -64,10 +64,9 @@ export default function Post(props) {
         </ReactMarkdown>
       </article>
       <div className={styles.declare}>
-        <div>喜歡此文章歡迎分享文章連結</div>
         <div>
           <FontAwesomeIcon icon={faExclamationCircle} />
-          此文章出自<b>{SITE.title}</b>，非經取得作者授權，不得任意轉載或公開傳輸
+          此文章出自<b>{SITE.title}</b>，請勿抄襲，轉載請註明出處。
         </div>
       </div>
       <DiscussionEmbed
