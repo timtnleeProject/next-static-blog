@@ -96,6 +96,7 @@ export function Header() {
 
   useEffect(() => {
     let y = 0;
+    let stamp = null; // 計算往上滑的 offset 起始點
     const store = {};
 
     const setConstant = () => {
@@ -133,6 +134,7 @@ export function Header() {
       }
       if (direction === "down") {
         // down
+        stamp = null;
         if (_y > boundary) {
           headerRef.current.classList.add(styles[headerStatus.hide]);
           headerRef.current.classList.remove(styles[headerStatus.fixed]);
@@ -144,11 +146,14 @@ export function Header() {
             styles[headerStatus.fixed],
             styles[headerStatus.hide],
           );
-        } else {
-          if (y - _y < scrollOffset) return;
+        } else if (_y <= boundary) {
           headerRef.current.classList.remove(styles[headerStatus.hide]);
-          if (_y > boundary) {
+        } else {
+          stamp ??= _y;
+          if (stamp - _y > scrollOffset) {
+            headerRef.current.classList.remove(styles[headerStatus.hide]);
             headerRef.current.classList.add(styles[headerStatus.fixed]);
+            stamp = null;
           }
         }
       }
