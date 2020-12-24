@@ -96,16 +96,28 @@ export function Header() {
 
   useEffect(() => {
     let y = 0;
-    const store = {
-      headerHeight: headerRef.current.getBoundingClientRect().height,
-      navHeight: navRef.current.getBoundingClientRect().height,
-    };
+    const store = {};
 
-    const handleScroll = () => {
-      const { headerHeight, navHeight } = store;
+    const setConstant = () => {
+      const headerHeight = headerRef.current.getBoundingClientRect().height;
+      const navHeight = navRef.current.getBoundingClientRect().height;
       const isMobile = headerHeight < navHeight;
       const offset = isMobile ? 0 : navHeight;
       const boundary = headerHeight + offset;
+      const scrollOffset = (isMobile ? headerHeight : navHeight) * 2;
+      Object.assign(store, {
+        headerHeight,
+        // navHeight,
+        // isMobile,
+        boundary,
+        scrollOffset,
+      });
+    };
+
+    setConstant();
+
+    const handleScroll = () => {
+      const { headerHeight, boundary, scrollOffset } = store;
       const _y = window.scrollY;
       const direction = y < _y ? "down" : "up";
       if (
@@ -133,6 +145,7 @@ export function Header() {
             styles[headerStatus.hide],
           );
         } else {
+          if (y - _y < scrollOffset) return;
           headerRef.current.classList.remove(styles[headerStatus.hide]);
           if (_y > boundary) {
             headerRef.current.classList.add(styles[headerStatus.fixed]);
@@ -143,8 +156,7 @@ export function Header() {
     };
 
     const handleResize = () => {
-      store.headerHeight = headerRef.current.getBoundingClientRect().height;
-      store.navHeight = navRef.current.getBoundingClientRect().height;
+      setConstant();
       handleScroll();
     };
 
