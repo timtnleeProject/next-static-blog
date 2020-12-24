@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faSearch } from "@fortawesome/free-solid-svg-icons";
 
 export default function Image(props) {
-  const { src, alt } = props;
+  const { src, alt, className } = props;
   const [loaded, setLoaded] = useState(false);
   const [canZoom, setCanZoom] = useState(false);
 
@@ -79,7 +79,7 @@ export default function Image(props) {
 
   return (
     <>
-      <span className={classnames(styles.imgWrap, canZoom && styles.canZoom)}>
+      <span className={classnames(styles.imgWrap, className, canZoom && styles.canZoom)}>
         <span className={styles.img}>
           {canZoom && (
             <span className={styles.hint}>move your finger/mouse over the image</span>
