@@ -1,7 +1,8 @@
 .card {
   padding: 2 * $p 3 * $p;
-  box-shadow: $box-shadow $color-grey-2;
+  box-shadow: 3px 3px 3px $color-grey;
   background-color: $color-white;
+  border: 1px solid $color-grey;
 }
 .card_title {
   background: linear-gradient(to right, $color-light, $color-main);

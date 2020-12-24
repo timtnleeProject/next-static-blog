@@ -4,6 +4,6 @@
   "birthtime": "2020/12/23",
   "mtime": "2020/12/23",
   "author": "tim",
-  "image": "https://imgur.com/MNDuZpB.jpg",
+  "image": "https://imgur.com/GPl6nSK.jpg",
   "preview": "紀錄一下自己在工作上使用 React Profiler 幫忙找到 component re-render 的問題。"
 }

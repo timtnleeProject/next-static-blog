@@ -32,7 +32,7 @@ https://zh-hant.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html
 只錄製我們要觀察的行為就好，避免不必要的雜訊；
 例如我錄製了打開/收合 Panel 兩個動作的這一小段時間。
 
-![React Profiler](https://imgur.com/MNDuZpB.jpg)
+![React Profiler](https://imgur.com/GPl6nSK.jpg)
 
 Profiler 主要分為三個部分：
 
