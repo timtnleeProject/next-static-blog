@@ -20,7 +20,6 @@ const { groups, posts } = (function () {
       const dir = path.join(postsDirectory, group.name);
       const filenames = fs.readdirSync(dir);
       const postFiles = filenames.filter((name) => name.match(/\.md/));
-      groups[gidx].count = postFiles.length; // group count
       const postsInGroup = postFiles
         .map((filename) => {
           const name = filename.replace(/\.md/, "");
@@ -49,12 +48,12 @@ const { groups, posts } = (function () {
           }
         })
         .filter((p) => !p.metadata.hide);
-
+      groups[gidx].count = postsInGroup.length; // group count
       return posts.concat(postsInGroup);
     }, [])
     .sort(sortBy((post) => post.metadata.birthtime, true));
   return {
-    groups,
+    groups: groups.filter((g) => g.count),
     posts,
   };
 })();
