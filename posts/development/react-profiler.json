@@ -2,7 +2,7 @@
   "title": "用 React Profiler 幫助找出 component render 問題",
   "tags": ["React"],
   "birthtime": "2020/12/23",
-  "mtime": "2020/12/23",
+  "mtime": "2020/12/28",
   "author": "tim",
   "image": "https://imgur.com/GPl6nSK.jpg",
   "preview": "紀錄一下自己在工作上使用 React Profiler 幫忙找到 component re-render 的問題。"

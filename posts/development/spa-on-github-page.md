@@ -104,7 +104,7 @@ module.exports = {
 
 可以加上環境變數來區分本地開發和 production 版本
 
-**Create-React-App + react-router-dom**
+### Create-React-App + react-router-dom
 
 ```jsx
 const basename = process.env.REACT_APP_BASENAME; // 可以設定在 .env 相關檔案
@@ -117,7 +117,7 @@ ReactDOM.render(
 );
 ```
 
-**vue-router**
+### vue-router
 
 ```javascript
 export default new Router({

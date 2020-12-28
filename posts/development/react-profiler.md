@@ -5,15 +5,15 @@
 ![點擊後卡頓一下才打開/收合](https://imgur.com/Sr42M2f.gif)
 
 直接看 Code 一時不知道問題在哪
-所以需要 React Profiler 幫助觀察 component render 狀況。
+所以需要使用 React Profiler 來幫助觀察 component render 狀況。
 
-## React Profiler
+## React Profiler 簡介
 
 React 官網的介紹：
 
 > collect timing information about each component that’s rendered in order to identify performance bottlenecks in React applications
 
-簡單來說就是蒐集和呈現組件渲染的時間等資訊
+簡單來說就是用來蒐集和呈現 React 組件渲染的時間等資訊
 
 可以參考官網的文件
 https://zh-hant.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html

@@ -5,14 +5,15 @@ $p: 12px;
 .preview {
   line-height: normal;
   margin: 12px 0;
-  color: $color-dark;
+  color: rgba($color: $color-dark, $alpha: 0.7);
   width: 100%;
   max-width: $bp-sm;
   text-decoration: none;
   border: 1px solid $color-grey;
   box-shadow: $box-shadow $color-grey;
   &:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    color: rgba($color: $color-dark, $alpha: 1);
   }
 }
 .img {

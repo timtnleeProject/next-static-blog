@@ -1,3 +1,4 @@
+import React, { useEffect, useRef } from "react";
 import { getPost, getPosts } from "data";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -9,17 +10,35 @@ import Page from "components/Page";
 import { BreadCrumb } from "components/BreadCrumb";
 import gfm from "remark-gfm";
 import breaks from "remark-breaks";
+import slug from "remark-slug";
 import { ToTop } from "components/ToTop";
 import PageMetadata from "components/PageMetadata";
 import { DISQUS, SITE } from "setting";
 import LinkPreview from "components/LinkPreview";
 import Image from "components/Image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
+import { faExclamationCircle, faThumbtack } from "@fortawesome/free-solid-svg-icons";
 
 const renderers = {
-  // eslint-disable-next-line react/display-name
-  code: ({ language, value }) => {
+  heading: function Heading(el) {
+    const { level, node, children } = el;
+    const slug = node?.data?.id;
+    if (level === 2 || level === 3) {
+      return React.createElement(`h${level}`, { id: slug }, [
+        React.createElement(
+          "a",
+          { href: `#${slug}`, ariaHidden: true, tabIndex: -1 },
+          React.createElement(FontAwesomeIcon, {
+            icon: faThumbtack,
+            className: level === 2 ? "g-color-emphasis" : "g-color-main",
+          }),
+        ),
+        ...React.Children.toArray(children),
+      ]);
+    }
+    return React.createElement(`h${level}`, {}, React.Children.toArray(children));
+  },
+  code: function Code({ language, value }) {
     return (
       <SyntaxHighlighter style={tomorrow} language={language}>
         {value}
@@ -49,6 +68,16 @@ export default function Post(props) {
   const identifier = `${group}/${name}`;
   const title = metadata.title;
   const language = "en";
+
+  const ref = useRef();
+  useEffect(() => {
+    const tree = [];
+    const headers = ref.current.querySelectorAll("h2,h3");
+    Array.from(headers).forEach((el) => {
+      console.log(el);
+    });
+  }, []);
+
   return (
     <Page.Content>
       <PageMetadata
@@ -58,8 +87,12 @@ export default function Post(props) {
       />
       <BreadCrumb />
       <Metadata post={post} />
-      <article className={styles.article}>
-        <ReactMarkdown linkTarget="_blank" renderers={renderers} plugins={[gfm, breaks]}>
+      <article ref={ref} className={styles.article}>
+        <ReactMarkdown
+          linkTarget="_blank"
+          renderers={renderers}
+          plugins={[gfm, breaks, slug]}
+        >
           {post.raw}
         </ReactMarkdown>
       </article>
