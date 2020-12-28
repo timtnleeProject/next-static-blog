@@ -20,7 +20,6 @@ https://zh-hant.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html
 
 但是 profiler 工具[更新的很快](https://stackoverflow.com/questions/61120759/why-react-dev-tools-profiler-dont-show-me-component-props)，現在介面有些功能和文件描述的並不一致。
 
-
 ## Rreact Profiler 查看可能的 component render 問題
 
 ### 使用 Profiler
@@ -82,10 +81,8 @@ const TableAccountList = (props) => {
   };
   return (
     <>
-      <SelectableTable
-        onOpen={handleOpen}
-      />
-     <PanelEdit accountId={accountId} isOpen={isOpen} />
+      <SelectableTable onOpen={handleOpen} />
+      <PanelEdit accountId={accountId} isOpen={isOpen} />
     </>
   );
 };
@@ -93,38 +90,44 @@ const TableAccountList = (props) => {
 
 從第一個耗時的 commit 開始看，會發現打開 panel 時， `SelectableTable` 進行了不必要的 render，耗時 210 ms。
 點擊 component 可以看到原因：
-* Hooks changed
-* Props changed: (onOpen)
+
+- Hooks changed
+- Props changed: (onOpen)
 
 ![SelectableTable render](https://imgur.com/PkjOHjQ.jpg)
 
 找到原因後進行修正：
-* 將 `SelectableTable` 使用 `React.memo` 避免 re-render
-* `handleOpen` 使用 `useCallback` 來 memoize
+
+- 將 `SelectableTable` 使用 `React.memo` 避免 re-render
+- `handleOpen` 使用 `useCallback` 來 memoize
 
 ```jsx
-const SelectableTable = React.memo((props) => {
+const SelectableTable = React.memo(function SelectableTable(
+  props,
+) {
   // ...
-})
+});
 
 const TableAccountList = (props) => {
   const { isOpen, open, close } = usePanel();
   const [accountId, setAccountId] = useState("");
 
-  const handleOpen = useCallback((account) => {
-    open(); // this is already memoized (wrap with useCallback)
-    setAccountId(account.globalId);
-  }, [open]);
+  const handleOpen = useCallback(
+    (account) => {
+      open(); // this is already memoized (wrap with useCallback)
+      setAccountId(account.globalId);
+    },
+    [open],
+  );
   return (
     <>
-      <SelectableTable
-        onOpen={handleOpen}
-      />
-     <PanelEdit accountId={accountId} isOpen={isOpen} />
+      <SelectableTable onOpen={handleOpen} />
+      <PanelEdit accountId={accountId} isOpen={isOpen} />
     </>
   );
 };
 ```
+
 可以看到現在 `SelectableTable` 不會 re-render 了：
 
 ![現在 SelectableTable 不會 re-render 了](https://imgur.com/g566uqG.jpg)

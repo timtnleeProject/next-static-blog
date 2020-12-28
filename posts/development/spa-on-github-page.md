@@ -68,9 +68,10 @@ dist_folder/
 ```javascript
 // vue.config.js
 module.exports = {
-  publicPath: process.env.NODE_ENV === "production"
-    ? "/<repo_name>"
-    : "/",
+  publicPath:
+    process.env.NODE_ENV === "production"
+      ? "/<repo_name>"
+      : "/",
 };
 ```
 

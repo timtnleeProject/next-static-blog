@@ -51,8 +51,14 @@ export const Date = function Date({ post }) {
   const { metadata } = post;
   return (
     <div className={styles.date}>
-      <span>發表：{formatDate(metadata.birthtime, ["YYYY/MM/DD"])}</span>
-      <span>最後更新：{formatDate(metadata.mtime, ["YYYY/MM/DD"])}</span>
+      <span>
+        發表日期：
+        {formatDate(metadata.birthtime, ["YYYY/MM/DD"])}
+      </span>
+      <span>
+        最後更新：
+        {formatDate(metadata.mtime, ["YYYY/MM/DD"])}
+      </span>
     </div>
   );
 };
