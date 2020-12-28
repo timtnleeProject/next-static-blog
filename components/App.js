@@ -187,12 +187,12 @@ export function Header() {
 }
 
 export function Body(props) {
-  return <div className={styles.body}>{props.children}</div>;
+  return <div className={classnames(styles.body, props.className)}>{props.children}</div>;
 }
 
 export function Content(props) {
   return (
-    <Card as="main" className={styles.content}>
+    <Card as="main" className={classnames(styles.content, props.className)}>
       {props.children}
     </Card>
   );

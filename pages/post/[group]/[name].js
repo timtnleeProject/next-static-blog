@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import classnames from "classnames";
 import { getPost, getPosts } from "data";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -11,13 +12,15 @@ import { BreadCrumb } from "components/BreadCrumb";
 import gfm from "remark-gfm";
 import breaks from "remark-breaks";
 import slug from "remark-slug";
-import { ToTop } from "components/ToTop";
 import PageMetadata from "components/PageMetadata";
 import { DISQUS, SITE } from "setting";
 import LinkPreview from "components/LinkPreview";
 import Image from "components/Image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExclamationCircle, faThumbtack } from "@fortawesome/free-solid-svg-icons";
+import { faExclamationCircle, faLink } from "@fortawesome/free-solid-svg-icons";
+import Tree from "components/Tree";
+import App from "components/App";
+import Card from "components/Card";
 
 const renderers = {
   heading: function Heading(el) {
@@ -27,10 +30,14 @@ const renderers = {
       return React.createElement(`h${level}`, { id: slug }, [
         React.createElement(
           "a",
-          { href: `#${slug}`, ariaHidden: true, tabIndex: -1 },
+          {
+            href: `#${slug}`,
+            "aria-hidden": true,
+            tabIndex: -1,
+            key: "link",
+          },
           React.createElement(FontAwesomeIcon, {
-            icon: faThumbtack,
-            className: level === 2 ? "g-color-emphasis" : "g-color-main",
+            icon: faLink,
           }),
         ),
         ...React.Children.toArray(children),
@@ -69,13 +76,30 @@ export default function Post(props) {
   const title = metadata.title;
   const language = "en";
 
+  // tree
   const ref = useRef();
+  const [tree, setTree] = useState([]);
+  const [mbTreeToggle, setMbTreeToggle] = useState(false);
   useEffect(() => {
-    const tree = [];
+    const t = [];
     const headers = ref.current.querySelectorAll("h2,h3");
     Array.from(headers).forEach((el) => {
-      console.log(el);
+      if (el.tagName === "H2") {
+        t.push({
+          id: el.id,
+          name: el.innerText,
+          href: `#${el.id}`,
+          items: [],
+        });
+      } else {
+        t[t.length - 1]?.items.push({
+          id: el.id,
+          name: el.innerText,
+          href: `#${el.id}`,
+        });
+      }
     });
+    setTree(t);
   }, []);
 
   return (
@@ -111,7 +135,17 @@ export default function Post(props) {
           language,
         }}
       ></DiscussionEmbed>
-      <ToTop />
+      <App.Body className={styles.mockBody}>
+        <App.Content className={styles.mockContent}></App.Content>
+        <App.Aside>
+          <Card className={classnames(styles.tree, mbTreeToggle && styles.mbTreeShow)}>
+            <Tree tree={tree} />
+          </Card>
+          <div className={styles.indicator} onClick={() => setMbTreeToggle(true)}>
+            目錄
+          </div>
+        </App.Aside>
+      </App.Body>
     </Page.Content>
   );
 }

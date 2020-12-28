@@ -13,7 +13,7 @@ $trans: 0.3s;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  z-index: 2; // to be above nav
+  z-index: 300; // to be above nav
   .bars {
     display: none;
   }
@@ -28,13 +28,14 @@ $trans: 0.3s;
   }
 }
 .content {
+  z-index: 100;
   flex: 0 1 $bp-lg;
   display: flex;
   overflow-x: auto;
 }
 .aside {
   margin-left: 12px;
-  flex: 0 0 250px;
+  flex: 0 0 $app-aside;
   @media screen and (max-width: $bp) {
     padding: 8px;
   }
@@ -82,7 +83,7 @@ $trans: 0.3s;
   padding: 24px;
   box-shadow: $shadow-px $color-grey-2;
   color: $color-light;
-  z-index: 1;
+  z-index: 200;
   .close {
     display: none;
   }
@@ -182,7 +183,7 @@ $trans: 0.3s;
     left: -100%;
     top: 0;
     height: 100vh;
-    z-index: 9;
+    z-index: 900;
     transform: translateX(0%);
     transition: transform $trans;
     box-shadow: none;
