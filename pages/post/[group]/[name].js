@@ -17,7 +17,11 @@ import { DISQUS, SITE } from "setting";
 import LinkPreview from "components/LinkPreview";
 import Image from "components/Image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExclamationCircle, faLink } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCaretUp,
+  faExclamationCircle,
+  faLink,
+} from "@fortawesome/free-solid-svg-icons";
 import { faElementor } from "@fortawesome/free-brands-svg-icons";
 import Tree from "components/Tree";
 import App from "components/App";
@@ -139,19 +143,24 @@ export default function Post(props) {
           language,
         }}
       ></DiscussionEmbed>
-      <App.Body className={styles.mockBody}>
-        <App.Content className={styles.mockContent}></App.Content>
-        <App.Aside>
-          <button className={styles.indicator} onClick={toggle}>
-            <FontAwesomeIcon icon={faElementor} className={styles.menuIcon} />
-            目錄
-          </button>
-          {mbTreeToggle && <div className={styles.mbLayer} onClick={toggle}></div>}
-          <Card className={classnames(styles.menu, mbTreeToggle && styles.mbTreeShow)}>
-            <Tree tree={tree} />
-          </Card>
-        </App.Aside>
-      </App.Body>
+      {tree.length >= 2 && (
+        <App.Body className={styles.mockBody}>
+          <App.Content className={styles.mockContent}></App.Content>
+          <App.Aside>
+            {mbTreeToggle && <div className={styles.mbLayer} onClick={toggle}></div>}
+            <Card className={classnames(styles.menu, mbTreeToggle && styles.mbTreeShow)}>
+              <Tree tree={tree} />
+            </Card>
+            <button className={styles.indicator} onClick={toggle}>
+              <FontAwesomeIcon
+                icon={mbTreeToggle ? faCaretUp : faElementor}
+                className={styles.menuIcon}
+              />
+              目錄
+            </button>
+          </App.Aside>
+        </App.Body>
+      )}
     </Page.Content>
   );
 }

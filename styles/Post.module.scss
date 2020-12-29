@@ -113,6 +113,8 @@ $margin: 1.5em;
   overflow-y: auto;
   display: none;
   padding-top: 1.2em;
+  box-shadow: $box-shadow $color-emphasis;
+  border-radius: 4px;
 }
 .mbLayer {
   display: none;
@@ -125,12 +127,15 @@ $margin: 1.5em;
   width: 100%;
   margin-top: 4px;
   font-size: 1em;
-  background-color: #fff;
-  border: 1px solid $color-grey;
-  box-shadow: $box-shadow $color-grey;
-  color: $color-main;
+  background-color: $color-main;
+  border: 1px solid $color-main;
+  box-shadow: $box-shadow $color-emphasis;
+  color: $color-white;
   padding: 4px 12px;
   cursor: pointer;
+  &:hover {
+    border: 1px solid $color-emphasis;
+  }
 }
 .menuIcon {
   margin-right: 0.5em;
