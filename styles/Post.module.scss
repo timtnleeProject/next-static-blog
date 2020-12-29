@@ -106,10 +106,10 @@ $margin: 1.5em;
   border: none;
   box-shadow: none;
 }
-.tree {
+.menu {
   pointer-events: initial;
   cursor: pointer;
-  z-index: 999;
+  z-index: 800;
 }
 .indicator {
   pointer-events: initial;
@@ -120,13 +120,28 @@ $margin: 1.5em;
   .mockContent {
     display: none;
   }
-  .tree {
+  .menu {
+    position: fixed;
+    width: 80%;
+    right: 12px;
+    bottom: 52px;
     display: none;
+    font-size: 15px;
+    &:focus {
+      outline: 1px solid black;
+    }
   }
-  .tree.mbTreeShow {
+  .menu.mbTreeShow {
     display: block;
   }
   .indicator {
-    //display: block;
+    display: block;
+    position: fixed;
+    right: 12px;
+    bottom: 24px;
+    height: 24px;
+    font-size: 16px;
+    border: 2px solid $color-main;
+    background-color: #fff;
   }
 }

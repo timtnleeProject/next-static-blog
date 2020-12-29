@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import classnames from "classnames";
 import { getPost, getPosts } from "data";
 import ReactMarkdown from "react-markdown";
@@ -77,9 +77,13 @@ export default function Post(props) {
   const language = "en";
 
   // tree
-  const ref = useRef();
+  const ref = useRef(); // article
   const [tree, setTree] = useState([]);
   const [mbTreeToggle, setMbTreeToggle] = useState(false);
+  const open = useCallback(() => {
+    setMbTreeToggle(true);
+  }, []);
+  const close = useCallback(() => setMbTreeToggle(false), []);
   useEffect(() => {
     const t = [];
     const headers = ref.current.querySelectorAll("h2,h3");
@@ -138,11 +142,13 @@ export default function Post(props) {
       <App.Body className={styles.mockBody}>
         <App.Content className={styles.mockContent}></App.Content>
         <App.Aside>
-          <Card className={classnames(styles.tree, mbTreeToggle && styles.mbTreeShow)}>
-            <Tree tree={tree} />
-          </Card>
-          <div className={styles.indicator} onClick={() => setMbTreeToggle(true)}>
-            目錄
+          <div onBlur={close}>
+            <Card className={classnames(styles.menu, mbTreeToggle && styles.mbTreeShow)}>
+              <Tree tree={tree} />
+            </Card>
+            <button className={styles.indicator} onClick={open}>
+              目錄
+            </button>
           </div>
         </App.Aside>
       </App.Body>

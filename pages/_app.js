@@ -2,7 +2,7 @@ import App from "components/App";
 import PostGroup from "components/Aside/PostGroup";
 import Head from "next/head";
 import { SITE } from "setting";
-import "@fortawesome/fontawesome-svg-core/styles.css";
+import "@fortawesome/fontawesome-svg-core/styles.css"; // To prevent SVG large flash when page init at prod mode.
 import "../styles/globals.scss";
 
 function MyApp({ Component, pageProps }) {
