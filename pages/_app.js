@@ -2,6 +2,7 @@ import App from "components/App";
 import PostGroup from "components/Aside/PostGroup";
 import Head from "next/head";
 import { SITE } from "setting";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import "../styles/globals.scss";
 
 function MyApp({ Component, pageProps }) {
