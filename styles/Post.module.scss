@@ -108,15 +108,34 @@ $margin: 1.5em;
 }
 .menu {
   pointer-events: initial;
-  cursor: pointer;
   z-index: 800;
+  max-height: 65vh;
+  overflow-y: auto;
+  display: none;
+  padding-top: 1.2em;
+}
+.mbLayer {
+  display: none;
+}
+.menu.mbTreeShow {
+  display: block;
 }
 .indicator {
   pointer-events: initial;
-  display: none;
+  width: 100%;
+  margin-top: 4px;
+  font-size: 1em;
+  background-color: #fff;
+  border: 1px solid $color-grey;
+  box-shadow: $box-shadow $color-grey;
+  color: $color-main;
+  padding: 4px 12px;
+  cursor: pointer;
 }
-
-@media screen and (max-width: $bp) {
+.menuIcon {
+  margin-right: 0.5em;
+}
+@media screen and (max-width: $bp-lg) {
   .mockContent {
     display: none;
   }
@@ -124,24 +143,24 @@ $margin: 1.5em;
     position: fixed;
     width: 80%;
     right: 12px;
-    bottom: 52px;
-    display: none;
+    bottom: 64px;
     font-size: 15px;
-    &:focus {
-      outline: 1px solid black;
-    }
   }
-  .menu.mbTreeShow {
+  .mbLayer {
     display: block;
+    position: fixed;
+    pointer-events: initial;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.1);
   }
   .indicator {
-    display: block;
     position: fixed;
     right: 12px;
     bottom: 24px;
-    height: 24px;
-    font-size: 16px;
-    border: 2px solid $color-main;
-    background-color: #fff;
+    width: unset;
+    height: 36px;
   }
 }

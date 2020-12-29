@@ -17,7 +17,8 @@ body {
 
 button,
 a,
-input {
+input,
+div {
   &:focus {
     outline: none;
   }

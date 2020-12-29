@@ -1,6 +1,11 @@
 .tree {
-  padding-left: 1em;
+  padding-left: 12px;
+  font-size: 0.9em;
   li {
-    margin-bottom: 0.5em;
+    margin-bottom: 0.7em;
+    padding: 0 0.5em;
+    &.first {
+      border-left: 1px solid $color-main;
+    }
   }
 }

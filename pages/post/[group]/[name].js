@@ -18,6 +18,7 @@ import LinkPreview from "components/LinkPreview";
 import Image from "components/Image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationCircle, faLink } from "@fortawesome/free-solid-svg-icons";
+import { faElementor } from "@fortawesome/free-brands-svg-icons";
 import Tree from "components/Tree";
 import App from "components/App";
 import Card from "components/Card";
@@ -80,10 +81,9 @@ export default function Post(props) {
   const ref = useRef(); // article
   const [tree, setTree] = useState([]);
   const [mbTreeToggle, setMbTreeToggle] = useState(false);
-  const open = useCallback(() => {
-    setMbTreeToggle(true);
+  const toggle = useCallback(() => {
+    setMbTreeToggle((t) => !t);
   }, []);
-  const close = useCallback(() => setMbTreeToggle(false), []);
   useEffect(() => {
     const t = [];
     const headers = ref.current.querySelectorAll("h2,h3");
@@ -142,14 +142,14 @@ export default function Post(props) {
       <App.Body className={styles.mockBody}>
         <App.Content className={styles.mockContent}></App.Content>
         <App.Aside>
-          <div onBlur={close}>
-            <Card className={classnames(styles.menu, mbTreeToggle && styles.mbTreeShow)}>
-              <Tree tree={tree} />
-            </Card>
-            <button className={styles.indicator} onClick={open}>
-              目錄
-            </button>
-          </div>
+          <button className={styles.indicator} onClick={toggle}>
+            <FontAwesomeIcon icon={faElementor} className={styles.menuIcon} />
+            目錄
+          </button>
+          {mbTreeToggle && <div className={styles.mbLayer} onClick={toggle}></div>}
+          <Card className={classnames(styles.menu, mbTreeToggle && styles.mbTreeShow)}>
+            <Tree tree={tree} />
+          </Card>
         </App.Aside>
       </App.Body>
     </Page.Content>
