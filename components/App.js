@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import styles from "./styles/App.module.scss";
 import PropTypes from "prop-types";
@@ -182,6 +183,7 @@ export function Header() {
         <h2 className={styles.subtitle}>{SITE.subtitle}</h2>
       </header>
       <Nav show={show} setShow={setShow} innerRef={navRef}></Nav>
+      <Image src="/up.jpg" unsized />
     </>
   );
 }
