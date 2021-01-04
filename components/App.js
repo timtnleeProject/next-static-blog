@@ -183,7 +183,6 @@ export function Header() {
         <h2 className={styles.subtitle}>{SITE.subtitle}</h2>
       </header>
       <Nav show={show} setShow={setShow} innerRef={navRef}></Nav>
-      <Image src="/up.jpg" unsized />
     </>
   );
 }
