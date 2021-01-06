@@ -51,14 +51,14 @@ Microsoft 帳號 email 不一定要使用 outlook，像我就是用 gmail 當作
 
 ![匯入書籤](https://imgur.com/tZFjBFT.jpg)
 
-## 更改預設瀏覽器為 Google
+## 更改預設搜尋引擎為 Google
 
-Edge 預設的瀏覽器是 Bing，
+Edge 預設的搜尋引擎是 Bing，
 我們可以改成 Google
 
-到 **設定 > 隱私權、搜尋與服務 > 網址列和搜尋** 將預設瀏覽器改成 Google
+到 **設定 > 隱私權、搜尋與服務 > 網址列和搜尋** 將預設搜尋引擎改成 Google
 
-![更改預設瀏覽器](https://imgur.com/MCQomz3.jpg)
+![更改預設搜尋引擎](https://imgur.com/MCQomz3.jpg)
 
 ## 更改首頁、啟動頁面
 
