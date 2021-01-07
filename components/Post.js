@@ -105,21 +105,19 @@ export const VerticalItem = function VerticalItem({ post }) {
           <PostTag key={tag} tag={tag} group={group}></PostTag>
         ))}
       </div>
-      <div className={styles.preview}>
-        <summary>{metadata.preview}</summary>
-        <div className={styles.go}>
-          <Link
-            href={{
-              pathname: "/post/[group]/[name]",
-              query: {
-                name,
-                group: group.name,
-              },
-            }}
-          >
-            <a>繼續閱讀》</a>
-          </Link>
-        </div>
+      <summary>{metadata.preview}</summary>
+      <div className={styles.go}>
+        <Link
+          href={{
+            pathname: "/post/[group]/[name]",
+            query: {
+              name,
+              group: group.name,
+            },
+          }}
+        >
+          <a>繼續閱讀》</a>
+        </Link>
       </div>
     </Card>
   );

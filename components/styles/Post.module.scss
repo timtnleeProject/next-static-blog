@@ -26,6 +26,8 @@ $gap: 12px;
 }
 .verticalItem {
   padding: 0;
+  display: flex;
+  flex-direction: column;
   .imageBolck {
     width: 100%;
     position: relative;
@@ -72,14 +74,11 @@ $gap: 12px;
     padding-left: $gap;
     font-size: 12px;
   }
-  .preview {
-    display: flex;
-    flex-direction: column;
-  }
   summary {
     padding: 0 $gap;
     margin: $gap 0;
     font-size: 0.9em;
+    flex-grow: 1;
   }
   .go {
     text-align: right;
