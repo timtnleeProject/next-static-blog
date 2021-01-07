@@ -14,11 +14,11 @@ export default function Home(props) {
         home={true}
       />
       <h1>最近發表</h1>
-      <Post.List>
+      <Post.VerticalList>
         {posts.map((post) => (
-          <Post.Item key={post.name} post={post} />
+          <Post.VerticalItem key={post.name} post={post} />
         ))}
-      </Post.List>
+      </Post.VerticalList>
     </Page.Content>
   );
 }

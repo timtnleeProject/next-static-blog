@@ -106,9 +106,9 @@ li {
   }
 }
 
-$variant: "main", "emphasis", "grey", "light", "link", "white", "dark";
-$colors: $color-main, $color-emphasis, $color-grey, $color-light, $color-link,
-  $color-white, $color-dark;
+$variant: "main", "emphasis", "grey", "grey-0", "grey-2", "light", "link", "white", "dark";
+$colors: $color-main, $color-emphasis, $color-grey, $color-grey-0, $color-grey-2,
+  $color-light, $color-link, $color-white, $color-dark;
 @each $var in $variant {
   $i: index($variant, $var);
   .g-bg-#{$var} {

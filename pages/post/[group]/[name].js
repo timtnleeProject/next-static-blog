@@ -112,14 +112,14 @@ export default function Post(props) {
 
   return (
     <Page.Content>
-      <PageMetadata
-        title={metadata.title}
-        description={metadata.preview}
-        image={metadata.image}
-      />
-      <BreadCrumb />
-      <Metadata post={post} />
       <article ref={ref} className={styles.article}>
+        <PageMetadata
+          title={metadata.title}
+          description={metadata.preview}
+          image={metadata.image}
+        />
+        <BreadCrumb />
+        <Metadata post={post} />
         <ReactMarkdown
           linkTarget="_blank"
           renderers={renderers}
@@ -127,22 +127,22 @@ export default function Post(props) {
         >
           {post.raw}
         </ReactMarkdown>
-      </article>
-      <div className={styles.declare}>
-        <div>
-          <FontAwesomeIcon icon={faExclamationCircle} />
-          此文章出自<b>{SITE.title}</b>，請勿抄襲，轉載請註明出處。
+        <div className={styles.declare}>
+          <div>
+            <FontAwesomeIcon icon={faExclamationCircle} />
+            此文章出自<b>{SITE.title}</b>，請勿抄襲，轉載請註明出處。
+          </div>
         </div>
-      </div>
-      <DiscussionEmbed
-        shortname={DISQUS.shortname}
-        config={{
-          url,
-          identifier,
-          title,
-          language,
-        }}
-      ></DiscussionEmbed>
+        <DiscussionEmbed
+          shortname={DISQUS.shortname}
+          config={{
+            url,
+            identifier,
+            title,
+            language,
+          }}
+        ></DiscussionEmbed>
+      </article>
       {tree.length >= 2 && (
         <App.Body className={styles.mockBody}>
           <App.Content className={styles.mockContent}></App.Content>

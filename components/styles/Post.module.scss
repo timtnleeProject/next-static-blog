@@ -7,6 +7,88 @@ $img-ratio: 9/16;
   }
 }
 
+$gap: 12px;
+.verticalList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -$gap;
+  .verticalItem {
+    margin-right: $gap;
+    margin-bottom: $gap;
+    flex: 0 0 calc(50% - #{$gap});
+  }
+  @media screen and (max-width: $bp) {
+    .verticalItem {
+      flex: 0 0 100%;
+    }
+  }
+}
+.verticalItem {
+  padding: 0;
+  .imageBolck {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: $color-grey;
+    .pad {
+      width: 100%;
+      height: 0;
+      padding-bottom: 100% * $img-ratio;
+    }
+    img {
+      display: block;
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+  }
+  .titleBlock {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #fff;
+    padding: 0 1em;
+    h2 {
+      font-size: 1.3em;
+    }
+  }
+
+  .group {
+    font-size: 12px;
+    margin: $gap 0;
+    padding-left: $gap;
+  }
+  .tags {
+    margin: $gap 0;
+    padding-left: $gap;
+    font-size: 12px;
+  }
+  .preview {
+    display: flex;
+    flex-direction: column;
+  }
+  summary {
+    padding: 0 $gap;
+    margin: $gap 0;
+    font-size: 0.9em;
+  }
+  .go {
+    text-align: right;
+    color: $color-link;
+    font-size: 1em;
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+}
+
 .item {
   color: #666;
   .block {
@@ -92,8 +174,8 @@ $img-ratio: 9/16;
 }
 
 .date {
-  margin: 12px 0;
-  padding-left: 8px;
+  margin: $gap 0;
+  padding-left: $gap;
   font-style: italic;
   color: $color-grey-2;
   font-size: 12px;
@@ -118,7 +200,7 @@ $img-ratio: 9/16;
     img {
       width: 100%;
       //filter: blur(1px);
-      border: 1px solid $color-grey;
+      // border: 1px solid $color-grey;
     }
   }
   .metatext {
@@ -128,13 +210,19 @@ $img-ratio: 9/16;
     text-align: center;
     width: 100%;
     height: 100%;
-    background-color: rgba($color: #fff, $alpha: 0.4);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0) 100%
+    );
     h1 {
       margin: 12px;
       padding: 0 12px;
+      color: #fff;
     }
     .tag {
       font-size: 12px;
@@ -151,9 +239,6 @@ $img-ratio: 9/16;
 }
 
 // Metadata title
-.pctitle {
-  text-shadow: 0px 0px 3px $color-light;
-}
 .mbtitle {
   display: none;
 }

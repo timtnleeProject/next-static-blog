@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { useCallback, useEffect, useMemo } from "react";
 import { GROUP } from "setting";
 import PageMetadata from "components/PageMetadata";
+import classnames from "classnames";
 
 export default function GroupPost({ groupName, posts, tags }) {
   const router = useRouter();
@@ -85,12 +86,14 @@ export default function GroupPost({ groupName, posts, tags }) {
           </Tag>
         ))}
       </div>
-
-      <Post.List>
+      <div className={classnames("g-color-grey-2", styles.total)}>
+        共 {filteredPosts.length} 篇文章
+      </div>
+      <Post.VerticalList>
         {filteredPosts.map((post) => (
-          <Post.Item key={post.name} post={post} />
+          <Post.VerticalItem key={post.name} post={post} />
         ))}
-      </Post.List>
+      </Post.VerticalList>
     </Page.Content>
   );
 }

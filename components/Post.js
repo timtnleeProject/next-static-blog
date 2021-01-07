@@ -55,11 +55,73 @@ export const Date = function Date({ post }) {
         發表日期：
         {formatDate(metadata.birthtime, ["YYYY/MM/DD"])}
       </span>
+      <span>/</span>
       <span>
         最後更新：
         {formatDate(metadata.mtime, ["YYYY/MM/DD"])}
       </span>
     </div>
+  );
+};
+
+export const VerticalList = function VerticalList(props) {
+  const { className } = props;
+  return <ul className={classnames(styles.verticalList, className)}>{props.children}</ul>;
+};
+
+export const VerticalItem = function VerticalItem({ post }) {
+  const { name, metadata, group } = post;
+  return (
+    <Card as="li" className={styles.verticalItem}>
+      {metadata.image && (
+        <div className={styles.imageBolck}>
+          <div className={styles.pad}></div>
+          <img src={metadata.image} alt={metadata.title}></img>
+          <div className={styles.titleBlock}>
+            <Link
+              href={{
+                pathname: "/post/[group]/[name]",
+                query: {
+                  name,
+                  group: group.name,
+                },
+              }}
+            >
+              <a>
+                <h2>{metadata.title}</h2>
+              </a>
+            </Link>
+          </div>
+        </div>
+      )}
+      <Date post={post} />
+      <div className={styles.group}>
+        類別：
+        <GroupTag group={group} />
+      </div>
+      <div className={styles.tags}>
+        標籤：
+        {metadata.tags?.map((tag) => (
+          <PostTag key={tag} tag={tag} group={group}></PostTag>
+        ))}
+      </div>
+      <div className={styles.preview}>
+        <summary>{metadata.preview}</summary>
+        <div className={styles.go}>
+          <Link
+            href={{
+              pathname: "/post/[group]/[name]",
+              query: {
+                name,
+                group: group.name,
+              },
+            }}
+          >
+            <a>繼續閱讀》</a>
+          </Link>
+        </div>
+      </div>
+    </Card>
   );
 };
 
@@ -155,6 +217,8 @@ export const Metadata = function Metadata({ post }) {
 export default {
   List,
   Item,
+  VerticalList,
+  VerticalItem,
   Metadata,
 };
 
