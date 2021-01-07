@@ -12,6 +12,7 @@ export default function Home(props) {
         title={`${SITE.title} - ${SITE.subtitle}`}
         description="生活記錄、文章撰寫"
         home={true}
+        image={`${SITE.url}/up.jpg`}
       />
       <h1>最近發表</h1>
       <Post.VerticalList>

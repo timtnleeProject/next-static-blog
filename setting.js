@@ -20,6 +20,7 @@ export const SITE = {
   title: "苦甜巧克力",
   splitIdx: 2,
   subtitle: "記錄生活的甘苦",
+  url: "https://blog.timtnlee.me",
 };
 
 export const DISQUS = {
