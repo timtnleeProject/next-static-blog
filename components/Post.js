@@ -77,21 +77,19 @@ export const VerticalItem = function VerticalItem({ post }) {
         <div className={styles.imageBolck}>
           <div className={styles.pad}></div>
           <img src={metadata.image} alt={metadata.title}></img>
-          <div className={styles.titleBlock}>
-            <Link
-              href={{
-                pathname: "/post/[group]/[name]",
-                query: {
-                  name,
-                  group: group.name,
-                },
-              }}
-            >
-              <a>
-                <h2>{metadata.title}</h2>
-              </a>
-            </Link>
-          </div>
+          <Link
+            href={{
+              pathname: "/post/[group]/[name]",
+              query: {
+                name,
+                group: group.name,
+              },
+            }}
+          >
+            <a className={styles.titleBlock}>
+              <h2>{metadata.title}</h2>
+            </a>
+          </Link>
         </div>
       )}
       <Date post={post} />
