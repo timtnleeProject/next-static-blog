@@ -112,9 +112,15 @@ $margin: 1.5em;
   max-height: 65vh;
   overflow-y: auto;
   display: none;
-  padding-top: 1.2em;
   box-shadow: $box-shadow $color-emphasis;
   border-radius: 4px;
+}
+.iconRight {
+  display: flex;
+  justify-content: flex-end;
+  .closeIcon {
+    cursor: pointer;
+  }
 }
 .mbLayer {
   display: none;

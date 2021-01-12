@@ -183,29 +183,25 @@ export const Metadata = function Metadata({ post }) {
   const { metadata, group } = post;
   return (
     <>
-      <h1 className={styles.mbtitle}>{metadata.title}</h1>
-      <div className={styles.metadata}>
-        <div className={styles.bg}>
-          {metadata.image && <img src={metadata.image} alt={metadata.title}></img>}
+      <h1 className={styles.metatitle}>{metadata.title}</h1>
+      <Date post={post} />
+      <Author className={styles.author} author={metadata.author} />
+      <div className={styles.metatext}>
+        <div className={styles.groupTag}>
+          類別：
+          <GroupTag group={group} />
         </div>
-        <canvas width="16" height="9" />
-        <div className={styles.metatext}>
-          <h1 className={styles.pctitle}>{metadata.title}</h1>
-          <div className={styles.groupTag}>
-            <GroupTag group={group} />
-          </div>
-          <div className={styles.tag}>
-            {metadata.tags?.map((tag) => (
-              <PostTag key={tag} tag={tag} group={group} />
-            ))}
-          </div>
+        <div className={styles.tag}>
+          標籤：
+          {metadata.tags?.map((tag) => (
+            <PostTag key={tag} tag={tag} group={group} />
+          ))}
         </div>
       </div>
-      <div className={styles.info}>
-        <Author className={styles.author} author={metadata.author} />
-        <Date post={post} />
-        <div className={styles.hr} />
-      </div>
+      {metadata.image && (
+        <img className={styles.metaImg} src={metadata.image} alt={metadata.title}></img>
+      )}
+      <div className={styles.hr} />
     </>
   );
 };

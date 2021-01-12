@@ -1,11 +1,13 @@
 .tree {
-  padding-left: 12px;
+  &:not(.depth-1) {
+    padding-left: 12px;
+  }
   font-size: 0.9em;
   li {
     margin-bottom: 0.7em;
     padding: 0 0.5em;
-    &.first {
-      border-left: 1px solid $color-main;
-    }
+  }
+  &.depth-2 > li {
+    border-left: 2px solid $color-main;
   }
 }

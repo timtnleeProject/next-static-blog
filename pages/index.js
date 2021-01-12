@@ -14,7 +14,7 @@ export default function Home(props) {
         home={true}
         image={`${SITE.url}/up.jpg`}
       />
-      <h1>最近發表</h1>
+      <Page.Title>最近發表</Page.Title>
       <Post.VerticalList>
         {posts.map((post) => (
           <Post.VerticalItem key={post.name} post={post} />

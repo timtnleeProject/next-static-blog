@@ -68,7 +68,7 @@ export default function GroupPost({ groupName, posts, tags }) {
   return (
     <Page.Content>
       <PageMetadata title={title} description="" />
-      <h1>{title}</h1>
+      <Page.Title>{title}</Page.Title>
       <div className={styles.tagWrap}>
         標籤篩選：
         {tags.map((tag) => (

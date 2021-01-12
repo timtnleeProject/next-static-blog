@@ -21,6 +21,7 @@ import {
   faCaretUp,
   faExclamationCircle,
   faLink,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { faElementor } from "@fortawesome/free-brands-svg-icons";
 import Tree from "components/Tree";
@@ -107,18 +108,28 @@ export default function Post(props) {
         });
       }
     });
-    setTree(t);
+    const id = "article-title";
+    const h1 = ref.current.querySelector("h1");
+    h1.setAttribute("id", id);
+    setTree([
+      {
+        id: h1.id,
+        name: h1.innerText,
+        href: `#${id}`,
+        items: t,
+      },
+    ]);
   }, []);
 
   return (
-    <Page.Content>
-      <article ref={ref} className={styles.article}>
-        <PageMetadata
-          title={metadata.title}
-          description={metadata.preview}
-          image={metadata.image}
-        />
-        <BreadCrumb />
+    <Page.Content innerRef={ref}>
+      <PageMetadata
+        title={metadata.title}
+        description={metadata.preview}
+        image={metadata.image}
+      />
+      <BreadCrumb />
+      <article className={styles.article}>
         <Metadata post={post} />
         <ReactMarkdown
           linkTarget="_blank"
@@ -143,12 +154,19 @@ export default function Post(props) {
           }}
         ></DiscussionEmbed>
       </article>
-      {tree.length >= 2 && (
+      {tree?.[0]?.items?.length >= 2 && (
         <App.Body className={styles.mockBody}>
           <App.Content className={styles.mockContent}></App.Content>
           <App.Aside>
             {mbTreeToggle && <div className={styles.mbLayer} onClick={toggle}></div>}
             <Card className={classnames(styles.menu, mbTreeToggle && styles.mbTreeShow)}>
+              <div className={styles.iconRight}>
+                <FontAwesomeIcon
+                  icon={faTimes}
+                  className={styles.closeIcon}
+                  onClick={toggle}
+                />
+              </div>
               <Tree tree={tree} />
             </Card>
             <button className={styles.indicator} onClick={toggle}>
