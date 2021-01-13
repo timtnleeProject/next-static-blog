@@ -5,6 +5,6 @@
   "mtime": "2021/01/11",
   "author": "tim",
   "image": "https://imgur.com/xt4TneZ.jpg",
-  "preview": "嘹解 Universal SSR 以及 web rendering 比較",
+  "preview": "混合式 SSR (Universal SSR / Rehydration) 的介紹",
   "hide": true
 }
