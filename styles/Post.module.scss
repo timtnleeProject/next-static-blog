@@ -15,6 +15,9 @@ $margin: 1.5em;
     margin-block-start: $margin;
     margin-block-end: $margin;
   }
+  h1 {
+    font-size: 1.7em;
+  }
   h2,
   h3 {
     & > a {
@@ -36,8 +39,9 @@ $margin: 1.5em;
     border-radius: $p;
   }
   ul {
-    list-style-type: disc;
     padding-inline-start: 40px;
+  }
+  ul:not(li > ul) {
     margin-block-start: $margin;
     margin-block-end: $margin;
   }

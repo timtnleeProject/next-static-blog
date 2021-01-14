@@ -53,7 +53,7 @@ const renderers = {
   },
   code: function Code({ language, value }) {
     return (
-      <SyntaxHighlighter style={tomorrow} language={language}>
+      <SyntaxHighlighter style={tomorrow} language={language} showLineNumbers>
         {value}
       </SyntaxHighlighter>
     );

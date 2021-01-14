@@ -98,7 +98,7 @@ $trans: 0.3s;
     border-bottom: 2px solid $color-main;
   }
   li + li {
-    margin-left: $p * 3;
+    margin-left: 1.2em;
   }
 }
 @media screen and (min-width: $bp + 1px) {
