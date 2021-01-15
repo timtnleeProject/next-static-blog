@@ -40,10 +40,13 @@ $margin: 1.5em;
   }
   ul {
     padding-inline-start: 40px;
-  }
-  ul:not(li > ul) {
     margin-block-start: $margin;
     margin-block-end: $margin;
+  }
+  li > ul {
+    padding-inline-start: 20px;
+    margin-block-start: initial;
+    margin-block-end: initial;
   }
   p + ul {
     margin-block-start: -$margin/2;

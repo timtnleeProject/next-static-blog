@@ -1,10 +1,9 @@
 {
-  "title": "什麼是混合式 SSR - (1)",
+  "title": "什麼是混合式 SSR (上)",
   "tags": ["SSR", "React"],
   "birthtime": "2021/01/11",
   "mtime": "2021/01/11",
   "author": "tim",
   "image": "https://imgur.com/xt4TneZ.jpg",
-  "preview": "混合式 SSR：Universal SSR / Rehydration 的介紹",
-  "hide": true
+  "preview": "混合式 SSR：Universal SSR / Rehydration 的介紹"
 }
