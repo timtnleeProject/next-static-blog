@@ -118,7 +118,7 @@ export default function Post(props) {
       },
     ]);
   }, []);
-  console.log(recommanded);
+
   return (
     <Page.Content>
       <PageMetadata
