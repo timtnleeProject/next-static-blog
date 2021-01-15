@@ -51,7 +51,8 @@ const { groups, posts } = (function () {
       groups[gidx].count = postsInGroup.length; // group count
       return posts.concat(postsInGroup);
     }, [])
-    .sort(sortBy((post) => post.metadata.birthtime, true));
+    .sort(sortBy((post) => post.metadata.birthtime, true))
+    .map((post, i) => ({ ...post, nth: i }));
   return {
     groups: groups.filter((g) => g.count),
     posts,
@@ -105,3 +106,28 @@ export const getPost = (groupName, name) =>
 export const getGroups = () => groups;
 
 export const getTagsByGroup = (groupName) => groupTagsMap[groupName];
+
+export const getRecommandedPosts = (post) => {
+  const { nth } = post;
+  const num = 2;
+  const posts = getPosts();
+  const recommanded = [];
+  const starts = Array.from(Array(num)).map((_, i) => nth - i - 1);
+  const lasts = Array.from(Array(num)).map((_, i) => nth + i + 1);
+
+  const getPrevPost = (n) => {
+    return posts[n < 0 ? posts.length + n : n];
+  };
+  const getAfterPost = (n) => {
+    return posts[n >= posts.length ? n - posts.length : n];
+  };
+
+  starts.forEach((i) => {
+    recommanded.push(getPrevPost(i));
+  });
+  lasts.forEach((i) => {
+    recommanded.push(getAfterPost(i));
+  });
+
+  return recommanded;
+};

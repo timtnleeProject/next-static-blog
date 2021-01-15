@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import classnames from "classnames";
-import { getPost, getPosts } from "data";
+import { getPost, getPosts, getRecommandedPosts } from "data";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { Metadata } from "components/Post";
+import PostComponent, { Metadata } from "components/Post";
 import { DiscussionEmbed } from "disqus-react";
 import styles from "styles/Post.module.scss";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -27,7 +27,6 @@ import { faElementor } from "@fortawesome/free-brands-svg-icons";
 import Tree from "components/Tree";
 import App from "components/App";
 import Card from "components/Card";
-
 const renderers = {
   heading: function Heading(el) {
     const { level, node, children } = el;
@@ -74,8 +73,7 @@ const renderers = {
 };
 
 export default function Post(props) {
-  const { post } = props;
-
+  const { post, recommanded } = props;
   const { group, name, metadata } = post;
   const url = `https://${DISQUS.host}/post/${group.name}/${name}`;
   const identifier = `${group}/${name}`;
@@ -120,16 +118,16 @@ export default function Post(props) {
       },
     ]);
   }, []);
-
+  console.log(recommanded);
   return (
-    <Page.Content innerRef={ref}>
+    <Page.Content>
       <PageMetadata
         title={metadata.title}
         description={metadata.preview}
         image={metadata.image}
       />
       <BreadCrumb />
-      <article className={styles.article}>
+      <article ref={ref} className={styles.article}>
         <Metadata post={post} />
         <ReactMarkdown
           linkTarget="_blank"
@@ -154,6 +152,17 @@ export default function Post(props) {
           }}
         ></DiscussionEmbed>
       </article>
+      <h2 className="g-text-center">看看其他文章</h2>
+      <div className={styles.recommandedList}>
+        {recommanded.map((recommand) => (
+          <PostComponent.VerticalItem
+            className={styles.recommandedItem}
+            key={recommand.name}
+            post={recommand}
+            simple
+          />
+        ))}
+      </div>
       {tree?.[0]?.items?.length >= 2 && (
         <App.Body className={styles.mockBody}>
           <App.Content className={styles.mockContent}></App.Content>
@@ -184,9 +193,12 @@ export default function Post(props) {
 }
 
 export async function getStaticProps(context) {
+  const post = getPost(context.params.group, context.params.name);
+  const recommanded = getRecommandedPosts(post);
   return {
     props: {
-      post: getPost(context.params.group, context.params.name),
+      post,
+      recommanded,
     },
   };
 }
