@@ -191,7 +191,7 @@ $gap: 12px;
   .recommandedItem {
     margin-right: $gap;
     margin-bottom: $gap;
-    flex: 0 0 calc(33% - #{$gap});
+    flex: 0 0 calc(100% / 3 - #{$gap});
   }
   @media screen and (max-width: $bp-screen) {
     .recommandedItem {
