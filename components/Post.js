@@ -76,7 +76,7 @@ export const VerticalItem = function VerticalItem({ post, simple = false, classN
       {metadata.image && (
         <div className={styles.imageBolck}>
           <div className={styles.pad}></div>
-          <img src={metadata.image} alt={metadata.title}></img>
+          <img src={metadata.image} alt={metadata.title} loading="lazy"></img>
           <Link
             href={{
               pathname: "/post/[group]/[name]",
@@ -159,7 +159,7 @@ export const Item = function Item({ post }) {
         </div>
         {metadata.image && (
           <div className={styles.imageBolck}>
-            <img src={metadata.image} alt={metadata.title}></img>
+            <img src={metadata.image} alt={metadata.title} loading="lazy"></img>
           </div>
         )}
       </div>
@@ -203,7 +203,12 @@ export const Metadata = function Metadata({ post }) {
         </div>
       </div>
       {metadata.image && (
-        <img className={styles.metaImg} src={metadata.image} alt={metadata.title}></img>
+        <img
+          className={styles.metaImg}
+          src={metadata.image}
+          alt={metadata.title}
+          loading="lazy"
+        ></img>
       )}
       <div className={styles.hr} />
     </>

@@ -84,7 +84,7 @@ export default function Image(props) {
           {canZoom && (
             <span className={styles.hint}>move your finger/mouse over the image</span>
           )}
-          <img src={src} alt={alt} ref={img} />
+          <img src={src} alt={alt} ref={img} loading="lazy" />
           {loaded && (
             <span className={styles.zoomArea} ref={zoomEl}>
               <canvas width="1" height="1"></canvas>
