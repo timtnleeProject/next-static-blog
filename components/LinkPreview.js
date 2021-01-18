@@ -8,7 +8,7 @@ export default function LinkPreview(props) {
   const [preview, setPreview] = useState({});
 
   const getLinkPreview = useCallback(() => {
-    fetch(`/api/link?link=${encodeURI(href)}`)
+    fetch(`/api/link?link=${encodeURIComponent(href)}`)
       .then((res) => res.json())
       .then((res) => {
         setPreview(res);

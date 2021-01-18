@@ -1,10 +1,9 @@
 {
-  "title": "什麼是混合式 SSR (下)",
+  "title": "Hydration: Server-side rendering + Client-side rendering (下)",
   "tags": ["SSR", "React"],
-  "birthtime": "2021/01/15",
-  "mtime": "2021/01/15",
+  "birthtime": "2021/01/18",
+  "mtime": "2021/01/18",
   "author": "tim",
-  "image": "https://imgur.com/xt4TneZ.jpg",
-  "preview": "在上篇介紹了混合式 SSR 後，再來 SSR 缺點及改進方法、不同的 Hydration 策略、以及從其他角度思考我們是否需要 SSR？",
-  "hide": true
+  "image": "https://imgur.com/5tdZIKc.jpg",
+  "preview": "繼上篇介紹了混合式 SSR 後，再來看 SSR 缺點及改進方法、不同的 Hydration 策略、以及從其他角度思考我們是否需要 SSR？"
 }

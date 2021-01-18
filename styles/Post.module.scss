@@ -199,9 +199,13 @@ $gap: 12px;
     }
   }
   @media screen and (max-width: $bp) {
-    margin-right: initial;
     .recommandedItem {
       flex: 0 0 calc(100% - #{$gap});
+    }
+  }
+  @media screen and (min-width: $bp + 1px) {
+    .recommandedItem h2 {
+      font-size: 1em;
     }
   }
 }

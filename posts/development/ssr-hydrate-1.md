@@ -212,3 +212,6 @@ https://medium.com/%E6%89%8B%E5%AF%AB%E7%AD%86%E8%A8%98/server-side-rendering-ss
 也就是我們熟悉的 NextJS (for React), NuxtJS (for Vue) 等。
 
 非常推薦在了解 SSR + CSR 技術後去看看 [NextJS 文件](https://nextjs.org/docs/getting-started)，會對這種 Universal 框架有更深的瞭解。
+
+更多內容以及參考資料請見下篇：
+https://blog.timtnlee.me/post/development/ssr-hydrate-2

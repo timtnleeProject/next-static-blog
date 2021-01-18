@@ -1,9 +1,9 @@
 {
-  "title": "什麼是混合式 SSR (上)",
+  "title": "Hydration: Server-side rendering + Client-side rendering (上)",
   "tags": ["SSR", "React"],
   "birthtime": "2021/01/11",
-  "mtime": "2021/01/11",
+  "mtime": "2021/01/17",
   "author": "tim",
-  "image": "https://imgur.com/xt4TneZ.jpg",
+  "image": "https://imgur.com/5tdZIKc.jpg",
   "preview": "混合式 SSR：Universal SSR / Rehydration 的介紹"
 }
