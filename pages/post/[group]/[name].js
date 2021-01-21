@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState, useMemo } from "react";
 import classnames from "classnames";
 import { getPost, getPosts, getRecommandedPosts } from "data";
 import ReactMarkdown from "react-markdown";
@@ -76,7 +76,7 @@ export default function Post(props) {
   const { post, recommanded } = props;
   const { group, name, metadata } = post;
   const url = `https://${DISQUS.host}/post/${group.name}/${name}`;
-  const identifier = `${group}/${name}`;
+  const identifier = `${group.name}/${name}`;
   const title = metadata.title;
   const language = "en";
 
@@ -119,6 +119,19 @@ export default function Post(props) {
     ]);
   }, []);
 
+  const breadcrumbs = useMemo(
+    () => [
+      {
+        frag: `post/${group.name}`,
+        name: group.display,
+      },
+      {
+        frag: name,
+        name: metadata.title,
+      },
+    ],
+    [group, name, metadata],
+  );
   return (
     <Page.Content>
       <PageMetadata
@@ -126,8 +139,8 @@ export default function Post(props) {
         description={metadata.preview}
         image={metadata.image}
       />
-      <BreadCrumb />
-      <article ref={ref} className={styles.article}>
+      <Page.CenterSection as="article" innerRef={ref} className={styles.article}>
+        <BreadCrumb links={breadcrumbs} />
         <Metadata post={post} />
         <ReactMarkdown
           linkTarget="_blank"
@@ -151,7 +164,7 @@ export default function Post(props) {
             language,
           }}
         ></DiscussionEmbed>
-      </article>
+      </Page.CenterSection>
       <h2 className="g-text-center">看看其他文章</h2>
       <div className={styles.recommandedList}>
         {recommanded.map((recommand) => (

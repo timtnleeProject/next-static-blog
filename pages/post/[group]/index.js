@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { useCallback, useEffect, useMemo } from "react";
 import { GROUP } from "setting";
 import PageMetadata from "components/PageMetadata";
+import { BreadCrumb } from "components/BreadCrumb";
 import classnames from "classnames";
 
 export default function GroupPost({ groupName, posts, tags }) {
@@ -64,31 +65,44 @@ export default function GroupPost({ groupName, posts, tags }) {
   }, [filteredPosts, groupName, router]);
 
   // UI
-  const title = useMemo(() => `「${GROUP[groupName]}」 相關文章`, [groupName]);
+  const groupDisplay = GROUP[groupName];
+  const title = useMemo(() => `「${groupDisplay}」 相關文章`, [groupDisplay]);
+  const breadcrumbs = useMemo(
+    () => [
+      {
+        frag: `post/${groupName}`,
+        name: groupDisplay,
+      },
+    ],
+    [groupName, groupDisplay],
+  );
   return (
     <Page.Content>
-      <PageMetadata title={title} description="" />
-      <Page.Title>{title}</Page.Title>
-      <div className={styles.tagWrap}>
-        標籤篩選：
-        {tags.map((tag) => (
-          <Tag
-            key={tag.name}
-            className={styles.tag}
-            variant={activeTags.some((t) => t === tag.name) ? "main" : "light"}
-            color="dark"
-            border="dark"
-            onClick={() => toggleTag(tag.name)}
-          >
-            <a>
-              #{tag.name} ({tag.count})
-            </a>
-          </Tag>
-        ))}
-      </div>
-      <div className={classnames("g-color-grey-2", styles.total)}>
-        共 {filteredPosts.length} 篇文章
-      </div>
+      <PageMetadata title={title} description={title} />
+      <Page.CenterSection>
+        <BreadCrumb links={breadcrumbs} />
+        <Page.Title>{title}</Page.Title>
+        <div className={styles.tagWrap}>
+          標籤篩選：
+          {tags.map((tag) => (
+            <Tag
+              key={tag.name}
+              className={styles.tag}
+              variant={activeTags.some((t) => t === tag.name) ? "main" : "light"}
+              color="dark"
+              border="dark"
+              onClick={() => toggleTag(tag.name)}
+            >
+              <a>
+                #{tag.name} ({tag.count})
+              </a>
+            </Tag>
+          ))}
+        </div>
+        <div className={classnames("g-color-grey-2", styles.total)}>
+          共 {filteredPosts.length} 篇文章
+        </div>
+      </Page.CenterSection>
       <Post.VerticalList>
         {filteredPosts.map((post) => (
           <Post.VerticalItem key={post.name} post={post} />

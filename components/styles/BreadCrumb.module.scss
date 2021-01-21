@@ -1,0 +1,11 @@
+.breadcrumb {
+  font-size: 14px;
+  margin: 16px 0;
+  @media screen and(max-width: $bp) {
+    font-size: 12px;
+    margin: 14px 0;
+  }
+  a {
+    color: $color-link;
+  }
+}

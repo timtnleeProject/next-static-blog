@@ -1,3 +1,4 @@
+import React from "react";
 import classnames from "classnames";
 import styles from "./styles/Page.module.scss";
 
@@ -23,7 +24,20 @@ export const Content = (props) => {
   );
 };
 
+export const CenterSection = (props) => {
+  const { as = "div", className, innerRef } = props;
+  return React.createElement(
+    as,
+    {
+      ref: innerRef,
+      className: classnames(styles.centerSection, className),
+    },
+    props.children,
+  );
+};
+
 export default {
   Title,
   Content,
+  CenterSection,
 };

@@ -1,7 +1,13 @@
 .title {
   text-align: center;
+  margin: 0.9em 0;
 }
 .content {
   width: 100%;
   padding: 0 0 12px 0;
+}
+.centerSection {
+  margin: 0 auto;
+  width: 100%;
+  max-width: $bp-md;
 }
