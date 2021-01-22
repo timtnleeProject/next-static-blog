@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { useCallback, useEffect, useMemo } from "react";
 import { GROUP } from "setting";
 import PageMetadata from "components/PageMetadata";
-import { BreadCrumb } from "components/BreadCrumb";
+import { bread, BreadCrumb } from "components/BreadCrumb";
 import classnames from "classnames";
 
 export default function GroupPost({ groupName, posts, tags }) {
@@ -69,8 +69,10 @@ export default function GroupPost({ groupName, posts, tags }) {
   const title = useMemo(() => `「${groupDisplay}」 相關文章`, [groupDisplay]);
   const breadcrumbs = useMemo(
     () => [
+      bread.home,
+      bread.post,
       {
-        frag: `post/${groupName}`,
+        frag: groupName,
         name: groupDisplay,
       },
     ],

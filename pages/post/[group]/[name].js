@@ -8,7 +8,7 @@ import { DiscussionEmbed } from "disqus-react";
 import styles from "styles/Post.module.scss";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Page from "components/Page";
-import { BreadCrumb } from "components/BreadCrumb";
+import { bread, BreadCrumb } from "components/BreadCrumb";
 import gfm from "remark-gfm";
 import breaks from "remark-breaks";
 import slug from "remark-slug";
@@ -121,8 +121,10 @@ export default function Post(props) {
 
   const breadcrumbs = useMemo(
     () => [
+      bread.home,
+      bread.post,
       {
-        frag: `post/${group.name}`,
+        frag: group.name,
         name: group.display,
       },
       {
