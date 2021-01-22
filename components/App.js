@@ -31,6 +31,10 @@ const links = [
     href: "/",
   },
   {
+    name: "文章",
+    href: "/post",
+  },
+  {
     name: "關於",
     href: "/about",
   },

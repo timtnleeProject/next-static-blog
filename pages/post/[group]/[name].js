@@ -168,7 +168,7 @@ export default function Post(props) {
         ></DiscussionEmbed>
       </Page.CenterSection>
       <h2 className="g-text-center">看看其他文章</h2>
-      <PostComponent.VerticalList className={styles.recommandedList}>
+      <PostComponent.VerticalList>
         {recommanded.map((recommand) => (
           <PostComponent.VerticalItem key={recommand.name} post={recommand} simple />
         ))}

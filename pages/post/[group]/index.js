@@ -105,7 +105,7 @@ export default function GroupPost({ groupName, posts, tags }) {
           共 {filteredPosts.length} 篇文章
         </div>
       </Page.CenterSection>
-      <Post.VerticalList>
+      <Post.VerticalList className={styles.postList}>
         {filteredPosts.map((post) => (
           <Post.VerticalItem key={post.name} post={post} />
         ))}

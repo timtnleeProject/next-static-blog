@@ -11,7 +11,6 @@ $gap: 12px;
 .verticalList {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   margin-right: -$gap;
   .verticalItem {
     margin-right: $gap;
