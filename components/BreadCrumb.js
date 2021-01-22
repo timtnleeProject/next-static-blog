@@ -11,6 +11,10 @@ export const bread = {
     frag: "post",
     name: "文章",
   },
+  about: {
+    frag: "about",
+    name: "關於",
+  },
 };
 
 export function BreadCrumb(props) {

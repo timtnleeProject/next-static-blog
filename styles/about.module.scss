@@ -1,0 +1,24 @@
+$gap: 12px;
+.authorWrap {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -$gap;
+  .card {
+    flex: 1 1 calc(50% - #{$gap});
+    margin-right: $gap;
+    text-align: center;
+    padding-bottom: 1.5em;
+  }
+  @media screen and (max-width: $bp) {
+    .card {
+      flex: 1 1 calc(100% - #{$gap});
+      margin-bottom: $gap;
+    }
+  }
+}
+
+.avatar {
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+}

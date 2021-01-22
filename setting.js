@@ -8,11 +8,12 @@ export const GROUP = {
 export const AUTHOR = {
   anna: {
     name: "Anna",
-    image: "/up.jpg",
+    image:
+      "https://images.theconversation.com/files/350738/original/file-20200802-24-1dn76f1.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop",
   },
   tim: {
     name: "Tim",
-    image: "/down.jpg",
+    image: "https://imgur.com/IgoIyeA.jpg",
   },
 };
 
