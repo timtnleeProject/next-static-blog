@@ -17,14 +17,28 @@ $gap: 12px;
     margin-right: $gap;
     margin-bottom: $gap;
     flex: 0 0 calc(50% - #{$gap});
-  }
-  @media screen and (max-width: $bp-xlg) {
-    .verticalItem {
-      flex: 0 0 calc(100% - #{$gap});
+    @media screen and (max-width: $bp-xlg) {
+      & {
+        flex: 0 0 calc(100% - #{$gap});
+      }
     }
   }
-  @media screen and (max-width: $bp) {
-    margin-right: initial;
+
+  .verticalItem.simple {
+    flex: 0 0 calc(100% / 3 - #{$gap});
+    @media screen and (max-width: $bp-screen) {
+      & {
+        flex: 0 0 calc(50% - #{$gap});
+      }
+    }
+    @media screen and (max-width: $bp) {
+      & {
+        flex: 0 0 calc(100% - #{$gap});
+      }
+    }
+    h2 {
+      font-size: 1em;
+    }
   }
 }
 .verticalItem {

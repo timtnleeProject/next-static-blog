@@ -72,7 +72,10 @@ export const VerticalList = function VerticalList(props) {
 export const VerticalItem = function VerticalItem({ post, simple = false, className }) {
   const { name, metadata, group } = post;
   return (
-    <Card as="li" className={classnames(styles.verticalItem, className)}>
+    <Card
+      as="li"
+      className={classnames(styles.verticalItem, simple && styles.simple, className)}
+    >
       {metadata.image && (
         <div className={styles.imageBolck}>
           <div className={styles.pad}></div>

@@ -168,16 +168,11 @@ export default function Post(props) {
         ></DiscussionEmbed>
       </Page.CenterSection>
       <h2 className="g-text-center">看看其他文章</h2>
-      <div className={styles.recommandedList}>
+      <PostComponent.VerticalList className={styles.recommandedList}>
         {recommanded.map((recommand) => (
-          <PostComponent.VerticalItem
-            className={styles.recommandedItem}
-            key={recommand.name}
-            post={recommand}
-            simple
-          />
+          <PostComponent.VerticalItem key={recommand.name} post={recommand} simple />
         ))}
-      </div>
+      </PostComponent.VerticalList>
       {tree?.[0]?.items?.length >= 2 && (
         <App.Body className={styles.mockBody}>
           <App.Content className={styles.mockContent}></App.Content>

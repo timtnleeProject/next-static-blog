@@ -181,29 +181,6 @@ $margin: 1.5em;
   }
 }
 
-$gap: 12px;
 .recommandedList {
-  margin-right: -$gap;
-  display: flex;
-  flex-wrap: wrap;
-  .recommandedItem {
-    margin-right: $gap;
-    margin-bottom: $gap;
-    flex: 0 0 calc(100% / 3 - #{$gap});
-  }
-  @media screen and (max-width: $bp-screen) {
-    .recommandedItem {
-      flex: 0 0 calc(50% - #{$gap});
-    }
-  }
-  @media screen and (max-width: $bp) {
-    .recommandedItem {
-      flex: 0 0 calc(100% - #{$gap});
-    }
-  }
-  @media screen and (min-width: $bp + 1px) {
-    .recommandedItem h2 {
-      font-size: 1em;
-    }
-  }
+  justify-content: flex-start;
 }
