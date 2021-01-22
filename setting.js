@@ -24,6 +24,6 @@ export const SITE = {
 };
 
 export const DISQUS = {
-  shortname: "blog-gjsysjy5bw",
+  shortname: "chocoblog-1",
   host: "blog.timtnlee.me",
 };
