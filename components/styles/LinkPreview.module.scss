@@ -11,9 +11,11 @@ $p: 12px;
   text-decoration: none;
   border: 1px solid $color-grey;
   box-shadow: $box-shadow $color-grey;
+  transition: box-shadow 0.3s;
   &:hover {
     text-decoration: none;
     color: rgba($color: $color-dark, $alpha: 1);
+    box-shadow: $box-shadow $color-grey-2;
   }
 }
 .img {
