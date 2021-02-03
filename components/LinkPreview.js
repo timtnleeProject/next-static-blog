@@ -51,7 +51,9 @@ export default function LinkPreview(props) {
         <canvas width="1" height="1" />
         {images?.length > 0 && <img src={images[0]} alt={href} />}
       </span>
-      <small className={styles.description}>{description}</small>
+      <small className={styles.description}>
+        {description || (!loading && " - - - ")}
+      </small>
     </a>
   );
 }

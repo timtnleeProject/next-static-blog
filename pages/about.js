@@ -29,16 +29,6 @@ export default function About() {
                 litingen1995@gmail.com
               </a>
             </div>
-            <div>Others:</div>
-            <div>
-              <a
-                className="g-color-link"
-                href="https://github.com/timtnleeProject"
-                target="__blank"
-              >
-                GitHub
-              </a>
-            </div>
           </Card>
           <Card className={styles.card}>
             <CardTitle>Anna</CardTitle>
