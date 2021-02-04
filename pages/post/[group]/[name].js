@@ -51,8 +51,9 @@ const renderers = {
     return React.createElement(`h${level}`, {}, React.Children.toArray(children));
   },
   code: function Code({ language, value }) {
+    const multiLine = /[\n\r]/.test(value);
     return (
-      <SyntaxHighlighter style={tomorrow} language={language} showLineNumbers>
+      <SyntaxHighlighter style={tomorrow} language={language} showLineNumbers={multiLine}>
         {value}
       </SyntaxHighlighter>
     );
