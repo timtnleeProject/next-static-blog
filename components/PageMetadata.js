@@ -7,11 +7,13 @@ function PageMetadata({ title, image, description, home = false }) {
   useEffect(() => {
     const adScript = document.createElement("SCRIPT");
     adScript.setAttribute("data-ad-client", "ca-pub-1331251306729236");
-    adScript.async = true;
     adScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
-    document.body.appendChild(adScript);
+    adScript.async = true;
+    document.head.appendChild(adScript);
+    console.log("append");
     return () => {
-      document.body.removeChild(adScript);
+      console.log("remove", adScript);
+      document.head.removeChild(adScript);
     };
   }, []);
   return (
