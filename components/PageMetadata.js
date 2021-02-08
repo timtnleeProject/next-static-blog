@@ -11,6 +11,11 @@ function PageMetadata({ title, image, description, home = false }) {
       <meta name="description" content={description} />
       <meta property="og:description" content={description} />
       {image && <meta property="og:image" content={image} />}
+      <script
+        data-ad-client="ca-pub-1331251306729236"
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+      ></script>
     </Head>
   );
 }
