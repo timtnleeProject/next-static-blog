@@ -1,21 +1,21 @@
-import React, { memo, useEffect } from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
 import Head from "next/head";
 import { SITE } from "setting";
 function PageMetadata({ title, image, description, home = false }) {
   const fullTitle = home ? title : `${title} - ${SITE.title}`;
-  useEffect(() => {
-    const adScript = document.createElement("SCRIPT");
-    adScript.setAttribute("data-ad-client", "ca-pub-1331251306729236");
-    adScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
-    adScript.async = true;
-    document.head.appendChild(adScript);
-    console.log("append");
-    return () => {
-      console.log("remove", adScript);
-      document.head.removeChild(adScript);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const adScript = document.createElement("SCRIPT");
+  //   adScript.setAttribute("data-ad-client", "ca-pub-1331251306729236");
+  //   adScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+  //   adScript.async = true;
+  //   document.head.appendChild(adScript);
+  //   console.log("append");
+  //   return () => {
+  //     console.log("remove", adScript);
+  //     document.head.removeChild(adScript);
+  //   };
+  // }, []);
   return (
     <Head>
       <title>{fullTitle}</title>
