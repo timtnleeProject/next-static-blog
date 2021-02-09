@@ -3,7 +3,7 @@ import Card from "components/Card";
 export default function Ads() {
   return (
     <Card
-      className="g-mt-2"
+      className="g-mt-2 g-px-1"
       dangerouslySetInnerHTML={{
         __html: `
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
