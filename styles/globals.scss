@@ -127,50 +127,50 @@ $colors: $color-main, $color-emphasis, $color-grey, $color-grey-0, $color-grey-2
 $ps: 1, 2, 3, 4, 5, 6;
 @each $i in $ps {
   .g-m-#{$i} {
-    margin: 4px * $i;
+    margin: 4px * $i !important;
   }
   .g-my-#{$i} {
-    margin-top: 4px * $i;
-    margin-bottom: 4px * $i;
+    margin-top: 4px * $i !important;
+    margin-bottom: 4px * $i !important;
   }
   .g-mx-#{$i} {
-    margin-left: 4px * $i;
-    margin-right: 4px * $i;
+    margin-left: 4px * $i !important;
+    margin-right: 4px * $i !important;
   }
   .g-mr-#{$i} {
-    margin-right: 4px * $i;
+    margin-right: 4px * $i !important;
   }
   .g-mt-#{$i} {
-    margin-top: 4px * $i;
+    margin-top: 4px * $i !important;
   }
   .g-mb-#{$i} {
-    margin-bottom: 4px * $i;
+    margin-bottom: 4px * $i !important;
   }
   .g-ml-#{$i} {
-    margin-left: 4px * $i;
+    margin-left: 4px * $i !important;
   }
 
   .g-p-#{$i} {
-    padding: 4px * $i;
+    padding: 4px * $i !important;
   }
   .g-py-#{$i} {
-    padding-top: 4px * $i;
-    padding-bottom: 4px * $i;
+    padding-top: 4px * $i !important;
+    padding-bottom: 4px * $i !important;
   }
   .g-px-#{$i} {
-    padding-left: 4px * $i;
-    padding-right: 4px * $i;
+    padding-left: 4px * $i !important;
+    padding-right: 4px * $i !important;
   }
   .g-pr-#{$i} {
-    padding-right: 4px * $i;
+    padding-right: 4px * $i !important;
   }
   .g-pt-#{$i} {
-    padding-top: 4px * $i;
+    padding-top: 4px * $i !important;
   }
   .g-pb-#{$i} {
-    padding-bottom: 4px * $i;
+    padding-bottom: 4px * $i !important;
   }
   .g-pl-#{$i} {
-    padding-left: 4px * $i;
+    padding-left: 4px * $i !important;
   }
 }
