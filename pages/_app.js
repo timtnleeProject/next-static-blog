@@ -24,9 +24,8 @@ function MyApp({ Component, pageProps }) {
         </App.Content>
         <App.Aside>
           <PostGroup />
-          {Array.from(Array(3)).map((_, i) => (
-            <Ads key={i} />
-          ))}
+          <Ads />
+          <Ads />
         </App.Aside>
       </App.Body>
     </>
