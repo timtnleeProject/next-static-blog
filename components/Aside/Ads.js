@@ -8,7 +8,7 @@ export default function Ads() {
         __html: `
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <ins class="adsbygoogle"
-        style="display:block"
+        style="display:block;width:100%;"
         data-ad-format="fluid"
         data-ad-layout-key="-4m+bz-7b-d0+1ni"
         data-ad-client="ca-pub-1331251306729236"
