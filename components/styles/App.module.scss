@@ -35,6 +35,7 @@ $trans: 0.3s;
 .aside {
   margin-left: 12px;
   flex: 0 0 $app-aside;
+  width: $app-aside;
   @media screen and (max-width: $bp) {
     padding: 8px;
   }
