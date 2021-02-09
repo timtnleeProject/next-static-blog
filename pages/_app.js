@@ -4,6 +4,7 @@ import Head from "next/head";
 import { SITE } from "setting";
 import "@fortawesome/fontawesome-svg-core/styles.css"; // To prevent SVG large flash when page init at prod mode.
 import "../styles/globals.scss";
+import Ads from "components/Aside/Ads";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -23,20 +24,9 @@ function MyApp({ Component, pageProps }) {
         </App.Content>
         <App.Aside>
           <PostGroup />
-          <div
-            dangerouslySetInnerHTML={{
-              __html: `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="fluid"
-     data-ad-layout-key="-4m+bz-7b-d0+1ni"
-     data-ad-client="ca-pub-1331251306729236"
-     data-ad-slot="4673967329"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>`,
-            }}
-          ></div>
+          {Array.from(Array(3)).map((_, i) => (
+            <Ads key={i} />
+          ))}
         </App.Aside>
       </App.Body>
     </>

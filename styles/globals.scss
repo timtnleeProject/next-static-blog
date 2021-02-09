@@ -123,3 +123,19 @@ $colors: $color-main, $color-emphasis, $color-grey, $color-grey-0, $color-grey-2
     border: 1px solid nth($list: $colors, $n: $i);
   }
 }
+
+$ps: 1, 2, 3, 4, 5, 6;
+@each $i in $ps {
+  .g-mr-#{$i} {
+    margin-right: 4px * $i;
+  }
+  .g-mt-#{$i} {
+    margin-top: 4px * $i;
+  }
+  .g-mb-#{$i} {
+    margin-bottom: 4px * $i;
+  }
+  .g-ml-#{$i} {
+    margin-left: 4px * $i;
+  }
+}
