@@ -15,11 +15,6 @@ function MyApp({ Component, pageProps }) {
           rel="icon"
           href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍫</text></svg>"
         />
-        <script
-          data-ad-client="ca-pub-1331251306729236"
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-        ></script>
       </Head>
       <App.Header></App.Header>
       <App.Body>
@@ -28,6 +23,19 @@ function MyApp({ Component, pageProps }) {
         </App.Content>
         <App.Aside>
           <PostGroup />
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+          ></script>
+          <ins
+            className="adsbygoogle"
+            style="display:block"
+            data-ad-format="fluid"
+            data-ad-layout-key="-4m+bz-7b-d0+1ni"
+            data-ad-client="ca-pub-1331251306729236"
+            data-ad-slot="4673967329"
+          ></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </App.Aside>
       </App.Body>
     </>
