@@ -160,6 +160,7 @@ export default function Post(props) {
           </div>
         </div>
         <Ads type="post" />
+        <Ads type="content" />
         <DiscussionEmbed
           shortname={DISQUS.shortname}
           config={{
