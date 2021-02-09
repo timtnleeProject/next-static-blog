@@ -4,7 +4,7 @@ import Head from "next/head";
 import { SITE } from "setting";
 import "@fortawesome/fontawesome-svg-core/styles.css"; // To prevent SVG large flash when page init at prod mode.
 import "../styles/globals.scss";
-import Ads from "components/Aside/Ads";
+import Ads from "components/Ads";
 
 function MyApp({ Component, pageProps }) {
   return (

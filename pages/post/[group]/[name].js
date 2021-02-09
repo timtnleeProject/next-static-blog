@@ -27,6 +27,7 @@ import { faElementor } from "@fortawesome/free-brands-svg-icons";
 import Tree from "components/Tree";
 import App from "components/App";
 import Card from "components/Card";
+import Ads from "components/Ads";
 const renderers = {
   heading: function Heading(el) {
     const { level, node, children } = el;
@@ -158,6 +159,7 @@ export default function Post(props) {
             此文章出自<b>{SITE.title}</b>，請勿抄襲，轉載請註明出處。
           </div>
         </div>
+        <Ads type="post" />
         <DiscussionEmbed
           shortname={DISQUS.shortname}
           config={{
