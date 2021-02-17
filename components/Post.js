@@ -73,6 +73,7 @@ export const VerticalItem = function VerticalItem({
   post = {},
   simple = false,
   className,
+  children,
 }) {
   const { name, metadata, group } = post;
   return (
@@ -132,7 +133,7 @@ export const VerticalItem = function VerticalItem({
           </div>
         </>
       ) : (
-        "no"
+        children
       )}
     </Card>
   );
