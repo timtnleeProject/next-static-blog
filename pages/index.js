@@ -21,16 +21,14 @@ export default function Home(props) {
       <Post.VerticalList>
         {posts.map((post, i) => (
           <Fragment key={post.name}>
-            {i % 6 === 5 && (
-              <Post.VerticalItem className={styles.ads}>
-                <Ads
-                  style={{ display: "block", width: "100%" }}
-                  data-ad-client="ca-pub-1331251306729236"
-                  data-ad-slot="6140475128"
-                  data-ad-format="auto"
-                  data-full-width-responsive="true"
-                />
-              </Post.VerticalItem>
+            {i % 5 === 4 && (
+              <Ads
+                style={{ display: "block" }}
+                data-ad-client="ca-pub-1331251306729236"
+                data-ad-slot="6140475128"
+                data-ad-format="auto"
+                data-full-width-responsive="true"
+              />
             )}
             <Post.VerticalItem post={post} />
           </Fragment>
