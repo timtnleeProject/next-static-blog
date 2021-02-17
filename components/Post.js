@@ -69,61 +69,71 @@ export const VerticalList = function VerticalList(props) {
   return <ul className={classnames(styles.verticalList, className)}>{props.children}</ul>;
 };
 
-export const VerticalItem = function VerticalItem({ post, simple = false, className }) {
+export const VerticalItem = function VerticalItem({
+  post = {},
+  simple = false,
+  className,
+}) {
   const { name, metadata, group } = post;
   return (
     <Card
       as="li"
       className={classnames(styles.verticalItem, simple && styles.simple, className)}
     >
-      {metadata.image && (
-        <div className={styles.imageBolck}>
-          <div className={styles.pad}></div>
-          <img src={metadata.image} alt={metadata.title} loading="lazy"></img>
-          <Link
-            href={{
-              pathname: "/post/[group]/[name]",
-              query: {
-                name,
-                group: group.name,
-              },
-            }}
-          >
-            <a className={styles.titleBlock}>
-              <h2>{metadata.title}</h2>
-            </a>
-          </Link>
-        </div>
-      )}
-      {!simple && (
+      {post.name ? (
         <>
-          <Date post={post} />
-          <div className={styles.group}>
-            類別：
-            <GroupTag group={group} />
-          </div>
-          <div className={styles.tags}>
-            標籤：
-            {metadata.tags?.map((tag) => (
-              <PostTag key={tag} tag={tag} group={group}></PostTag>
-            ))}
+          {metadata.image && (
+            <div className={styles.imageBolck}>
+              <div className={styles.pad}></div>
+              <img src={metadata.image} alt={metadata.title} loading="lazy"></img>
+              <Link
+                href={{
+                  pathname: "/post/[group]/[name]",
+                  query: {
+                    name,
+                    group: group.name,
+                  },
+                }}
+              >
+                <a className={styles.titleBlock}>
+                  <h2>{metadata.title}</h2>
+                </a>
+              </Link>
+            </div>
+          )}
+          {!simple && (
+            <>
+              <Date post={post} />
+              <div className={styles.group}>
+                類別：
+                <GroupTag group={group} />
+              </div>
+              <div className={styles.tags}>
+                標籤：
+                {metadata.tags?.map((tag) => (
+                  <PostTag key={tag} tag={tag} group={group}></PostTag>
+                ))}
+              </div>
+            </>
+          )}
+          <summary>{metadata.preview}</summary>
+          <div className={styles.go}>
+            <Link
+              href={{
+                pathname: "/post/[group]/[name]",
+                query: {
+                  name,
+                  group: group.name,
+                },
+              }}
+            >
+              <a>繼續閱讀》</a>
+            </Link>
           </div>
         </>
+      ) : (
+        "no"
       )}
-      <summary>{metadata.preview}</summary>
-      <div className={styles.go}>
-        <Link
-          href={{
-            pathname: "/post/[group]/[name]",
-            query: {
-              name,
-              group: group.name,
-            },
-          }}
-        >
-          <a>繼續閱讀》</a>
-        </Link>
-      </div>
     </Card>
   );
 };
