@@ -25,7 +25,6 @@ function MyApp({ Component, pageProps }) {
         </App.Content>
         <App.Aside>
           <PostGroup />
-          <NewPosts />
           <Ads
             style={{ display: "block" }}
             data-ad-format="fluid"
@@ -33,6 +32,7 @@ function MyApp({ Component, pageProps }) {
             data-ad-client="ca-pub-1331251306729236"
             data-ad-slot="6656238614"
           />
+          <NewPosts />
           <Ads
             style={{ display: "block" }}
             data-ad-format="fluid"
