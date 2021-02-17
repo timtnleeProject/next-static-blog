@@ -21,7 +21,7 @@ export default function Home(props) {
       <Post.VerticalList>
         {posts.map((post, i) => (
           <Fragment key={post.name}>
-            {i % 5 === 4 && (
+            {/* {i % 5 === 4 && (
               <div className={styles.slot}>
                 <Ads
                   style={{ display: "block" }}
@@ -31,7 +31,7 @@ export default function Home(props) {
                   data-full-width-responsive="true"
                 />
               </div>
-            )}
+            )} */}
             <Post.VerticalItem post={post} />
           </Fragment>
         ))}
