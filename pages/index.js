@@ -20,22 +20,18 @@ export default function Home(props) {
       <Page.Title>最近發表</Page.Title>
       <Post.VerticalList>
         {posts.map((post, i) => (
-          <Fragment key={post.name}>
-            {/* {i % 5 === 4 && (
-              <div className={styles.slot}>
-                <Ads
-                  style={{ display: "block" }}
-                  data-ad-client="ca-pub-1331251306729236"
-                  data-ad-slot="6140475128"
-                  data-ad-format="auto"
-                  data-full-width-responsive="true"
-                />
-              </div>
-            )} */}
-            <Post.VerticalItem post={post} />
-          </Fragment>
+          <Post.VerticalItem key={i} post={post} />
         ))}
       </Post.VerticalList>
+      <div className={styles.slot}>
+        <Ads
+          style={{ display: "block" }}
+          data-ad-client="ca-pub-1331251306729236"
+          data-ad-slot="6140475128"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        />
+      </div>
     </Page.Content>
   );
 }
@@ -43,7 +39,7 @@ export default function Home(props) {
 export async function getStaticProps(context) {
   return {
     props: {
-      posts: getPosts(),
+      posts: getPosts().slice(0, 6),
     },
   };
 }
