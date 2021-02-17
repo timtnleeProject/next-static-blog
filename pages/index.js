@@ -5,6 +5,7 @@ import PageMetadata from "components/PageMetadata";
 import { SITE } from "setting";
 import Ads from "components/Ads";
 import { Fragment } from "react";
+import styles from "styles/Home.module.scss";
 
 export default function Home(props) {
   const { posts = [] } = props;
@@ -21,9 +22,9 @@ export default function Home(props) {
         {posts.map((post, i) => (
           <Fragment key={post.name}>
             {i % 6 === 5 && (
-              <Post.VerticalItem>
+              <Post.VerticalItem className={styles.ads}>
                 <Ads
-                  style={{ display: "block" }}
+                  style={{ display: "block", width: "100%" }}
                   data-ad-client="ca-pub-1331251306729236"
                   data-ad-slot="6140475128"
                   data-ad-format="auto"
