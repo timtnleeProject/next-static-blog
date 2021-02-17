@@ -1,5 +1,6 @@
 import App from "components/App";
 import PostGroup from "components/Aside/PostGroup";
+import NewPosts from "components/Aside/NewPosts";
 import Head from "next/head";
 import { SITE } from "setting";
 import "@fortawesome/fontawesome-svg-core/styles.css"; // To prevent SVG large flash when page init at prod mode.
@@ -24,6 +25,7 @@ function MyApp({ Component, pageProps }) {
         </App.Content>
         <App.Aside>
           <PostGroup />
+          <NewPosts />
           <Ads
             style={{ display: "block" }}
             data-ad-format="fluid"
