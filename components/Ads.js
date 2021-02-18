@@ -10,7 +10,7 @@ export default function Ads(props) {
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
       ></script>
-      <ins className="adsbygoogle g-my-2" {...props}></ins>
+      <ins className="adsbygoogle" {...props}></ins>
     </>
   );
 }

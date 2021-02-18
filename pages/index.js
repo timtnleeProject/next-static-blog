@@ -23,7 +23,7 @@ export default function Home(props) {
           <Post.VerticalItem key={i} post={post} />
         ))}
       </Post.VerticalList>
-      {/* <div className={styles.slot}>
+      <div className={styles.slot}>
         <Ads
           style={{ display: "block" }}
           data-ad-client="ca-pub-1331251306729236"
@@ -31,7 +31,7 @@ export default function Home(props) {
           data-ad-format="auto"
           data-full-width-responsive="true"
         />
-      </div> */}
+      </div>
     </Page.Content>
   );
 }

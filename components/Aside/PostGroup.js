@@ -20,7 +20,7 @@ export default function PostGroup() {
 
   return (
     <Loader.Wrap>
-      <Card className={styles.group}>
+      <Card className={classnames(styles.group, "g-mb-2")}>
         <CardTitle as="h3">文章分類</CardTitle>
         {groups ? (
           <ul>
