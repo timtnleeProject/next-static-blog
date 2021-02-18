@@ -153,7 +153,7 @@ export default function Post(props) {
         >
           {post.raw}
         </ReactMarkdown>
-        <div>
+        <div style={{width: "100%"}}>
           <Ads
             data-ad-layout="in-article"
             data-ad-format="fluid"
