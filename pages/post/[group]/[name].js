@@ -153,6 +153,12 @@ export default function Post(props) {
         >
           {post.raw}
         </ReactMarkdown>
+        <Ads
+          data-ad-layout="in-article"
+          data-ad-format="fluid"
+          data-ad-client="ca-pub-1331251306729236"
+          data-ad-slot="3032107812"
+        />
         <div className={styles.declare}>
           <div>
             <FontAwesomeIcon icon={faExclamationCircle} />
