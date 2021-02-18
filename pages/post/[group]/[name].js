@@ -158,19 +158,21 @@ export default function Post(props) {
             此文章出自<b>{SITE.title}</b>，請勿抄襲，轉載請註明出處。
           </div>
         </div>
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-        ></script>
-        <ins
-          className="adsbygoogle"
-          style={{ display: "block", textAlign: "center" }}
-          data-ad-layout="in-article"
-          data-ad-format="fluid"
-          data-ad-client="ca-pub-1331251306729236"
-          data-ad-slot="3032107812"
-        ></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        <div style={{ width: "100%" }}>
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+          ></script>
+          <ins
+            className="adsbygoogle"
+            style={{ display: "block", textAlign: "center" }}
+            data-ad-layout="in-article"
+            data-ad-format="fluid"
+            data-ad-client="ca-pub-1331251306729236"
+            data-ad-slot="3032107812"
+          ></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
         <DiscussionEmbed
           shortname={DISQUS.shortname}
           config={{
