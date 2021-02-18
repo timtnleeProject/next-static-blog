@@ -27,7 +27,6 @@ import { faElementor } from "@fortawesome/free-brands-svg-icons";
 import Tree from "components/Tree";
 import App from "components/App";
 import Card from "components/Card";
-import Ads from "components/Ads";
 const renderers = {
   heading: function Heading(el) {
     const { level, node, children } = el;
@@ -153,21 +152,25 @@ export default function Post(props) {
         >
           {post.raw}
         </ReactMarkdown>
-        <div style={{ width: "100%" }}>
-          <Ads
-            style={{ display: "block", textAlign: "center" }}
-            data-ad-layout="in-article"
-            data-ad-format="fluid"
-            data-ad-client="ca-pub-1331251306729236"
-            data-ad-slot="3032107812"
-          />
-        </div>
         <div className={styles.declare}>
           <div>
             <FontAwesomeIcon icon={faExclamationCircle} />
             此文章出自<b>{SITE.title}</b>，請勿抄襲，轉載請註明出處。
           </div>
         </div>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+        ></script>
+        <ins
+          className="adsbygoogle"
+          style="display:block; text-align:center;"
+          data-ad-layout="in-article"
+          data-ad-format="fluid"
+          data-ad-client="ca-pub-1331251306729236"
+          data-ad-slot="3032107812"
+        ></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         <DiscussionEmbed
           shortname={DISQUS.shortname}
           config={{
