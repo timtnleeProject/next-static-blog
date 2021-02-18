@@ -169,13 +169,13 @@ export function Header() {
       handleScroll();
     };
 
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("resize", handleResize);
+    // window.addEventListener("resize", handleResize);
+    // window.addEventListener("scroll", handleScroll);
+    // return () => {
+    //   window.removeEventListener("resize", handleResize);
 
-      window.removeEventListener("scroll", handleScroll);
-    };
+    //   window.removeEventListener("scroll", handleScroll);
+    // };
   }, []);
 
   return (
