@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import React, { memo, useEffect } from "react";
 
-export default function Ads(props) {
+export default memo(function Ads(props) {
   useEffect(() => {
     (window.adsbygoogle || []).push({});
   }, []);
@@ -13,4 +13,4 @@ export default function Ads(props) {
       <ins className="adsbygoogle" {...props}></ins>
     </>
   );
-}
+});
