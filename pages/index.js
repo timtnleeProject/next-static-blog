@@ -27,7 +27,7 @@ export default function Home(props) {
       <Post.VerticalList>
         {postsWithAds.map((post, i) =>
           post === "ads" ? (
-            <div className={styles.slot}>
+            <div key={`ads-${i}`} className={styles.slot}>
               <Ads
                 style={{ display: "block" }}
                 data-ad-client="ca-pub-1331251306729236"

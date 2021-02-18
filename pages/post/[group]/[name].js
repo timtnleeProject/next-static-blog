@@ -153,8 +153,9 @@ export default function Post(props) {
         >
           {post.raw}
         </ReactMarkdown>
-        <div style={{width: "100%"}}>
+        <div style={{ width: "100%" }}>
           <Ads
+            style={{ display: "block", textAlign: "center" }}
             data-ad-layout="in-article"
             data-ad-format="fluid"
             data-ad-client="ca-pub-1331251306729236"
