@@ -206,12 +206,56 @@ export function Aside(props) {
   return <aside className={styles.aside}>{props.children}</aside>;
 }
 
+export function Footer() {
+  const route = useRouter();
+  return (
+    <footer className={styles.footer}>
+      <div className="g-mr-10">
+        <h4>{SITE.title}</h4>
+        <div className="g-my-3">
+          Banner Photo by{" "}
+          <a href="https://unsplash.com/@sigmund?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+            Sigmund
+          </a>{" "}
+          on{" "}
+          <a href="https://unsplash.com/s/photos/chocolate?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+            Unsplash
+          </a>
+        </div>
+        <div>
+          Owner:{" "}
+          <a href="mailto:litingen1995@gmail.com" className="g-color-link">
+            litingen1995@gmail.com
+          </a>
+        </div>
+      </div>
+      <div>
+        <ul className={styles.footerLinks}>
+          {links.map((link) => {
+            const active = link.href === route.pathname;
+            return (
+              <li key={link.name} className={classnames(active && styles.active)}>
+                <Link href={link.href}>
+                  <a>
+                    <span>{link.name}</span>
+                  </a>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </footer>
+  );
+}
+
 export default {
   Nav,
   Header,
   Body,
   Content,
   Aside,
+  Footer,
 };
 
 Content.propTypes = {

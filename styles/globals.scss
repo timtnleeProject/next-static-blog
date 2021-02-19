@@ -124,7 +124,7 @@ $colors: $color-main, $color-emphasis, $color-grey, $color-grey-0, $color-grey-2
   }
 }
 
-$ps: 1, 2, 3, 4, 5, 6;
+$ps: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 @each $i in $ps {
   .g-m-#{$i} {
     margin: 4px * $i !important;
