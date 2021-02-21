@@ -15,7 +15,7 @@ import slug from "remark-slug";
 import PageMetadata from "components/PageMetadata";
 import { DISQUS, SITE } from "setting";
 import LinkPreview from "components/LinkPreview";
-import Image from "components/Image";
+import Ads from "components/Ads";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCaretUp,
@@ -158,6 +158,13 @@ export default function Post(props) {
             此文章出自<b>{SITE.title}</b>，請勿抄襲，轉載請註明出處。
           </div>
         </div>
+        <Ads
+          style={{ display: "block", textAlign: "center" }}
+          data-ad-layout="in-article"
+          data-ad-format="fluid"
+          data-ad-client="ca-pub-1331251306729236"
+          data-ad-slot="3032107812"
+        />
         <DiscussionEmbed
           shortname={DISQUS.shortname}
           config={{
