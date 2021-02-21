@@ -69,7 +69,7 @@ const renderers = {
     );
   },
   image: function PostImage({ src, alt }) {
-    return <Image src={src} alt={alt} />;
+    return <img className={styles.image} src={src} alt={alt} />;
   },
 };
 
