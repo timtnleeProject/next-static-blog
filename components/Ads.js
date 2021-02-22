@@ -5,7 +5,7 @@ export default memo(function Ads(props) {
     if (window) (window.adsbygoogle = window.adsbygoogle || []).push({});
   }, []);
   return (
-    <div style={{ width: "100%" }}>
+    <div style={{ width: "100%", minWidth: "250px" }}>
       <ins className="adsbygoogle" {...props}></ins>
     </div>
   );
