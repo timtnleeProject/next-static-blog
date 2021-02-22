@@ -157,6 +157,7 @@ export default function Post(props) {
             此文章出自<b>{SITE.title}</b>，請勿抄襲，轉載請註明出處。
           </div>
         </div>
+        <iframe src="/ads/inpost.html" />
         {/* <Ads
           style={{ display: "block", textAlign: "center" }}
           data-ad-layout="in-article"
