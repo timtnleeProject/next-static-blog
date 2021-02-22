@@ -1,9 +1,7 @@
 import React, { memo, useEffect, useRef } from "react";
 
 export default memo(function AdsTest() {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current.innerHTML = `
+  const content = `
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <ins class="adsbygoogle"
          style="display:block; text-align:center;"
@@ -15,6 +13,5 @@ export default memo(function AdsTest() {
          (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
     `;
-  }, []);
-  return <div ref={ref}></div>;
+  return <div dangerouslySetInnerHTML={{ __html: content }}></div>;
 });
