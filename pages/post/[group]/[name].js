@@ -160,7 +160,9 @@ export default function Post(props) {
         <iframe
           src="/ads/inpost.html"
           width="100%"
-          onLoad={(obj) => {
+          onLoad={(e) => {
+            console.log(e);
+            const obj = e.target;
             obj.style.height =
               obj.contentWindow.document.documentElement.scrollHeight + "px";
           }}
