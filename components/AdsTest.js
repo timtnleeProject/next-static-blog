@@ -11,7 +11,7 @@ export default memo(function Ads(props) {
   const ref = useRef();
 
   useEffect(() => {
-    ref.innerHTML = content;
+    ref.current.innerHTML = content;
     if (window) (window.adsbygoogle = window.adsbygoogle || []).push({});
   }, []);
   return <div ref={ref}></div>;
