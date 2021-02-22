@@ -30,20 +30,7 @@ function MyApp({ Component, pageProps }) {
         <App.Aside>
           <PostGroup />
           <NewPosts />
-          <Ads
-            style={{ display: "block", marginTop: "8px" }}
-            data-ad-format="fluid"
-            data-ad-layout-key="-73+ed+2i-1n-4w"
-            data-ad-client="ca-pub-1331251306729236"
-            data-ad-slot="6656238614"
-          />
-          {/* <Ads
-            style={{ display: "block", marginTop: "8px" }}
-            data-ad-format="fluid"
-            data-ad-layout-key="-4q+bz-7b-d0+1ni"
-            data-ad-client="ca-pub-1331251306729236"
-            data-ad-slot="4673967329"
-          /> */}
+          <Ads src="/ads/aside.html" />
         </App.Aside>
       </App.Body>
       <App.Footer />
