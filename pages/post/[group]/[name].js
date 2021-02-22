@@ -166,6 +166,8 @@ export default function Post(props) {
             obj.style.height =
               obj.contentWindow.document.documentElement.scrollHeight + "px";
           }}
+          scrolling={false}
+          frameBorder="0"
         />
         {/* <Ads
           style={{ display: "block", textAlign: "center" }}
