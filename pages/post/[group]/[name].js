@@ -15,7 +15,6 @@ import slug from "remark-slug";
 import PageMetadata from "components/PageMetadata";
 import { DISQUS, SITE } from "setting";
 import LinkPreview from "components/LinkPreview";
-import Ads from "components/Ads";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCaretUp,
@@ -27,7 +26,6 @@ import { faElementor } from "@fortawesome/free-brands-svg-icons";
 import Tree from "components/Tree";
 import App from "components/App";
 import Card from "components/Card";
-import AdsTest from "components/AdsTest";
 const renderers = {
   heading: function Heading(el) {
     const { level, node, children } = el;
@@ -159,7 +157,6 @@ export default function Post(props) {
             此文章出自<b>{SITE.title}</b>，請勿抄襲，轉載請註明出處。
           </div>
         </div>
-        <AdsTest />
         {/* <Ads
           style={{ display: "block", textAlign: "center" }}
           data-ad-layout="in-article"
