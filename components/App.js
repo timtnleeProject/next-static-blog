@@ -98,85 +98,85 @@ export function Header() {
   const headerRef = useRef();
   const navRef = useRef();
 
-  useEffect(() => {
-    let y = 0;
-    let stamp = null; // 計算往上滑的 offset 起始點
-    const store = {};
+  // useEffect(() => {
+  //   let y = 0;
+  //   let stamp = null; // 計算往上滑的 offset 起始點
+  //   const store = {};
 
-    const setConstant = () => {
-      const headerHeight = headerRef.current.getBoundingClientRect().height;
-      const navHeight = navRef.current.getBoundingClientRect().height;
-      const isMobile = headerHeight < navHeight;
-      const offset = isMobile ? 0 : navHeight;
-      const boundary = headerHeight + offset;
-      const scrollOffset = (isMobile ? headerHeight : navHeight) * 2;
-      Object.assign(store, {
-        headerHeight,
-        // navHeight,
-        // isMobile,
-        boundary,
-        scrollOffset,
-      });
-    };
+  //   const setConstant = () => {
+  //     const headerHeight = headerRef.current.getBoundingClientRect().height;
+  //     const navHeight = navRef.current.getBoundingClientRect().height;
+  //     const isMobile = headerHeight < navHeight;
+  //     const offset = isMobile ? 0 : navHeight;
+  //     const boundary = headerHeight + offset;
+  //     const scrollOffset = (isMobile ? headerHeight : navHeight) * 2;
+  //     Object.assign(store, {
+  //       headerHeight,
+  //       // navHeight,
+  //       // isMobile,
+  //       boundary,
+  //       scrollOffset,
+  //     });
+  //   };
 
-    setConstant();
+  //   setConstant();
 
-    const handleScroll = () => {
-      const { headerHeight, boundary, scrollOffset } = store;
-      const _y = window.scrollY;
-      const direction = y < _y ? "down" : "up";
-      if (
-        _y > boundary &&
-        headerRef.current.classList.contains(styles[headerStatus.hide])
-      ) {
-        headerRef.current.classList.add(styles[headerStatus.pcTransition]);
-      } else if (
-        _y <= boundary &&
-        !headerRef.current.classList.contains(styles[headerStatus.fixed])
-      ) {
-        headerRef.current.classList.remove(styles[headerStatus.pcTransition]);
-      }
-      if (direction === "down") {
-        // down
-        stamp = null;
-        if (_y > boundary) {
-          headerRef.current.classList.add(styles[headerStatus.hide]);
-          headerRef.current.classList.remove(styles[headerStatus.fixed]);
-        }
-      } else {
-        // up
-        if (_y <= headerHeight) {
-          headerRef.current.classList.remove(
-            styles[headerStatus.fixed],
-            styles[headerStatus.hide],
-          );
-        } else if (_y <= boundary) {
-          headerRef.current.classList.remove(styles[headerStatus.hide]);
-        } else {
-          stamp ??= _y;
-          if (stamp - _y > scrollOffset) {
-            headerRef.current.classList.remove(styles[headerStatus.hide]);
-            headerRef.current.classList.add(styles[headerStatus.fixed]);
-            stamp = null;
-          }
-        }
-      }
-      y = _y;
-    };
+  //   const handleScroll = () => {
+  //     const { headerHeight, boundary, scrollOffset } = store;
+  //     const _y = window.scrollY;
+  //     const direction = y < _y ? "down" : "up";
+  //     if (
+  //       _y > boundary &&
+  //       headerRef.current.classList.contains(styles[headerStatus.hide])
+  //     ) {
+  //       headerRef.current.classList.add(styles[headerStatus.pcTransition]);
+  //     } else if (
+  //       _y <= boundary &&
+  //       !headerRef.current.classList.contains(styles[headerStatus.fixed])
+  //     ) {
+  //       headerRef.current.classList.remove(styles[headerStatus.pcTransition]);
+  //     }
+  //     if (direction === "down") {
+  //       // down
+  //       stamp = null;
+  //       if (_y > boundary) {
+  //         headerRef.current.classList.add(styles[headerStatus.hide]);
+  //         headerRef.current.classList.remove(styles[headerStatus.fixed]);
+  //       }
+  //     } else {
+  //       // up
+  //       if (_y <= headerHeight) {
+  //         headerRef.current.classList.remove(
+  //           styles[headerStatus.fixed],
+  //           styles[headerStatus.hide],
+  //         );
+  //       } else if (_y <= boundary) {
+  //         headerRef.current.classList.remove(styles[headerStatus.hide]);
+  //       } else {
+  //         stamp ??= _y;
+  //         if (stamp - _y > scrollOffset) {
+  //           headerRef.current.classList.remove(styles[headerStatus.hide]);
+  //           headerRef.current.classList.add(styles[headerStatus.fixed]);
+  //           stamp = null;
+  //         }
+  //       }
+  //     }
+  //     y = _y;
+  //   };
 
-    const handleResize = () => {
-      setConstant();
-      handleScroll();
-    };
+  //   const handleResize = () => {
+  //     setConstant();
+  //     handleScroll();
+  //   };
 
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("resize", handleResize);
+  //   window.addEventListener("resize", handleResize);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
 
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   return (
     <>
