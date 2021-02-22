@@ -13,7 +13,7 @@ export default memo(function Ads(props) {
         obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + "px";
         obj.contentWindow.document.body.style = "overflow: hidden";
       }}
-      scrolling={false}
+      scrolling="false"
       frameBorder="0"
     />
   );
