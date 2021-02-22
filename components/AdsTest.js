@@ -1,7 +1,5 @@
 import React, { memo, useEffect, useRef } from "react";
-
-export default memo(function Ads(props) {
-  const content = `
+const content = `
   <ins class="adsbygoogle"
        style="display:block; text-align:center;"
        data-ad-layout="in-article"
@@ -9,8 +7,12 @@ export default memo(function Ads(props) {
        data-ad-client="ca-pub-1331251306729236"
        data-ad-slot="3032107812"></ins>
   `;
+export default memo(function Ads(props) {
+  const ref = useRef();
+
   useEffect(() => {
+    ref.innerHTML = content;
     if (window) (window.adsbygoogle = window.adsbygoogle || []).push({});
   }, []);
-  return <div dangerouslySetInnerHTML={{ __html: content }}></div>;
+  return <div ref={ref}></div>;
 });
