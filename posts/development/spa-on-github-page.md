@@ -1,4 +1,4 @@
-相信大家一定都有用 Github Pages 發布網頁的經驗，那麼如果今天寫的是像 Vue, React 這種 SPA (Single Page Application) 要如何使用 Github Pages 發布，以及需要注意的地方？
+相信大家一定都有用 Github Pages 發布網頁的經驗，如果是 Vue, React 這種 SPA (Single Page Application) 要如何使用 Github Pages 發布，以及需要注意的地方？
 
 ## 專案結構
 
@@ -11,8 +11,7 @@
 
 ## gh-pages
 
-你可能會想：
-每次發布都要手動 build 加上把檔案搬到 `gh-pages` branch 並且 push 到 github，也太麻煩了吧！
+你可能會想：每次發布都要手動 build 、把檔案搬到 `gh-pages` branch 、並且 push 到 github，也太麻煩了吧！
 
 幸好有一個 npm package gh-pages 可以使用，幫助你進行相關操作。
 https://www.npmjs.com/package/gh-pages#command-line-utility
