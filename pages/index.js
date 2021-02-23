@@ -21,7 +21,13 @@ export default function Home(props) {
           <Post.VerticalItem key={i} post={post} />
         ))}
       </Post.VerticalList>
-      <Ads src="/ads/wide.html" />
+      <Ads
+        style={{ display: "block" }}
+        data-ad-client="ca-pub-1331251306729236"
+        data-ad-slot="6140475128"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
     </Page.Content>
   );
 }
