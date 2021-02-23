@@ -7,7 +7,7 @@
 .frame {
   width: 100%;
   visibility: hidden;
-  .show {
+  &.show {
     visibility: visible;
   }
 }
