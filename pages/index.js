@@ -3,7 +3,7 @@ import Post from "components/Post";
 import Page from "components/Page";
 import PageMetadata from "components/PageMetadata";
 import { SITE } from "setting";
-import Ads from "components/Ads";
+import AdsFrame from "components/AdsFrame";
 
 export default function Home(props) {
   const { posts = [] } = props;
@@ -21,13 +21,7 @@ export default function Home(props) {
           <Post.VerticalItem key={i} post={post} />
         ))}
       </Post.VerticalList>
-      <Ads
-        style={{ display: "block" }}
-        data-ad-client="ca-pub-1331251306729236"
-        data-ad-slot="6140475128"
-        data-ad-format="auto"
-        data-full-width-responsive="true"
-      />
+      <AdsFrame src="/ads/wide.html" />
     </Page.Content>
   );
 }

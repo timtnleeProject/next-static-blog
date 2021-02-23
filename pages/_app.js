@@ -5,7 +5,7 @@ import Head from "next/head";
 import { SITE } from "setting";
 import "@fortawesome/fontawesome-svg-core/styles.css"; // To prevent SVG large flash when page init at prod mode.
 import "../styles/globals.scss";
-import Ads from "components/Ads";
+import AdsFrame from "components/AdsFrame";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -26,13 +26,7 @@ function MyApp({ Component, pageProps }) {
         <App.Aside>
           <PostGroup />
           <NewPosts />
-          <Ads
-            style={{ display: "block" }}
-            data-ad-format="fluid"
-            data-ad-layout-key="-4q+bz-7b-d0+1ni"
-            data-ad-client="ca-pub-1331251306729236"
-            data-ad-slot="4673967329"
-          />
+          <AdsFrame src="/ads/aside.html" />
         </App.Aside>
       </App.Body>
       <App.Footer />
