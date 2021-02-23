@@ -5,6 +5,8 @@ $margin: 1.5em;
   padding-bottom: 12px;
   font-size: 18px;
   letter-spacing: -0.003em;
+  width: 100%;
+  overflow-x: auto;
   @media screen and (max-width: $bp) {
     font-size: 16px;
   }
