@@ -3,6 +3,7 @@ import Post from "components/Post";
 import Page from "components/Page";
 import PageMetadata from "components/PageMetadata";
 import { SITE } from "setting";
+import Ads from "components/Ads";
 
 export default function Home(props) {
   const { posts = [] } = props;
@@ -20,6 +21,7 @@ export default function Home(props) {
           <Post.VerticalItem key={i} post={post} />
         ))}
       </Post.VerticalList>
+      <Ads src="/ads/wide.html" />
     </Page.Content>
   );
 }

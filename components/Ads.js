@@ -1,12 +1,20 @@
-import React, { memo, useEffect } from "react";
+import React, { memo } from "react";
+import classnames from "classnames";
+import styles from "./styles/Ads.module.scss";
 
 export default memo(function Ads(props) {
-  useEffect(() => {
-    if (window) (window.adsbygoogle = window.adsbygoogle || []).push({});
-  }, []);
   return (
-    <div style={{ width: "100%", minWidth: "250px" }}>
-      <ins className="adsbygoogle" {...props}></ins>
-    </div>
+    <iframe
+      className={classnames(styles.ads, props.className)}
+      src={props.src}
+      width="100%"
+      onLoad={(e) => {
+        const obj = e.target;
+        obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + "px";
+        obj.contentWindow.document.body.style = "overflow: hidden";
+      }}
+      scrolling="false"
+      frameBorder="0"
+    />
   );
 });
