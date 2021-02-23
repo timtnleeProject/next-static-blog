@@ -6,7 +6,7 @@ export default memo(function Ads(props) {
   return (
     <div className={styles.ads}>
       <iframe
-        className={classnames(styles.ads, props.className)}
+        className={classnames(styles.frame, props.className)}
         src={props.src}
         onLoad={(e) => {
           const obj = e.target;
