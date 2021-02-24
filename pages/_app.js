@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }) {
           <PostGroup />
           <NewPosts />
           <AdsFrame src="/ads/aside.html" />
-          <AdsFrame src="/ads/aside.html" />
+          <AdsFrame src="/ads/aside2.html" />
         </App.Aside>
       </App.Body>
       <App.Footer />
