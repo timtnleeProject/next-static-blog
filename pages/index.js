@@ -4,6 +4,8 @@ import Page from "components/Page";
 import PageMetadata from "components/PageMetadata";
 import { SITE } from "setting";
 import AdsFrame from "components/AdsFrame";
+import Link from "next/link";
+import styles from "../styles/Home.module.scss";
 
 export default function Home(props) {
   const { posts = [] } = props;
@@ -21,6 +23,11 @@ export default function Home(props) {
           <Post.VerticalItem key={i} post={post} />
         ))}
       </Post.VerticalList>
+      <div>
+        <Link href="/post" passHref>
+          <a className={styles.morePost}>看所有文章</a>
+        </Link>
+      </div>
       <AdsFrame src="/ads/wide.html" />
     </Page.Content>
   );
