@@ -1,13 +1,11 @@
-// .ads {
-//   padding: 0;
-//   width: 100%;
-//   min-width: 270px;
-//   background-color: $color-grey-0;
-// }
+.ads {
+  padding: 0;
+  width: 100%;
+  min-width: 270px;
+}
 .frame {
   height: 0;
   width: 100%;
-  min-width: 270px;
   visibility: hidden;
   &.show {
     visibility: visible;
