@@ -39,6 +39,31 @@ export default function About() {
             <p>此人還未留下任何東西</p>
           </Card>
         </div>
+        <Page.SubTitle>Resource</Page.SubTitle>
+        <div className={styles.resource}>
+          <ul>
+            <li>
+              Banner Photo by{" "}
+              <a href="https://unsplash.com/@sigmund?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+                Sigmund
+              </a>{" "}
+              on{" "}
+              <a href="https://unsplash.com/s/photos/chocolate?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+                Unsplash
+              </a>
+            </li>
+            <li>
+              Diary Photo by{" "}
+              <a href="https://unsplash.com/@fresh_studio?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+                Zoran Borojevic
+              </a>{" "}
+              on{" "}
+              <a href="https://unsplash.com/s/photos/diary?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+                Unsplash
+              </a>
+            </li>
+          </ul>
+        </div>
       </Page.CenterSection>
     </Page.Content>
   );

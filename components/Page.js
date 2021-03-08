@@ -11,6 +11,15 @@ export const Title = (props) => {
   );
 };
 
+export const SubTitle = (props) => {
+  const { children, className, ...rest } = props;
+  return (
+    <h2 className={classnames(styles.title, className)} {...rest}>
+      {children}
+    </h2>
+  );
+};
+
 export const Content = (props) => {
   const { children, className, size = "md", innerRef, ...rest } = props;
   return (
@@ -38,6 +47,7 @@ export const CenterSection = (props) => {
 
 export default {
   Title,
+  SubTitle,
   Content,
   CenterSection,
 };

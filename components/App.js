@@ -212,16 +212,6 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className="g-mr-10">
         <h4>{SITE.title}</h4>
-        <div className="g-my-3">
-          Banner Photo by{" "}
-          <a href="https://unsplash.com/@sigmund?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
-            Sigmund
-          </a>{" "}
-          on{" "}
-          <a href="https://unsplash.com/s/photos/chocolate?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
-            Unsplash
-          </a>
-        </div>
         <div>
           Owner:{" "}
           <a href="mailto:litingen1995@gmail.com" className="g-color-link">
