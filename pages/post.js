@@ -2,8 +2,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { bread, BreadCrumb } from "components/BreadCrumb";
 import Page from "components/Page";
 import Post, { VerticalItem } from "components/Post";
-import { SITE } from "../setting";
 import { Wrap, Spinner } from "components/Loader";
+import { getPosts } from "data";
 
 export default function About({ posts: initPosts }) {
   const [posts, setPosts] = useState(initPosts);
@@ -69,14 +69,14 @@ export default function About({ posts: initPosts }) {
   );
 }
 
-export async function getServerSideProps(context) {
-  const host = process.env.NODE_ENV === "production" ? SITE.url : "http://localhost:3000";
-  const posts = await fetch(`${host}/api/post?start=0&length=6`).then((res) =>
-    res.json(),
-  );
+export async function getStaticProps(context) {
+  // const host = process.env.NODE_ENV === "production" ? SITE.url : "http://localhost:3000";
+  // const posts = await fetch(`${host}/api/post?start=0&length=6`).then((res) =>
+  //   res.json(),
+  // );
   return {
     props: {
-      posts,
+      posts: getPosts().slice(0, 6),
     },
   };
 }
