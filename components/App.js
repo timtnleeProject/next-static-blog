@@ -210,31 +210,30 @@ export function Footer() {
   const route = useRouter();
   return (
     <footer className={styles.footer}>
-      <div className="g-mr-10">
+      <div className="g-px-10">
         <h4>{SITE.title}</h4>
-        <div>
+        {/* <div>
           Owner:{" "}
           <a href="mailto:litingen1995@gmail.com" className="g-color-link">
             litingen1995@gmail.com
           </a>
-        </div>
+        </div> */}
       </div>
-      <div>
-        <ul className={styles.footerLinks}>
-          {links.map((link) => {
-            const active = link.href === route.pathname;
-            return (
-              <li key={link.name} className={classnames(active && styles.active)}>
-                <Link href={link.href}>
-                  <a>
-                    <span>{link.name}</span>
-                  </a>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      {links.map((link) => {
+        const active = link.href === route.pathname;
+        return (
+          <div
+            key={link.name}
+            className={classnames(styles.footerLink, active && styles.active)}
+          >
+            <Link href={link.href}>
+              <a>
+                <span>{link.name}</span>
+              </a>
+            </Link>
+          </div>
+        );
+      })}
     </footer>
   );
 }

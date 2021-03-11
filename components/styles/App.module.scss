@@ -225,39 +225,28 @@ $b-color: $color-grey-2;
   background-color: #fff;
   box-shadow: 2px -2px 4px $color-grey;
   color: #000;
-  padding: 48px 120px;
+  padding: 24px 120px;
   font-size: 0.9em;
   display: flex;
-  > div {
-    border-left: 1px solid $b-color;
-    padding: 0 24px;
-  }
+  align-items: center;
+  flex-wrap: wrap;
   h4 {
-    color: $color-emphasis;
-    margin-top: 0;
-    font-size: 1.2em;
+    text-align: center;
   }
-  .active {
-    color: #000;
-    text-decoration: underline;
-  }
-  .footerLinks {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    li {
-      margin-right: 12px;
+  .footerLink {
+    color: $color-grey-2;
+    padding: 0 24px;
+    text-align: center;
+    &.active {
+      color: $color-link-active;
+      text-decoration: underline;
     }
   }
 }
 @media screen and (max-width: $bp) {
   .footer {
-    display: block;
-    padding: 48px 36px;
-    > div {
-      border-left: none;
-      border-bottom: 1px solid $b-color;
-      padding: 24px 0;
+    > * {
+      flex: 1 1 100%;
     }
   }
 }
