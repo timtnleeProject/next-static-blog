@@ -27,7 +27,7 @@ export default function GroupPost() {
     }
   }, [text]);
 
-  const title = text ? `搜尋文章： ${text}` : "搜尋文章";
+  const title = "搜尋文章";
   return (
     <Page.Content>
       <PageMetadata title={title} description={title} />
