@@ -3,21 +3,16 @@ import { bread, BreadCrumb } from "components/BreadCrumb";
 import Page from "components/Page";
 import Post, { VerticalItem } from "components/Post";
 import { Wrap, Spinner } from "components/Loader";
-import { getPosts } from "data";
+import { getGroups, getPosts } from "data";
 import Link from "next/link";
 import Tag from "components/Tag";
 
-export default function About({ posts: initPosts }) {
+export default function About({ posts: initPosts, groups }) {
   const [posts, setPosts] = useState(initPosts);
-  const [groups, setGroups] = useState([]);
   const [done, setDone] = useState(false);
   const breadcrumbs = useMemo(() => [bread.home, bread.post], []);
 
-  useEffect(() => {
-    fetch("/api/groups")
-      .then((res) => res.json())
-      .then((res) => setGroups(res));
-  }, []);
+  const total = useMemo(() => groups.reduce((sum, g) => sum + g.count, 0), [groups]);
 
   const ref = useRef();
   useEffect(() => {
@@ -66,8 +61,9 @@ export default function About({ posts: initPosts }) {
         <BreadCrumb links={breadcrumbs} />
         <Page.Title>文章</Page.Title>
         <div className="g-mt-3 g-mb-6">
+          類別：
           {groups.map((group) => (
-            <Tag key={group.name} color="dark">
+            <Tag key={group.name} color="white" variant="emphasis" border="emphasis">
               <Link
                 className="g-mr-3"
                 href={{
@@ -85,6 +81,7 @@ export default function About({ posts: initPosts }) {
             </Tag>
           ))}
         </div>
+        <div className="g-color-grey-2 g-mt-3 g-mb-6">共 {total} 篇文章</div>
       </Page.CenterSection>
       <Post.VerticalList>
         {posts.map((post) => (
@@ -109,6 +106,7 @@ export async function getStaticProps(context) {
   return {
     props: {
       posts: getPosts().slice(0, 6),
+      groups: getGroups(),
     },
   };
 }
