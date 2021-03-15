@@ -4,19 +4,28 @@ import Page from "components/Page";
 import Post, { VerticalItem } from "components/Post";
 import { Wrap, Spinner } from "components/Loader";
 import { getPosts } from "data";
+import Link from "next/link";
+import Tag from "components/Tag";
 
 export default function About({ posts: initPosts }) {
   const [posts, setPosts] = useState(initPosts);
+  const [groups, setGroups] = useState([]);
   const [done, setDone] = useState(false);
   const breadcrumbs = useMemo(() => [bread.home, bread.post], []);
 
+  useEffect(() => {
+    fetch("/api/groups")
+      .then((res) => res.json())
+      .then((res) => setGroups(res));
+  }, []);
+
   const ref = useRef();
   useEffect(() => {
+    const el = ref.current;
     let length = 6;
     let onViewPort = false;
     let processing = false;
     const append = () => {
-      console.log("FETCH POST");
       fetch(`/api/post?start=${length}&length=6`)
         .then((res) => res.json())
         .then((newPosts) => {
@@ -24,7 +33,7 @@ export default function About({ posts: initPosts }) {
           setPosts((p) => p.concat(newPosts));
           if (newPosts.length < 6) {
             console.log("STOP LOAD MORE");
-            observer.unobserve(ref.current);
+            observer.unobserve(el);
             setDone(true);
             return;
           }
@@ -45,7 +54,10 @@ export default function About({ posts: initPosts }) {
         append();
       }
     });
-    observer.observe(ref.current);
+    observer.observe(el);
+    return () => {
+      observer.unobserve(el);
+    };
   }, []);
 
   return (
@@ -53,6 +65,26 @@ export default function About({ posts: initPosts }) {
       <Page.CenterSection>
         <BreadCrumb links={breadcrumbs} />
         <Page.Title>文章</Page.Title>
+        <div className="g-mt-3 g-mb-6">
+          {groups.map((group) => (
+            <Tag key={group.name} color="dark">
+              <Link
+                className="g-mr-3"
+                href={{
+                  pathname: "/post/[group]",
+                  query: {
+                    group: group.name,
+                  },
+                }}
+                passHref
+              >
+                <a>
+                  {group.display}({group.count})
+                </a>
+              </Link>
+            </Tag>
+          ))}
+        </div>
       </Page.CenterSection>
       <Post.VerticalList>
         {posts.map((post) => (

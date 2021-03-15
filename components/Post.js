@@ -103,6 +103,7 @@ export const VerticalItem = function VerticalItem({
       {!simple && (
         <>
           <Date post={post} />
+          <Author className={styles.tags} author={metadata.author} />
           <div className={styles.group}>
             類別：
             <GroupTag group={group} />
