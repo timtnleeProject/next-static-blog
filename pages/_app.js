@@ -1,5 +1,6 @@
 import App from "components/App";
 import PostGroup from "components/Aside/PostGroup";
+import Search from "components/Aside/Search";
 import NewPosts from "components/Aside/NewPosts";
 import Head from "next/head";
 import { SITE } from "setting";
@@ -25,8 +26,9 @@ function MyApp({ Component, pageProps }) {
         </App.Content>
         <App.Aside>
           <PostGroup />
-          <NewPosts />
+          <Search />
           <AdsFrame src="/ads/aside.html" />
+          <NewPosts />
           <AdsFrame src="/ads/aside2.html" />
         </App.Aside>
       </App.Body>

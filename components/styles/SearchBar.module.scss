@@ -1,0 +1,13 @@
+.searchbar {
+  padding-top: 4px;
+  display: flex;
+  margin-bottom: 16px;
+  .input {
+    flex: 1 1 100%;
+    margin-right: 8px;
+  }
+  .btn {
+    flex: 0 0 0;
+    white-space: nowrap;
+  }
+}

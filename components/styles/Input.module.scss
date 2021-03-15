@@ -1,0 +1,12 @@
+.input {
+  border: 1px solid $color-grey;
+  background-color: #fff;
+  padding: 8px 12px;
+  border-radius: 5px;
+  &:focus {
+    border: 1px solid $color-grey-2;
+  }
+  &:disabled {
+    background-color: $color-grey-0;
+  }
+}

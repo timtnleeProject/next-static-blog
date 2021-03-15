@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from "./styles/Card.module.scss";
 import classnames from "classnames";
 
-export default function Card(props) {
+export default memo(function Card(props) {
   const { children, className, as = "div", ...rest } = props;
   const Component = (props) => React.createElement(as, props);
   return (
@@ -10,7 +10,7 @@ export default function Card(props) {
       {children}
     </Component>
   );
-}
+});
 
 export function CardTitle(props) {
   const { children, className, as = "h2", ...rest } = props;
