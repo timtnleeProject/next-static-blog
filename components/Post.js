@@ -65,8 +65,18 @@ export const Date = function Date({ post }) {
 };
 
 export const VerticalList = function VerticalList(props) {
-  const { className } = props;
-  return <ul className={classnames(styles.verticalList, className)}>{props.children}</ul>;
+  const { className, alignLeft } = props;
+  return (
+    <ul
+      className={classnames(
+        styles.verticalList,
+        alignLeft && styles.alignLeft,
+        className,
+      )}
+    >
+      {props.children}
+    </ul>
+  );
 };
 
 export const VerticalItem = function VerticalItem({

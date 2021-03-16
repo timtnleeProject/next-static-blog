@@ -12,6 +12,9 @@ $gap: 8px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  &.alignLeft {
+    justify-content: flex-start;
+  }
   margin-right: -$gap;
   .verticalItem {
     margin-right: $gap;

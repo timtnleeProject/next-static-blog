@@ -17,42 +17,45 @@ export default function About({ posts: initPosts, groups }) {
   const ref = useRef();
   useEffect(() => {
     const el = ref.current;
-    let length = 6;
-    let onViewPort = false;
-    let processing = false;
-    const append = () => {
-      fetch(`/api/post?start=${length}&length=6`)
-        .then((res) => res.json())
-        .then((newPosts) => {
-          length += newPosts.length;
-          setPosts((p) => p.concat(newPosts));
-          if (newPosts.length < 6) {
-            console.log("STOP LOAD MORE");
-            observer.unobserve(el);
-            setDone(true);
-            return;
-          }
-          if (onViewPort) {
-            append();
-          } else {
-            console.log("STOP");
-            processing = false;
-          }
-        });
-    };
-    const observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      onViewPort = entry.isIntersecting;
-      if (processing) return;
-      if (entry.isIntersecting) {
-        processing = true;
-        append();
-      }
-    });
-    observer.observe(el);
-    return () => {
-      observer.unobserve(el);
-    };
+
+    if (el) {
+      let length = 6;
+      let onViewPort = false;
+      let processing = false;
+      const append = () => {
+        fetch(`/api/post?start=${length}&length=6`)
+          .then((res) => res.json())
+          .then((newPosts) => {
+            length += newPosts.length;
+            setPosts((p) => p.concat(newPosts));
+            if (newPosts.length < 6) {
+              console.log("STOP LOAD MORE");
+              observer.unobserve(el);
+              setDone(true);
+              return;
+            }
+            if (onViewPort) {
+              append();
+            } else {
+              console.log("STOP");
+              processing = false;
+            }
+          });
+      };
+      const observer = new IntersectionObserver((entries) => {
+        const entry = entries[0];
+        onViewPort = entry.isIntersecting;
+        if (processing) return;
+        if (entry.isIntersecting) {
+          processing = true;
+          append();
+        }
+      });
+      observer.observe(el);
+      return () => {
+        observer.unobserve(el);
+      };
+    }
   }, []);
 
   return (
@@ -83,7 +86,7 @@ export default function About({ posts: initPosts, groups }) {
         </div>
         <div className="g-color-grey-2 g-mt-3 g-mb-6">共 {total} 篇文章</div>
       </Page.CenterSection>
-      <Post.VerticalList>
+      <Post.VerticalList alignLeft>
         {posts.map((post) => (
           <VerticalItem key={post.group.name + post.name} simple post={post} />
         ))}
