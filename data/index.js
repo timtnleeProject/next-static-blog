@@ -107,9 +107,9 @@ export const getGroups = () => groups;
 
 export const getTagsByGroup = (groupName) => groupTagsMap[groupName];
 
-export const getRecommandedPosts = (post) => {
+export const getRecommandedPosts = (post, number = 6) => {
   const { nth } = post;
-  const num = 2;
+  const num = Math.floor(number / 2);
   const posts = getPosts();
   const recommanded = [];
   const starts = Array.from(Array(num)).map((_, i) => nth - i - 1);
