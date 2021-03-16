@@ -5,7 +5,6 @@ import Input from "./Input";
 
 export default memo(function SearchBar({ disabled = false, defaultValue }) {
   const router = useRouter();
-
   const ref = useRef();
   const search = useCallback(() => {
     router.push({
@@ -29,6 +28,7 @@ export default memo(function SearchBar({ disabled = false, defaultValue }) {
         onKeyDown={onKeyDown}
         disabled={disabled}
         defaultValue={defaultValue}
+        placeholder="標題、預覽、標籤"
       />
       <button className={styles.btn} onClick={search}>
         搜尋
