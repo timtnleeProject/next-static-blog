@@ -65,15 +65,17 @@
 }
 
 .zoomArea {
-  position: absolute;
+  position: fixed;
   display: none;
-  width: 40%;
-  border: 1px solid black;
+  width: 60%;
+  max-width: 450px;
+  outline: 1px double $color-link;
   pointer-events: none;
   overflow: hidden;
   background-color: white;
   canvas {
     width: 100%;
+    display: block;
   }
   img {
     position: absolute;

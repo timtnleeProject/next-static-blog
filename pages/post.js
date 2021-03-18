@@ -40,7 +40,8 @@ export default function About({ posts: initPosts, groups }) {
               console.log("STOP");
               processing = false;
             }
-          });
+          })
+          .catch(() => {});
       };
       const observer = new IntersectionObserver((entries) => {
         const entry = entries[0];

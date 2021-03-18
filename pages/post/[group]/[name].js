@@ -27,6 +27,7 @@ import Tree from "components/Tree";
 import App from "components/App";
 import Card from "components/Card";
 import AdsFrame from "components/AdsFrame";
+import Image from "components/Image";
 const renderers = {
   heading: function Heading(el) {
     const { level, node, children } = el;
@@ -69,7 +70,7 @@ const renderers = {
     );
   },
   image: function PostImage({ src, alt }) {
-    return <img className={styles.image} src={src} alt={alt} />;
+    return <Image className={styles.image} src={src} alt={alt} />;
   },
 };
 

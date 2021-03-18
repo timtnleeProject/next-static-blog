@@ -44,8 +44,8 @@ export default function Image(props) {
         } else {
           zoomEl.current.style.display = "block";
         }
-        zoomEl.current.style.left = `${x}px`;
-        zoomEl.current.style.top = `${y}px`;
+        zoomEl.current.style.left = `${event.clientX}px`;
+        zoomEl.current.style.top = `${event.clientY}px`;
         zoomEl.current.style.transform = `translate(-${offsetX}%, -${offsetY}%)`;
         zoomImg.current.style.left = `${offsetX}%`;
         zoomImg.current.style.top = `${offsetY}%`;
@@ -87,7 +87,7 @@ export default function Image(props) {
           <img src={src} alt={alt} ref={img} loading="lazy" />
           {loaded && (
             <span className={styles.zoomArea} ref={zoomEl}>
-              <canvas width="1" height="1"></canvas>
+              <canvas width="4" height="3"></canvas>
               <img src={src} alt={alt} ref={zoomImg} />
             </span>
           )}
