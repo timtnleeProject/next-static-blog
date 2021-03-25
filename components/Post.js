@@ -222,12 +222,15 @@ export const Metadata = function Metadata({ post }) {
         </div>
       </div>
       {metadata.image && (
-        <img
-          className={styles.metaImg}
-          src={metadata.image}
-          alt={metadata.title}
-          loading="lazy"
-        ></img>
+        <div className={styles.imgWrap}>
+          <div className={styles.pad}></div>
+          <img
+            className={styles.metaImg}
+            src={metadata.image}
+            alt={metadata.title}
+            loading="lazy"
+          ></img>
+        </div>
       )}
       <div className={styles.hr} />
     </>
