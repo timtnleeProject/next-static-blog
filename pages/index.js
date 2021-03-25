@@ -25,7 +25,7 @@ export default function Home(props) {
       </Post.VerticalList>
       <div>
         <Link href="/post" passHref>
-          <a className={styles.morePost}>看所有文章</a>
+          <a className={styles.morePost}>看所有文章📔</a>
         </Link>
       </div>
       <AdsFrame src="/ads/wide.html" />
@@ -36,7 +36,7 @@ export default function Home(props) {
 export async function getStaticProps(context) {
   return {
     props: {
-      posts: getPosts().slice(0, 6),
+      posts: getPosts().slice(0, 8),
     },
   };
 }
