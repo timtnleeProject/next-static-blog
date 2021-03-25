@@ -34,7 +34,7 @@ export default function About({ posts: initPosts, groups }) {
     },
     ref,
     start: defaultPostsLength,
-    length: 1,
+    length: 6,
   });
 
   return (
