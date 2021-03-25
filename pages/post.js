@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { bread, BreadCrumb } from "components/BreadCrumb";
 import Page from "components/Page";
 import Post, { VerticalItem } from "components/Post";
@@ -6,6 +6,9 @@ import { Wrap, Spinner } from "components/Loader";
 import { getGroups, getPosts } from "data";
 import Link from "next/link";
 import Tag from "components/Tag";
+import useLazyLoadMorePosts from "hooks/useLazyLoadMorePosts";
+
+const defaultPostsLength = 6;
 
 export default function About({ posts: initPosts, groups }) {
   const [posts, setPosts] = useState(initPosts);
@@ -15,49 +18,18 @@ export default function About({ posts: initPosts, groups }) {
   const total = useMemo(() => groups.reduce((sum, g) => sum + g.count, 0), [groups]);
 
   const ref = useRef();
-  useEffect(() => {
-    const el = ref.current;
 
-    if (el) {
-      let length = 6;
-      let onViewPort = false;
-      let processing = false;
-      const append = () => {
-        fetch(`/api/post?start=${length}&length=6`)
-          .then((res) => res.json())
-          .then((newPosts) => {
-            length += newPosts.length;
-            setPosts((p) => p.concat(newPosts));
-            if (newPosts.length < 6) {
-              console.log("STOP LOAD MORE");
-              observer.unobserve(el);
-              setDone(true);
-              return;
-            }
-            if (onViewPort) {
-              append();
-            } else {
-              console.log("STOP");
-              processing = false;
-            }
-          })
-          .catch(() => {});
-      };
-      const observer = new IntersectionObserver((entries) => {
-        const entry = entries[0];
-        onViewPort = entry.isIntersecting;
-        if (processing) return;
-        if (entry.isIntersecting) {
-          processing = true;
-          append();
-        }
-      });
-      observer.observe(el);
-      return () => {
-        observer.unobserve(el);
-      };
-    }
-  }, []);
+  useLazyLoadMorePosts({
+    onResponse: (newPosts) => {
+      setPosts((p) => p.concat(newPosts));
+    },
+    onDone: () => {
+      setDone(true);
+    },
+    ref,
+    start: defaultPostsLength,
+    length: 6,
+  });
 
   return (
     <Page.Content>
@@ -109,7 +81,7 @@ export async function getStaticProps(context) {
   // );
   return {
     props: {
-      posts: getPosts().slice(0, 6),
+      posts: getPosts().slice(0, defaultPostsLength),
       groups: getGroups(),
     },
   };
