@@ -1,17 +1,18 @@
+$cube: 35px;
 .author {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
 }
 .authorAvatar {
-  flex: 0 0 30px;
+  flex: 0 0 $cube;
   margin-right: 4px;
 }
 .avatar {
   background-color: grey;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: $cube;
+  height: $cube;
   overflow: hidden;
   img {
     width: 100%;

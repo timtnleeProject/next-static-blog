@@ -1,8 +1,8 @@
 .card {
   padding: 2 * $p 3 * $p;
-  box-shadow: 3px 3px 3px $color-grey;
+  box-shadow: 1px 1px 4px 2px $color-grey;
   background-color: $color-white;
-  border: 1px solid $color-grey;
+  // border: 1px solid $color-grey;
   border-radius: $block-radius;
   overflow: hidden;
 }
