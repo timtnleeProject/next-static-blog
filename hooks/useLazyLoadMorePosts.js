@@ -6,6 +6,7 @@ const useLazyLoadMorePosts = ({
   start,
   length,
   onDone,
+  api,
 }) => {
   useEffect(() => {
     const el = ref.current;
@@ -15,8 +16,7 @@ const useLazyLoadMorePosts = ({
       let onViewPort = false;
       let processing = false;
       const append = () => {
-        fetch(`/api/post?start=${total}&length=${length}`)
-          .then((res) => res.json())
+        api(total, length)
           .then((newPosts) => {
             total += newPosts.length;
             onResponse(newPosts);
@@ -50,7 +50,7 @@ const useLazyLoadMorePosts = ({
       };
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [api]);
 };
 
 export default useLazyLoadMorePosts;

@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { bread, BreadCrumb } from "components/BreadCrumb";
 import Page from "components/Page";
 import Post, { VerticalItem } from "components/Post";
@@ -19,7 +19,13 @@ export default function About({ posts: initPosts, groups }) {
 
   const ref = useRef();
 
+  const api = useCallback(
+    (total, length) =>
+      fetch(`/api/post?start=${total}&length=${length}`).then((res) => res.json()),
+    [],
+  );
   useLazyLoadMorePosts({
+    api,
     onResponse: (newPosts) => {
       setPosts((p) => p.concat(newPosts));
     },
@@ -28,7 +34,7 @@ export default function About({ posts: initPosts, groups }) {
     },
     ref,
     start: defaultPostsLength,
-    length: 6,
+    length: 1,
   });
 
   return (
