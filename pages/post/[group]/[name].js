@@ -1,5 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState, useMemo } from "react";
-import classnames from "classnames";
+import React, { useEffect, useRef, useMemo } from "react";
 import { getPost, getPosts, getRecommandedPosts } from "data";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -16,16 +15,7 @@ import PageMetadata from "components/PageMetadata";
 import { DISQUS, SITE } from "setting";
 import LinkPreview from "components/LinkPreview";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCaretUp,
-  faExclamationCircle,
-  faLink,
-  faTimes,
-} from "@fortawesome/free-solid-svg-icons";
-import { faElementor } from "@fortawesome/free-brands-svg-icons";
-import Tree from "components/Tree";
-import App from "components/App";
-import Card from "components/Card";
+import { faExclamationCircle, faLink } from "@fortawesome/free-solid-svg-icons";
 import AdsFrame from "components/AdsFrame";
 import Image from "components/Image";
 const renderers = {
@@ -74,8 +64,8 @@ const renderers = {
   },
 };
 
-export default function Post(props) {
-  const { post, recommanded } = props;
+function Post(props) {
+  const { post, recommanded, app } = props;
   const { group, name, metadata } = post;
   const url = `https://${DISQUS.host}/post/${group.name}/${name}`;
   const identifier = `${group.name}/${name}`;
@@ -84,11 +74,6 @@ export default function Post(props) {
 
   // tree
   const ref = useRef(); // article
-  const [tree, setTree] = useState([]);
-  const [mbTreeToggle, setMbTreeToggle] = useState(false);
-  const toggle = useCallback(() => {
-    setMbTreeToggle((t) => !t);
-  }, []);
   useEffect(() => {
     const t = [];
     const headers = ref.current.querySelectorAll("h2,h3");
@@ -111,15 +96,21 @@ export default function Post(props) {
     const id = "article-title";
     const h1 = ref.current.querySelector("h1");
     h1.setAttribute("id", id);
-    setTree([
+    const tree = [
       {
         id: h1.id,
         name: h1.innerText,
         href: `#${id}`,
         items: t,
       },
-    ]);
-  }, []);
+    ];
+    if (tree?.[0]?.items?.length >= 2) {
+      app.createTree(tree);
+      return () => {
+        app.clearTree(null);
+      };
+    }
+  }, [app]);
 
   const breadcrumbs = useMemo(
     () => [
@@ -176,34 +167,11 @@ export default function Post(props) {
           <PostComponent.VerticalItem key={recommand.name} post={recommand} simple />
         ))}
       </PostComponent.VerticalList>
-      {tree?.[0]?.items?.length >= 2 && (
-        <App.Body className={styles.mockBody}>
-          <App.Content className={styles.mockContent}></App.Content>
-          <App.Aside>
-            {mbTreeToggle && <div className={styles.mbLayer} onClick={toggle}></div>}
-            <Card className={classnames(styles.menu, mbTreeToggle && styles.mbTreeShow)}>
-              <div className={styles.iconRight}>
-                <FontAwesomeIcon
-                  icon={faTimes}
-                  className={styles.closeIcon}
-                  onClick={toggle}
-                />
-              </div>
-              <Tree tree={tree} />
-            </Card>
-            <button className={styles.indicator} onClick={toggle}>
-              <FontAwesomeIcon
-                icon={mbTreeToggle ? faCaretUp : faElementor}
-                className={styles.menuIcon}
-              />
-              目錄
-            </button>
-          </App.Aside>
-        </App.Body>
-      )}
     </Page.Content>
   );
 }
+
+export default Post;
 
 export async function getStaticProps(context) {
   const post = getPost(context.params.group, context.params.name);

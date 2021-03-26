@@ -59,7 +59,7 @@ jsx("img", { src: "avatar.png" });
 
 ### JSX Pragma
 
-第二種，如果你沒辦法設定 babel，可以在 file 定義 JSX pragma
+第二種，如果你沒辦法設定 babel (例如使用 create-react-app)，可以在 file 定義 JSX pragma
 
 ```javascript
 /** @jsx jsx */
