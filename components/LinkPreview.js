@@ -7,12 +7,15 @@ export default function LinkPreview(props) {
   const [loading, setLoading] = useState(true);
   const [preview, setPreview] = useState({});
 
+  const unmounted = useRef(false);
   const getLinkPreview = useCallback(() => {
     fetch(`/api/link?link=${encodeURIComponent(href)}`)
       .then((res) => res.json())
       .then((res) => {
-        setPreview(res);
-        setLoading(false);
+        if (!unmounted.current) {
+          setPreview(res);
+          setLoading(false);
+        }
       });
   }, [href]);
 
@@ -33,6 +36,7 @@ export default function LinkPreview(props) {
     observer.observe(el.current);
     return () => {
       observer.disconnect();
+      unmounted.current = true;
     };
   }, [getLinkPreview]);
 

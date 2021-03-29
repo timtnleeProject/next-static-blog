@@ -203,7 +203,9 @@ export function Content(props) {
 }
 
 export function Aside(props) {
-  return <aside className={styles.aside}>{props.children}</aside>;
+  return (
+    <aside className={classnames(styles.aside, props.className)}>{props.children}</aside>
+  );
 }
 
 export function Footer() {

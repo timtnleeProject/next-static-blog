@@ -1,25 +1,13 @@
-.mockBody {
-  pointer-events: none;
+.fixed {
   position: fixed;
-  width: 100%;
-  top: $app-navHeight;
-  right: 0;
-  z-index: 999;
-}
-.mockContent {
-  background: none;
-  border: none;
-  box-shadow: none;
+  top: calc(#{$app-navHeight} + 10px);
 }
 .menu {
-  top: 0;
   pointer-events: initial;
   z-index: 800;
   max-height: 65vh;
   overflow-y: auto;
-  display: none;
-  box-shadow: $box-shadow $color-emphasis;
-  border-radius: 4px;
+  width: $app-aside;
 }
 .iconRight {
   display: flex;
@@ -31,37 +19,31 @@
 .mbLayer {
   display: none;
 }
-.menu.mbTreeShow {
-  display: block;
-}
+
 .indicator {
-  pointer-events: initial;
-  width: 100%;
-  margin-top: 4px;
-  font-size: 1em;
-  background-color: $color-main;
-  border: 1px solid $color-main;
-  box-shadow: $box-shadow $color-emphasis;
-  color: $color-white;
-  padding: 4px 12px;
-  cursor: pointer;
-  &:hover {
-    border: 1px solid $color-emphasis;
-  }
+  display: none;
 }
 .menuIcon {
   margin-right: 0.5em;
 }
 @media screen and (max-width: $bp-lg) {
-  .mockContent {
-    display: none;
+  .fixed {
+    position: initial;
+    top: 0;
   }
   .menu {
     position: fixed;
+    display: none;
     width: 80%;
     right: 12px;
-    bottom: 64px;
+    bottom: 70px;
     font-size: 15px;
+  }
+  .menu.mbTreeShow {
+    display: block;
+  }
+  .menuTitle {
+    display: none;
   }
   .mbLayer {
     display: block;
@@ -74,10 +56,22 @@
     background-color: rgba(0, 0, 0, 0.1);
   }
   .indicator {
+    display: block;
     position: fixed;
     right: 12px;
     bottom: 24px;
     width: unset;
     height: 36px;
+    margin-top: 4px;
+    font-size: 1em;
+    background-color: $color-main;
+    border: 1px solid $color-main;
+    box-shadow: $box-shadow $color-emphasis;
+    color: $color-white;
+    padding: 4px 12px;
+    cursor: pointer;
+    &:hover {
+      border: 1px solid $color-emphasis;
+    }
   }
 }

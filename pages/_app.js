@@ -7,44 +7,73 @@ import { SITE } from "setting";
 import "@fortawesome/fontawesome-svg-core/styles.css"; // To prevent SVG large flash when page init at prod mode.
 import "../styles/globals.scss";
 import AdsFrame from "components/AdsFrame";
-import Card from "components/Card";
-import { useState, useRef, useCallback } from "react";
+import Card, { CardTitle } from "components/Card";
+import { useState, useRef, useCallback, useEffect, useMemo } from "react";
 import Tree from "components/Tree";
-import { render } from "react-dom";
+import { render, unmountComponentAtNode } from "react-dom";
 import classnames from "classnames";
 import styles from "../styles/_app.module.scss";
 import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 function AsideTree({ tree }) {
-  const [mbTreeToggle, setMbTreeToggle] = useState(true);
+  const [mbTreeToggle, setMbTreeToggle] = useState(false);
   const toggle = useCallback(() => {
     setMbTreeToggle((t) => !t);
   }, []);
   return (
-    <div>
+    <>
+      {mbTreeToggle && <div className={styles.mbLayer} onClick={toggle}></div>}
       <Card className={classnames(styles.menu, mbTreeToggle && styles.mbTreeShow)}>
+        <CardTitle className={styles.menuTitle}>文章節錄</CardTitle>
         <Tree tree={tree} />
       </Card>
       <button className={styles.indicator} onClick={toggle}>
         <FontAwesomeIcon icon={faCaretUp} className={styles.menuIcon} />
         目錄
       </button>
-    </div>
+    </>
   );
 }
 
 function MyApp({ Component, pageProps }) {
-  const asideRef = useRef();
-  const createTree = (tree) => {
-    render(<AsideTree tree={tree} />, asideRef.current);
-  };
-  const clearTree = () => {
-    asideRef.current.innerHTML = "";
-  };
-  const app = {
-    createTree,
-    clearTree,
-  };
+  // generate tree
+  const treeRef = useRef();
+  const createTree = useCallback((tree) => {
+    render(<AsideTree tree={tree} />, treeRef.current);
+  }, []);
+  const clearTree = useCallback(() => {
+    unmountComponentAtNode(treeRef.current);
+  }, []);
+  const app = useMemo(
+    () => ({
+      createTree,
+      clearTree,
+    }),
+    [createTree, clearTree],
+  );
+  // display
+  const posRef = useRef();
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      function (entries, observer) {
+        if (entries[0].isIntersecting) {
+          treeRef.current.classList.remove(styles.fixed);
+        } else {
+          const isBelowViewport = entries[0].boundingClientRect.top > window.innerHeight;
+          if (!isBelowViewport) treeRef.current.classList.add(styles.fixed);
+        }
+      },
+      {
+        rootMargin: "-110px 0px 0px 0px",
+        threshold: 0,
+      },
+    );
+    observer.observe(posRef.current);
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   return (
     <>
@@ -66,8 +95,9 @@ function MyApp({ Component, pageProps }) {
           <Search />
           <AdsFrame src="/ads/aside.html" />
           <NewPosts />
-          <AdsFrame src="/ads/aside2.html" />
-          <div ref={asideRef}></div>
+          {/* <AdsFrame src="/ads/aside2.html" /> */}
+          <div ref={posRef}></div>
+          <div ref={treeRef}></div>
         </App.Aside>
       </App.Body>
       <App.Footer />

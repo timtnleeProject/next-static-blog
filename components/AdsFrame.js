@@ -3,7 +3,9 @@ import classnames from "classnames";
 import styles from "./styles/AdsFrame.module.scss";
 
 export default memo(function Ads(props) {
-  return (
+  return process.env.NODE_ENV === "development" ? (
+    "test"
+  ) : (
     <div className={classnames(styles.ads, props.className)}>
       <iframe
         className={styles.frame}
