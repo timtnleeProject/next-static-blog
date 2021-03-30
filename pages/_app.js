@@ -60,9 +60,7 @@ function MyApp({ Component, pageProps }) {
     const observer = new IntersectionObserver(
       function (entries) {
         const elEntry = entries.find((e) => e.target === posRef.current);
-        console.log(entries);
         if (elEntry) {
-          console.log("el");
           if (elEntry.isIntersecting) {
             treeRef.current.classList.remove(styles.fixed);
           } else {
@@ -74,7 +72,6 @@ function MyApp({ Component, pageProps }) {
         }
         const elTopEntry = entries.find((e) => e.target === posTopRef.current);
         if (elTopEntry) {
-          console.log("elTop");
           const isBelowViewport =
             posRef.current.getBoundingClientRect().top > window.innerHeight;
           if (isBelowViewport) treeRef.current.classList.remove(styles.fixed);
