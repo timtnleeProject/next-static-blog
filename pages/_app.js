@@ -10,7 +10,7 @@ import AdsFrame from "components/AdsFrame";
 import Card, { CardTitle } from "components/Card";
 import { useState, useRef, useCallback, useEffect } from "react";
 import Tree from "components/Tree";
-import { render, unmountComponentAtNode } from "react-dom";
+import { render } from "react-dom";
 import classnames from "classnames";
 import styles from "../styles/_app.module.scss";
 import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
@@ -46,8 +46,7 @@ function MyApp({ Component, pageProps }) {
     render(<AsideTree tree={tree} />, treeRef.current);
   };
   const clearTree = () => {
-    unmountComponentAtNode(treeRef.current);
-    treeRef.current.style.display = "none";
+    render(null, treeRef.current);
   };
   const app = {
     createTree,
@@ -58,14 +57,22 @@ function MyApp({ Component, pageProps }) {
   const posTopRef = useRef();
 
   useEffect(() => {
+    const toggleMenu = (baseElTop) => {
+      const isBelowViewport = baseElTop > window.innerHeight;
+      if (isBelowViewport) treeRef.current.classList.remove(styles.fixed);
+      else treeRef.current.classList.add(styles.fixed);
+    };
     const observer = new IntersectionObserver(
       function (entries) {
+        const atTop = entries[0].target === posTopRef.current;
+        if (atTop) {
+          toggleMenu(posRef.current.getBoundingClientRect().top);
+          return;
+        }
         if (entries[0]?.isIntersecting) {
           treeRef.current.classList.remove(styles.fixed);
         } else {
-          const isBelowViewport = entries[0].boundingClientRect.top > window.innerHeight;
-          if (!isBelowViewport) treeRef.current.classList.add(styles.fixed);
-          else treeRef.current.classList.remove(styles.fixed);
+          toggleMenu(entries[0].boundingClientRect.top);
         }
       },
       {
