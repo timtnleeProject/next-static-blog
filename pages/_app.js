@@ -59,6 +59,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     const toggleMenu = (baseElTop) => {
       const isBelowViewport = baseElTop > window.innerHeight;
+      console.log(baseElTop, window.innerHeight);
       if (isBelowViewport) treeRef.current.classList.remove(styles.fixed);
       else treeRef.current.classList.add(styles.fixed);
     };
