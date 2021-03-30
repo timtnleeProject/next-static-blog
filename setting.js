@@ -1,9 +1,9 @@
 export const GROUP = {
   development: "程式開發💻",
   aquarium: "水族",
-  diary: "心情日記📝",
+  diary: "心情日記✍🏼",
   tech: "日常科技💡",
-  reading: "閱讀心得",
+  reading: "閱讀心得📚",
 };
 
 export const AUTHOR = {
