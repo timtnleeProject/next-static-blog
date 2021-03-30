@@ -64,15 +64,18 @@ function MyApp({ Component, pageProps }) {
     };
     const observer = new IntersectionObserver(
       function (entries) {
-        const atTop = entries[0].target === posTopRef.current;
-        if (atTop) {
-          toggleMenu(posRef.current.getBoundingClientRect().top);
+        const elEntry = entries.find((e) => e.target === posRef.current);
+        if (elEntry) {
+          if (elEntry.isIntersecting) {
+            treeRef.current.classList.remove(styles.fixed);
+          } else {
+            toggleMenu(elEntry.boundingClientRect.top);
+          }
           return;
         }
-        if (entries[0]?.isIntersecting) {
-          treeRef.current.classList.remove(styles.fixed);
-        } else {
-          toggleMenu(entries[0].boundingClientRect.top);
+        const elTopEntry = entries.find((e) => e.target === posTopRef.current);
+        if (elTopEntry) {
+          toggleMenu(posRef.current.getBoundingClientRect().top);
         }
       },
       {
