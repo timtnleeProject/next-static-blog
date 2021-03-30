@@ -59,6 +59,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       function (entries) {
+        console.log("Observe", entries[0])
         if (entries[0]?.isIntersecting) {
           treeRef.current.classList.remove(styles.fixed);
         } else {
