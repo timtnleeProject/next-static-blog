@@ -106,10 +106,10 @@ function Post(props) {
     ];
     if (tree?.[0]?.items?.length >= 2) {
       app.createTree(tree);
-      return () => {
-        app.clearTree(null);
-      };
     }
+    return () => {
+      app.clearTree();
+    };
   }, [app]);
 
   const breadcrumbs = useMemo(

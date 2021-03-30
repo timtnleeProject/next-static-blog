@@ -8,7 +8,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css"; // To prevent SVG large f
 import "../styles/globals.scss";
 import AdsFrame from "components/AdsFrame";
 import Card, { CardTitle } from "components/Card";
-import { useState, useRef, useCallback, useEffect, useMemo } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import Tree from "components/Tree";
 import { render, unmountComponentAtNode } from "react-dom";
 import classnames from "classnames";
@@ -41,25 +41,25 @@ function AsideTree({ tree }) {
 function MyApp({ Component, pageProps }) {
   // generate tree
   const treeRef = useRef();
-  const createTree = useCallback((tree) => {
+  const createTree = (tree) => {
+    treeRef.current.style.display = "block";
     render(<AsideTree tree={tree} />, treeRef.current);
-  }, []);
-  const clearTree = useCallback(() => {
+  };
+  const clearTree = () => {
     unmountComponentAtNode(treeRef.current);
-  }, []);
-  const app = useMemo(
-    () => ({
-      createTree,
-      clearTree,
-    }),
-    [createTree, clearTree],
-  );
+    treeRef.current.style.display = "none";
+  };
+  const app = {
+    createTree,
+    clearTree,
+  };
   // display
   const posRef = useRef();
+  const posTopRef = useRef();
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       function (entries) {
-        console.log("Observe", entries[0])
         if (entries[0]?.isIntersecting) {
           treeRef.current.classList.remove(styles.fixed);
         } else {
@@ -74,6 +74,7 @@ function MyApp({ Component, pageProps }) {
       },
     );
     observer.observe(posRef.current);
+    observer.observe(posTopRef.current);
     return () => {
       observer.disconnect();
     };
@@ -95,6 +96,7 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} app={app} />
         </App.Content>
         <App.Aside>
+          <div ref={posTopRef}></div>
           <PostGroup />
           <Search />
           <AdsFrame src="/ads/aside.html" />
