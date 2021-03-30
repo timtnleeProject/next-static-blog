@@ -57,12 +57,6 @@ function MyApp({ Component, pageProps }) {
   const posTopRef = useRef();
 
   useEffect(() => {
-    const toggleMenu = (baseElTop) => {
-      const isBelowViewport = baseElTop > window.innerHeight;
-      console.log(baseElTop, window.innerHeight);
-      if (isBelowViewport) treeRef.current.classList.remove(styles.fixed);
-      else treeRef.current.classList.add(styles.fixed);
-    };
     const observer = new IntersectionObserver(
       function (entries) {
         const elEntry = entries.find((e) => e.target === posRef.current);
@@ -72,14 +66,18 @@ function MyApp({ Component, pageProps }) {
           if (elEntry.isIntersecting) {
             treeRef.current.classList.remove(styles.fixed);
           } else {
-            toggleMenu(elEntry.boundingClientRect.top);
+            const isBelowViewport = elEntry.boundingClientRect.top > window.innerHeight;
+            if (isBelowViewport) treeRef.current.classList.remove(styles.fixed);
+            else treeRef.current.classList.add(styles.fixed);
           }
           return;
         }
         const elTopEntry = entries.find((e) => e.target === posTopRef.current);
         if (elTopEntry) {
           console.log("elTop");
-          toggleMenu(posRef.current.getBoundingClientRect().top);
+          const isBelowViewport =
+            posRef.current.getBoundingClientRect().top > window.innerHeight;
+          if (isBelowViewport) treeRef.current.classList.remove(styles.fixed);
         }
       },
       {
