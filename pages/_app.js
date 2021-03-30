@@ -105,11 +105,12 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} app={app} />
         </App.Content>
         <App.Aside>
-          <div ref={posTopRef}></div>
-          <PostGroup />
-          <Search />
-          <AdsFrame src="/ads/aside.html" />
-          <NewPosts />
+          <div ref={posTopRef}>
+            <PostGroup />
+            <Search />
+            <AdsFrame src="/ads/aside.html" />
+            <NewPosts />
+          </div>
           {/* <AdsFrame src="/ads/aside2.html" /> */}
           <div ref={posRef}></div>
           <div ref={treeRef}></div>
