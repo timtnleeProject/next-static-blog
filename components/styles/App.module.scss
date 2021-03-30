@@ -4,7 +4,8 @@ $trans: 0.3s;
   width: 100%;
   height: $app-headerHeight;
   background-color: $color-grey;
-  background-image: url("/up.jpg");
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)),
+    url("/up.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: 0 100%;
@@ -82,7 +83,7 @@ $trans: 0.3s;
   width: 100%;
   padding: 24px;
   box-shadow: $shadow-px $color-grey-2;
-  color: $color-light;
+  color: $color-white;
   z-index: 200;
   .close {
     display: none;
@@ -91,21 +92,21 @@ $trans: 0.3s;
     margin: 0;
   }
   li {
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 20px;
   }
   li.active span {
     border-bottom: 2px solid $color-main;
   }
-  li + li {
-    margin-left: 1.2em;
+  li {
+    margin: 0 1em;
   }
 }
 @media screen and (min-width: $bp + 1px) {
   .nav {
     height: $app-navHeight;
     background-color: $color-grey;
-    background-image: url("/down.jpg");
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.3)),
+      url("/down.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: 0 0;
@@ -141,6 +142,7 @@ $trans: 0.3s;
   .fixed + .nav {
     ul {
       justify-content: flex-end;
+      padding-right: 24px;
     }
   }
   .hide + .nav {
@@ -196,10 +198,9 @@ $trans: 0.3s;
       margin: 48px 0 0 0;
     }
     li + li {
-      margin: 5 * $p 0;
+      margin: 8 * $p 0;
     }
     li {
-      font-size: 20px;
       text-align: center;
     }
     a {

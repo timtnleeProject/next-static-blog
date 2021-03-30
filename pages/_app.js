@@ -25,7 +25,9 @@ function AsideTree({ tree }) {
     <>
       {mbTreeToggle && <div className={styles.mbLayer} onClick={toggle}></div>}
       <Card className={classnames(styles.menu, mbTreeToggle && styles.mbTreeShow)}>
-        <CardTitle className={styles.menuTitle}>文章節錄</CardTitle>
+        <CardTitle as="h3" className={styles.menuTitle}>
+          文章節錄
+        </CardTitle>
         <Tree tree={tree} />
       </Card>
       <button className={styles.indicator} onClick={toggle}>
@@ -56,8 +58,8 @@ function MyApp({ Component, pageProps }) {
   const posRef = useRef();
   useEffect(() => {
     const observer = new IntersectionObserver(
-      function (entries, observer) {
-        if (entries[0].isIntersecting) {
+      function (entries) {
+        if (entries[0]?.isIntersecting) {
           treeRef.current.classList.remove(styles.fixed);
         } else {
           const isBelowViewport = entries[0].boundingClientRect.top > window.innerHeight;

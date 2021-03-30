@@ -5,7 +5,7 @@ import SearchBar from "components/SearchBar";
 export default memo(function Search() {
   return (
     <Card>
-      <CardTitle>搜尋文章</CardTitle>
+      <CardTitle as="h3">搜尋文章</CardTitle>
       <SearchBar />
     </Card>
   );
