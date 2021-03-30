@@ -64,6 +64,7 @@ function MyApp({ Component, pageProps }) {
         } else {
           const isBelowViewport = entries[0].boundingClientRect.top > window.innerHeight;
           if (!isBelowViewport) treeRef.current.classList.add(styles.fixed);
+          else treeRef.current.classList.remove(styles.fixed);
         }
       },
       {
