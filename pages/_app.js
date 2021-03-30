@@ -65,6 +65,7 @@ function MyApp({ Component, pageProps }) {
     const observer = new IntersectionObserver(
       function (entries) {
         const elEntry = entries.find((e) => e.target === posRef.current);
+        console.log(entries);
         if (elEntry) {
           console.log("el");
           if (elEntry.isIntersecting) {
