@@ -42,10 +42,16 @@ export default function About({ posts: initPosts, groups }) {
       <Page.CenterSection>
         <BreadCrumb links={breadcrumbs} />
         <Page.Title>文章</Page.Title>
-        <div className="g-mt-3 g-mb-6">
+        <div className="g-mb-6">
           類別：
           {groups.map((group) => (
-            <Tag key={group.name} color="white" variant="emphasis" border="emphasis">
+            <Tag
+              key={group.name}
+              className="g-mt-2"
+              color="white"
+              variant="emphasis"
+              border="emphasis"
+            >
               <Link
                 className="g-mr-3"
                 href={{
