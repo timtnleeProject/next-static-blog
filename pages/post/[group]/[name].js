@@ -141,6 +141,7 @@ function Post(props) {
           linkTarget="_blank"
           renderers={renderers}
           plugins={[gfm, breaks, slug]}
+          allowDangerousHtml
         >
           {post.raw}
         </ReactMarkdown>
