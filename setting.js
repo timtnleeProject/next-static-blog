@@ -4,6 +4,7 @@ export const GROUP = {
   diary: "心情日記✍🏼",
   tech: "日常科技💡",
   reading: "閱讀心得📚",
+  trip: "旅行出遊✈",
 };
 
 export const AUTHOR = {
