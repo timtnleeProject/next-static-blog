@@ -33,15 +33,58 @@ React.createElement("img", { src: "avatar.png" });
 jsx("img", { src: "avatar.png" });
 ```
 
+### React 17 New JSX Transform
+
+上述是 React 17 以前的版本，在 React 17 後提供了新的功能 **Auto JSX Transform**
+(其實 React 16.14 也就是 v16 的最後一版就支援此功能，不過應該是 v17 才正式 release feature?)
+
+https://zh-hant.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
+
+詳細可以去看上述介紹，簡而言之，之前會將 jsx 轉成 `React.createElement`
+因此需要在有使用 jsx 的檔案 宣告 React `import React from "react";`
+
+啟用了新的 automatic transform jsx 之後，不用再宣告 React：
+
+```jsx
+// 不須宣告 React
+function App() {
+  return <h1>Hello World</h1>;
+}
+```
+
+會編譯成：
+
+```jsx
+// Inserted by a compiler (don't import it yourself!)
+import { jsx as _jsx } from "react/jsx-runtime";
+
+function App() {
+  return _jsx("h1", { children: "Hello world" });
+}
+```
+
+回到 emotion：要使用 emotion 的 css props
 有兩種方法設定：
 
 - Babel Preset
 - JSX Pragma
 
+其中又分為 React 17 前後有不同設定 (因為 auto transform jsx)
+
 ### Babel Preset
 
 在 .babelrc 設定
 因應不同情境，詳細參考[文件](https://emotion.sh/docs/css-prop#babel-preset)
+
+```json
+{
+  "presets": ["@emotion/babel-preset-css-prop"]
+}
+```
+
+#### React 17 (automatic transform jsx)
+
+如果使用 react17 automatic transform jsx feature
 
 ```json
 {
@@ -67,6 +110,16 @@ import { jsx } from "@emotion/react";
 ```
 
 這段註解告訴 babel 使用定義的 `jsx` 取代預設的 `React.createElement`
+
+#### React 17 (automatic transform jsx)
+
+如果使用 react17 automatic transform jsx feature
+
+```javascript
+/** @jsxImportSource @emotion/react */
+```
+
+這段註解告訴 babel 從 `@emotion/react` 來引入 runtime jsx
 
 ## babel plugin、eslint
 
