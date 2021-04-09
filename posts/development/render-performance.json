@@ -1,5 +1,5 @@
 {
-  "title": "減少 Dom element 數量以快速優化渲染效能",
+  "title": "別讓過多的 Dom element 影響你的網頁渲染效能",
   "tags": ["Optimization"],
   "birthtime": "2021/04/09",
   "mtime": "2021/04/09",
