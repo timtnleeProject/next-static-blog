@@ -1,10 +1,9 @@
 {
   "title": "減少 Dom element 數量以快速優化渲染效能",
   "tags": ["Optimization"],
-  "birthtime": "2021/04/08",
-  "mtime": "2021/04/08",
+  "birthtime": "2021/04/09",
+  "mtime": "2021/04/09",
   "author": "tim",
   "image": "https://lh3.googleusercontent.com/7nwR4nIKGkby9VvqoRwzsVH0FajL48fW5a3PoRduEwLXbXxgUmJDSvNsaTBNwfx10fHRh2oMO0W3ELco2UDBy_fRUD0Ldw94Wt78FqJGs8uhSGmFi3R3A1nb5HM0tksoq2Y8ZOcEvU-fL9AZocclnPcM78jAnQYYjiTgJ9IMOQd_G8yPi4c0w8sFY09AJ4qgz9pg4_60vBP0dDfGBhbxRN6GBn6ok7m4nqmOKdjcxPlllHqmyLChZ1-ms0w0QM361F7qCPVoR1kHdTZFMBLj-LV4rlvZme5j0FhPB5Q-jcyUV4j0x7RXTS6SxfoeClDjh7FCf0HsdwZTrZ_7XvRMxYpqecpGG8pCt1cE_hqkvlEDPBx85FJ4z57S90t8EtpfGaBjpM-EmV4N9KMhu0mL4ortmqo5Yn5HXKV1SATVstQyC2bspmbCwcif8aPJxm8nYga7h04EP5_otDNGSNcwucgaAGxs62k6s-82JcL--sSZQNC499OzMNexKQPJ0Jd8uagRH6-MidVK8ysyDRU1RcZigGmvBNmstJbYqYDErX9UR07K2QzMsjinJVYUncGkNL8487al-Sed9DM5pRd7dJOCzxBb07Lz8mciGETSZwY3m7HAgcOxwZYn886tNCeK8K3xVCcj-T8VRt21_YUREvJKgeTZxFNL4g7fK7uyI-JippkmebhVt7ZqA6DR17U2dGVUP-MkljOOm279LeyetPEmnWgiSa9kAUKzLGXirXkjlkWkI_gX3-_C=w1293-h971-no",
-  "preview": "在一次實作的過程體會到：Dom nodes/elements 的數量對於渲染的效能有多大的影響。",
-  "hide": true
+  "preview": "在一次實作的過程體會到：Dom nodes/elements 的數量對於渲染的效能有多大的影響。"
 }
