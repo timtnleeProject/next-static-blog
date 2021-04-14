@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+disallow: /ads
 Host: https://blog.timtnlee.me
 Sitemap: https://blog.timtnlee.me/sitemap.xml
