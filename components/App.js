@@ -70,16 +70,15 @@ function Brand() {
   return (
     <Link href="/" passHref>
       <a className={styles.brand}>
-        <div className={styles.l}>
-          <div className={classnames(styles.lg, "g-color-light")}>
-            {title.slice(0, splitIdx)}
+        <div className={classnames(styles.lg, styles.brandTitle, "g-color-light")}>
+          <div className={styles.brandImg}>
+            <img src="/chocolate.png" alt="brand" />
           </div>
-          <div className="g-color-main">Bitter</div>
+          <div className="g-color-light">{title.slice(0, splitIdx)}</div>
+          <div className="g-color-main">{title.slice(splitIdx)}</div>
         </div>
-        <div className={styles.r}>
-          <div className={classnames(styles.lg, "g-color-main")}>
-            {title.slice(splitIdx)}
-          </div>
+        <div className={styles.brandTitle}>
+          <div className="g-color-main">Bitter</div>
           <div className="g-color-light">Chocolate</div>
         </div>
       </a>

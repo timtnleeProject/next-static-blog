@@ -56,17 +56,30 @@ $trans: 0.3s;
 .brand {
   font-size: 1em;
   line-height: 1;
+  &:hover {
+    text-decoration: none;
+  }
+  .brandTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .brandImg {
+    background-color: $color-light;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: $p * 2;
+    img {
+      width: 1em;
+      flex: 0 0 1em;
+    }
+  }
   .lg {
     font-size: 2.2em;
-  }
-  .l {
-    display: inline-block;
-    color: $color-light;
-    text-align: right;
-  }
-  .r {
-    display: inline-block;
-    color: $color-main;
   }
 }
 .subtitle {
