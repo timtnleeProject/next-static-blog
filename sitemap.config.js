@@ -1,6 +1,6 @@
 module.exports = {
   siteUrl: "https://blog.timtnlee.me",
-  generateRobotsTxt: true, // (optional)
+  generateRobotsTxt: false, // (optional)
   transform: (config, url) => {
     // custom function to ignore the url
     if (/\/404/.test(url)) {

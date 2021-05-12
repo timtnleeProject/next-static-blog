@@ -1,0 +1,9 @@
+{
+  "title": "React + formatJS 設定多國語系應用開發流程",
+  "tags": ["React", "i18n", "formatjs"],
+  "birthtime": "2021/05/12",
+  "mtime": "2021/05/12",
+  "author": "tim",
+  "image": "https://imgur.com/wcIVuWn.jpg",
+  "preview": "紀錄使用 React + formatJS 開發多國語系 (i18n, l10n) 應用的設定流程。"
+}
