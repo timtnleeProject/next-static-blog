@@ -15,6 +15,10 @@ export default function GroupPost() {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (text) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
       setLoading(true);
       fetch(`/api/search?text=${encodeURIComponent(text)}`)
         .then((res) => res.json())
