@@ -52,16 +52,6 @@ export default function About() {
                 Unsplash
               </a>
             </li>
-            <li>
-              Diary Photo by{" "}
-              <a href="https://unsplash.com/@fresh_studio?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
-                Zoran Borojevic
-              </a>{" "}
-              on{" "}
-              <a href="https://unsplash.com/s/photos/diary?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
-                Unsplash
-              </a>
-            </li>
           </ul>
         </div>
       </Page.CenterSection>

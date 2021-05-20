@@ -6,6 +6,7 @@ import { formatDate } from "utils/datetime";
 import Card from "./Card";
 import Tag from "./Tag";
 import Author from "./Author";
+import Image from "./Image";
 
 export const List = function List(props) {
   const { className, inline } = props;
@@ -94,7 +95,7 @@ export const VerticalItem = function VerticalItem({
       {metadata.image && (
         <div className={styles.imageBolck}>
           <div className={styles.pad}></div>
-          <img src={metadata.image} alt={metadata.title} loading="lazy"></img>
+          <Image className={styles.img} src={metadata.image} alt={metadata.title} />
           <Link
             href={{
               pathname: "/post/[group]/[name]",
