@@ -8,10 +8,10 @@ https://github.com/emotion-js/emotion
 參考：[emotion 文件](https://emotion.sh/docs/introduction)有詳細安裝步驟說明。
 
 [安裝套件](https://emotion.sh/docs/introduction)
-我是使用 React 所以安裝 `@emotion/css` 和 `@emotion/react`
+我是使用 React 所以安裝 `@emotion/react`
 
 ```bash
-npm i @emotion/css @emotion/react
+npm i @emotion/react
 ```
 
 ## emotion 設定
@@ -120,6 +120,27 @@ import { jsx } from "@emotion/react";
 ```
 
 這段註解告訴 babel 從 `@emotion/react` 來引入 runtime jsx
+
+### Css props
+
+設定正確便可以使 Css props 正確套用
+
+```jsx
+import { css } from "@emotion/react";
+
+export default function Item() {
+  return (
+    <div
+      css={css`
+        font-weight: bold;
+        color: #fff;
+      `}
+    >
+      test
+    </div>
+  );
+}
+```
 
 ## babel plugin、eslint
 
