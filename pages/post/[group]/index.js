@@ -86,20 +86,23 @@ export default function GroupPost({ groupName, posts, tags }) {
         <Page.Title>{title}</Page.Title>
         <div className={styles.tagWrap}>
           標籤篩選：
-          {tags.map((tag) => (
-            <Tag
-              key={tag.name}
-              className={styles.tag}
-              variant={activeTags.some((t) => t === tag.name) ? "main" : "light"}
-              color="dark"
-              border="dark"
-              onClick={() => toggleTag(tag.name)}
-            >
-              <a>
-                #{tag.name} ({tag.count})
-              </a>
-            </Tag>
-          ))}
+          {tags.map((tag) => {
+            const selected = activeTags.some((t) => t === tag.name);
+            return (
+              <Tag
+                key={tag.name}
+                className={styles.tag}
+                variant={selected ? "main" : "white"}
+                color={selected ? "white" : "main"}
+                border="main"
+                onClick={() => toggleTag(tag.name)}
+              >
+                <a>
+                  #{tag.name} ({tag.count})
+                </a>
+              </Tag>
+            );
+          })}
         </div>
         <div className={classnames("g-color-grey-2", styles.total)}>
           共 {filteredPosts.length} 篇文章

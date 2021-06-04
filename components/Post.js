@@ -17,7 +17,7 @@ export const List = function List(props) {
 };
 
 export const GroupTag = ({ group, ...rest }) => (
-  <Tag variant="emphasis" color="white" border="white" {...rest}>
+  <Tag variant="white" color="emphasis" border="emphasis" {...rest}>
     <Link
       href={{
         pathname: "/post/[group]",
@@ -32,7 +32,7 @@ export const GroupTag = ({ group, ...rest }) => (
 );
 
 export const PostTag = ({ tag, group, ...rest }) => (
-  <Tag variant="light" color="dark" border="dark" key={tag} {...rest}>
+  <Tag variant="white" color="main" border="main" key={tag} {...rest}>
     <Link
       href={{
         pathname: "/post/[group]",

@@ -48,9 +48,10 @@ export default function About({ posts: initPosts, groups }) {
             <Tag
               key={group.name}
               className="g-mt-2"
-              color="white"
-              variant="emphasis"
+              color="emphasis"
+              variant="white"
               border="emphasis"
+              style={{ fontSize: "14px" }}
             >
               <Link
                 className="g-mr-3"
