@@ -3,8 +3,9 @@ $trans: 0.3s;
   position: relative;
   width: 100%;
   height: $app-headerHeight;
+  font-weight: 400;
   background-color: $color-grey;
-  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)),
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)),
     url("/up.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
@@ -118,7 +119,7 @@ $trans: 0.3s;
 .nav {
   height: $app-navHeight;
   background-color: $color-grey;
-  background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.3)),
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7)),
     url("/down.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
