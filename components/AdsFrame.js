@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import classnames from "classnames";
 import styles from "./styles/AdsFrame.module.scss";
 
-export default memo(function Ads(props) {
+const AdsFrame = memo(function Ads(props) {
   return process.env.NODE_ENV === "development" ? (
     "test"
   ) : (
@@ -23,3 +23,5 @@ export default memo(function Ads(props) {
     </div>
   );
 });
+
+export default AdsFrame;
