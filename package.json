@@ -15,7 +15,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.13",
     "classnames": "^2.2.6",
-    "disqus-react": "^1.0.10",
+    "disqus-react": "^1.1.1",
     "link-preview-js": "^2.1.1",
     "moment": "^2.29.1",
     "next": "^10.2.2",
