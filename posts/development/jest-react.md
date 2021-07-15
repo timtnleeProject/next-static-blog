@@ -12,7 +12,7 @@ npm i -D jest
 
 Jest 預設的 [test file pattern](https://jestjs.io/docs/configuration#testregex-string--arraystring) 用 cli 的 `testRegex` 參數設定，可以看到預設是：`(/__tests__/.*|(\\.|/)(test|spec))\\.[jt]sx?$`
 
-也就是 Jest 預設會測試任何在 `__test__` 資料夾下面的 .js, .jsx, .ts, .tsx 檔案，或者任何尾部帶有 `.test` 或 `.spec` 的檔案 (例如 Component.test.js 或 Component.spec.js)
+也就是 Jest 預設會測試任何在 `__tests__` 資料夾下面的 .js, .jsx, .ts, .tsx 檔案，或者任何尾部帶有 `.test` 或 `.spec` 的檔案 (例如 Component.test.js 或 Component.spec.js)
 
 依照這個規則先新增一個 test file 看看
 
